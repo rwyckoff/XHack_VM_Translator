@@ -25,7 +25,7 @@ class CodeWriter:
         Arguments:
             output_file: The (initially empty) .asm output file to be written to.
         """
-        output_file = open(output_file, "w")
+        self.output_file = open(output_file, "w")
 
     def set_file_name(self, filename):
         """
@@ -48,6 +48,6 @@ class CodeWriter:
 
     def close(self):
         """
-        Closes the output file.     # TODO: This may be unnecessary with Pyhon's with open syntax. We'll see.
+        Closes the output file.
         """
-        pass
+        self.output_file.close()

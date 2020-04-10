@@ -15,9 +15,6 @@ from parser_module import Parser
 from code_writer_module import CodeWriter
 
 
-
-# TODO: Note: Don't need to manually add in the infinite loop at the ends of asm files. It's included in .vm files.
-
 # ************************************************************************************************
 # Main functions:
 
@@ -49,18 +46,27 @@ def process_vm_files(vm_files, output_path):
         vm_files: The list of .vm files to be translated.
         output_path: The location of where the translated .asm code should go.
     """
+    # Instantiate a code_writer, opening the .asm output file and preparing it for being written to.
     code_writer = CodeWriter(output_path)
+
+    # Process all the .vm files, parsing them and writing the translated .asm code to the output file.
     for file in vm_files:
         parser = Parser(file)
         code_writer.set_file_name(file)
-        while parser.has_more_commands:
+        while parser.has_more_commands():
             parser.advance()
-            if parser.command_type == 'C_PUSH':
-                code_writer.write_push_pop('C_PUSH', parser.arg1, parser.arg2)
-            elif parser.command_type == 'C_POP':
-                code_writer.write_push_pop('C_POP', parser.arg1, parser.arg2)
-            elif parser.command_type == 'C_ARITHMETIC':
-                code_writer.write_arithmetic(parser.arg1)
+            print(f"\n\nCurrent command: {parser.current_command}")
+            parser.current_command_type = parser.command_type()
+            print(f"Current command type: {parser.current_command_type}")
+            if parser.current_command_type == 'C_PUSH':
+                code_writer.write_push_pop('C_PUSH', parser.arg1(), parser.arg2())
+            elif parser.current_command_type == 'C_POP':
+                code_writer.write_push_pop('C_POP', parser.arg1(), parser.arg2())
+            elif parser.current_command_type == 'C_ARITHMETIC':
+                code_writer.write_arithmetic(parser.arg2())
+
+    # Close the output file.
+    code_writer.close()
 
 
 # ************************************************************************************************
@@ -82,3 +88,5 @@ output_file_path = os.path.join(program_dir, "asm_output", argv[1] + ".asm")
 
 input_files = get_vm_files(input_file_or_dir_path)
 process_vm_files(input_files, output_file_path)
+
+print("\n\n\n%%%%%%%%%%%%%%%%     Done!     %%%%%%%%%%%%%%%%")
