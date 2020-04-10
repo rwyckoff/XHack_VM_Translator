@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/../Example Code/1/.idea/1.iml" filepath="$PROJECT_DIR$/../Example Code/1/.idea/1.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../../Project One/Robert_Wyckoff_PJ01_XHack/.idea/Robert_Wyckoff_PJ01_XHack.iml" filepath="$PROJECT_DIR$/../../Project One/Robert_Wyckoff_PJ01_XHack/.idea/Robert_Wyckoff_PJ01_XHack.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/Robert_Wyckoff_PJ02_XHack.iml" filepath="$PROJECT_DIR$/.idea/Robert_Wyckoff_PJ02_XHack.iml" />
+    </modules>
+  </component>
+</project>
