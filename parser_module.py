@@ -5,6 +5,7 @@ Parser class: Handles the parsing of a single .vm file. One parser will be creat
 """
 import re
 
+
 # TODO: Consider making current_command_type an instance variable to avoid calling current_command() a lot.
 
 class Parser:

@@ -2,8 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8a860e88-fa98-4fd0-b02c-634e22bc9385" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vm_input/PointerTest.vm" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vm_input/SimpleAdd.vm" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vm_input/StackTest.vm" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vm_input/StaticTest.vm" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/asm_output/BasicTest.asm" beforeDir="false" afterPath="$PROJECT_DIR$/asm_output/BasicTest.asm" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/code_writer_module.py" beforeDir="false" afterPath="$PROJECT_DIR$/code_writer_module.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/parser_module.py" beforeDir="false" afterPath="$PROJECT_DIR$/parser_module.py" afterDir="false" />
@@ -32,15 +36,16 @@
   </component>
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/vm_input/FibonacciElement" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/vm_input" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Robert Sirois\Dropbox\Shpob Storage\School\Compiler Design\Projects\Project Two\Robert_Wyckoff_PJ02_XHack\vm_input" />
       <recent name="C:\Users\Robert Sirois\Dropbox\Shpob Storage\School\Compiler Design\Projects\Project Two\Robert_Wyckoff_PJ02_XHack\vm_input\FibonacciElement" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.BasicTest">
+  <component name="RunManager" selected="Python.example1">
     <configuration name="BasicTest" type="PythonConfigurationType" factoryName="Python">
       <module name="Robert_Wyckoff_PJ02_XHack" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -83,10 +88,125 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <configuration name="PointerTest" type="PythonConfigurationType" factoryName="Python">
+      <module name="Robert_Wyckoff_PJ02_XHack" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/main.py" />
+      <option name="PARAMETERS" value="&quot;PointerTest&quot;" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="SimpleAdd" type="PythonConfigurationType" factoryName="Python">
+      <module name="Robert_Wyckoff_PJ02_XHack" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/main.py" />
+      <option name="PARAMETERS" value="&quot;SimpleAdd&quot;" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="StackTest" type="PythonConfigurationType" factoryName="Python">
+      <module name="Robert_Wyckoff_PJ02_XHack" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/main.py" />
+      <option name="PARAMETERS" value="&quot;StackTest&quot;" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="StaticTest" type="PythonConfigurationType" factoryName="Python">
+      <module name="Robert_Wyckoff_PJ02_XHack" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/main.py" />
+      <option name="PARAMETERS" value="&quot;StaticTest&quot;" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="example1" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="1" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/../Example Code/1" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/../Example Code/1/example1.py" />
+      <option name="PARAMETERS" value="&quot;$PROJECT_DIR$/../../../Nand2Tetris Software/nand2tetris/projects/07/StackArithmetic/StackTest&quot;" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <list>
       <item itemvalue="Python.FibonacciElement" />
       <item itemvalue="Python.BasicTest" />
+      <item itemvalue="Python.PointerTest" />
+      <item itemvalue="Python.StaticTest" />
+      <item itemvalue="Python.SimpleAdd" />
+      <item itemvalue="Python.StackTest" />
+      <item itemvalue="Python.example1" />
     </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Python.example1" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -102,49 +222,50 @@
     <servers />
   </component>
   <component name="UnknownFeatures">
+    <option featureType="com.intellij.fileTypeFactory" implementationName="*.asm" />
     <option featureType="com.intellij.fileTypeFactory" implementationName="*.vm" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="251" y="149" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1586486661479">
+    <state x="251" y="149" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1586579034183">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state x="251" y="149" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1586486661479" />
+    <state x="251" y="149" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1586579034183" />
     <state x="271" y="342" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1586485026215">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="271" y="342" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1920.1080@0.0.1920.1080" timestamp="1586485026215" />
-    <state width="1065" height="285" key="GridCell.Tab.0.bottom" timestamp="1586551263759">
+    <state width="1065" height="285" key="GridCell.Tab.0.bottom" timestamp="1586579035340">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1065" height="285" key="GridCell.Tab.0.bottom/0.0.1920.1080@0.0.1920.1080" timestamp="1586551263759" />
-    <state width="1065" height="285" key="GridCell.Tab.0.center" timestamp="1586551263759">
+    <state width="1065" height="285" key="GridCell.Tab.0.bottom/0.0.1920.1080@0.0.1920.1080" timestamp="1586579035340" />
+    <state width="1065" height="285" key="GridCell.Tab.0.center" timestamp="1586579035340">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1065" height="285" key="GridCell.Tab.0.center/0.0.1920.1080@0.0.1920.1080" timestamp="1586551263759" />
-    <state width="1065" height="285" key="GridCell.Tab.0.left" timestamp="1586551263759">
+    <state width="1065" height="285" key="GridCell.Tab.0.center/0.0.1920.1080@0.0.1920.1080" timestamp="1586579035340" />
+    <state width="1065" height="285" key="GridCell.Tab.0.left" timestamp="1586579035340">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1065" height="285" key="GridCell.Tab.0.left/0.0.1920.1080@0.0.1920.1080" timestamp="1586551263759" />
-    <state width="1065" height="285" key="GridCell.Tab.0.right" timestamp="1586551263759">
+    <state width="1065" height="285" key="GridCell.Tab.0.left/0.0.1920.1080@0.0.1920.1080" timestamp="1586579035340" />
+    <state width="1065" height="285" key="GridCell.Tab.0.right" timestamp="1586579035340">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1065" height="285" key="GridCell.Tab.0.right/0.0.1920.1080@0.0.1920.1080" timestamp="1586551263759" />
-    <state width="1065" height="352" key="GridCell.Tab.1.bottom" timestamp="1586547014262">
+    <state width="1065" height="285" key="GridCell.Tab.0.right/0.0.1920.1080@0.0.1920.1080" timestamp="1586579035340" />
+    <state width="1065" height="352" key="GridCell.Tab.1.bottom" timestamp="1586571750799">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1065" height="352" key="GridCell.Tab.1.bottom/0.0.1920.1080@0.0.1920.1080" timestamp="1586547014262" />
-    <state width="1065" height="352" key="GridCell.Tab.1.center" timestamp="1586547014262">
+    <state width="1065" height="352" key="GridCell.Tab.1.bottom/0.0.1920.1080@0.0.1920.1080" timestamp="1586571750799" />
+    <state width="1065" height="352" key="GridCell.Tab.1.center" timestamp="1586571750799">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1065" height="352" key="GridCell.Tab.1.center/0.0.1920.1080@0.0.1920.1080" timestamp="1586547014262" />
-    <state width="1065" height="352" key="GridCell.Tab.1.left" timestamp="1586547014262">
+    <state width="1065" height="352" key="GridCell.Tab.1.center/0.0.1920.1080@0.0.1920.1080" timestamp="1586571750799" />
+    <state width="1065" height="352" key="GridCell.Tab.1.left" timestamp="1586571750798">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1065" height="352" key="GridCell.Tab.1.left/0.0.1920.1080@0.0.1920.1080" timestamp="1586547014262" />
-    <state width="1065" height="352" key="GridCell.Tab.1.right" timestamp="1586547014262">
+    <state width="1065" height="352" key="GridCell.Tab.1.left/0.0.1920.1080@0.0.1920.1080" timestamp="1586571750798" />
+    <state width="1065" height="352" key="GridCell.Tab.1.right" timestamp="1586571750799">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1065" height="352" key="GridCell.Tab.1.right/0.0.1920.1080@0.0.1920.1080" timestamp="1586547014262" />
+    <state width="1065" height="352" key="GridCell.Tab.1.right/0.0.1920.1080@0.0.1920.1080" timestamp="1586571750799" />
     <state x="22" y="171" key="SettingsEditor" timestamp="1586469782181">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>

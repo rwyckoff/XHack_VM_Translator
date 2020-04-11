@@ -14,6 +14,8 @@ from sys import argv
 from parser_module import Parser
 from code_writer_module import CodeWriter
 
+# TODO: NOTE: For testing .asm files, must move the file into the relevant nand2tetris project folder.
+# TODO: NEXT, refactor more function and variable names, then move on to part 2.
 
 # ************************************************************************************************
 # Main functions:
@@ -50,9 +52,9 @@ def process_vm_files(vm_files, output_path):
     code_writer = CodeWriter(output_path)
 
     # Process all the .vm files, parsing them and writing the translated .asm code to the output file.
-    for file in vm_files:
-        parser = Parser(file)
-        code_writer.set_file_name(file)
+    for input_file in vm_files:
+        parser = Parser(input_file)
+        code_writer.set_file_name(input_file)
         while parser.has_more_commands():
             parser.advance()
             print(f"\n\nCurrent command: {parser.current_command}")
@@ -63,7 +65,7 @@ def process_vm_files(vm_files, output_path):
             elif parser.current_command_type == 'C_POP':
                 code_writer.write_push_pop('C_POP', parser.arg1(), parser.arg2())
             elif parser.current_command_type == 'C_ARITHMETIC':
-                code_writer.write_arithmetic(parser.arg2())
+                code_writer.write_arithmetic(parser.arg1())
 
     # Close the output file.
     code_writer.close()
