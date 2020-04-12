@@ -1,0 +1,33 @@
+// Contains errors. Used for testing the error-checker module.
+
+// This file is part of www.nand2tetris.org
+// and the book "The Elements of Computing Systems"
+// by Nisan and Schocken, MIT Press.
+// File name: projects/07/MemoryAccess/BasicTest/BasicTest.vm
+
+// Executes pop and push commands using the virtual memory segments.
+plop constant 10        // Unknown command error
+pop     0               // improper format error
+push constant a        // illegal index
+push constant 22
+pop arg 2               // invalid mem segment
+pop argument 1
+push constant           // improper format error
+pop this 6
+push constant 42
+p constant 45       // Unknown command error.
+pop that 5
+pop that 2
+push 510            // improper format
+pop temp 6
+push locl 0         // invalid mem segment
+push that 5
+add 15              // improper format error
+push argument 1
+sub
+push this 6
+push this 6
+add
+sub
+push temp -1        // illegal index
+add

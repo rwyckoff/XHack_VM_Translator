@@ -13,18 +13,11 @@
       <change afterPath="$PROJECT_DIR$/../../Project One/Robert_Wyckoff_PJ01_XHack/HAL_input/StackTest.asm" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../../Project One/Robert_Wyckoff_PJ01_XHack/HAL_input/StaticTest.asm" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../../Project One/Robert_Wyckoff_PJ01_XHack/HAL_input/StaticsTest.asm" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/error_checker.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/vm_input/BasicLoop/BasicLoop.vm" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/vm_input/FibonacciSeries/FibonacciSeries.vm" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/vm_input/NestedCall/Sys.vm" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/vm_input/SimpleFunction/SimpleFunction.vm" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/vm_input/StaticsTest/Class1.vm" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/vm_input/StaticsTest/Class2.vm" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/vm_input/StaticsTest/Sys.vm" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/config.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vm_input/Basic_Error_Test.vm" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../Project One/Robert_Wyckoff_PJ01_XHack/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/../../Project One/Robert_Wyckoff_PJ01_XHack/main.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/asm_output/BasicTest.asm" beforeDir="false" afterPath="$PROJECT_DIR$/asm_output/BasicTest.asm" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/code_writer_module.py" beforeDir="false" afterPath="$PROJECT_DIR$/code_writer_module.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/error_checker.py" beforeDir="false" afterPath="$PROJECT_DIR$/error_checker.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/parser_module.py" beforeDir="false" afterPath="$PROJECT_DIR$/parser_module.py" afterDir="false" />
     </list>
@@ -61,7 +54,7 @@
       <recent name="C:\Users\Robert Sirois\Dropbox\Shpob Storage\School\Compiler Design\Projects\Project Two\Robert_Wyckoff_PJ02_XHack\vm_input\FibonacciElement" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.FibonacciSeries">
+  <component name="RunManager" selected="Python.Basic_Error_Test">
     <configuration name="BasicLoop" type="PythonConfigurationType" factoryName="Python">
       <module name="Robert_Wyckoff_PJ02_XHack" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -97,6 +90,27 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/main.py" />
       <option name="PARAMETERS" value="&quot;BasicTest&quot;" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Basic_Error_Test" type="PythonConfigurationType" factoryName="Python">
+      <module name="Robert_Wyckoff_PJ02_XHack" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/main.py" />
+      <option name="PARAMETERS" value="&quot;Basic_Error_Test&quot;" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
@@ -326,6 +340,7 @@
       <item itemvalue="Python.SimpleAdd" />
       <item itemvalue="Python.StackTest" />
       <item itemvalue="Python.BasicLoop" />
+      <item itemvalue="Python.Basic_Error_Test" />
       <item itemvalue="Python.example1" />
     </list>
     <recent_temporary>
@@ -352,46 +367,50 @@
     <option featureType="com.intellij.fileTypeFactory" implementationName="*.vm" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="251" y="149" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1586641539402">
+    <state x="251" y="149" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1586700024597">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state x="251" y="149" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1586641539402" />
+    <state x="251" y="149" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1586700024597" />
     <state x="271" y="342" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1586485026215">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="271" y="342" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1920.1080@0.0.1920.1080" timestamp="1586485026215" />
-    <state width="1065" height="263" key="GridCell.Tab.0.bottom" timestamp="1586663787692">
+    <state x="281" y="286" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1586700443550">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1065" height="263" key="GridCell.Tab.0.bottom/0.0.1920.1080@0.0.1920.1080" timestamp="1586663787692" />
-    <state width="1065" height="263" key="GridCell.Tab.0.center" timestamp="1586663787692">
+    <state x="281" y="286" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1586700443550" />
+    <state width="1065" height="263" key="GridCell.Tab.0.bottom" timestamp="1586709290453">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1065" height="263" key="GridCell.Tab.0.center/0.0.1920.1080@0.0.1920.1080" timestamp="1586663787692" />
-    <state width="1065" height="263" key="GridCell.Tab.0.left" timestamp="1586663787692">
+    <state width="1065" height="263" key="GridCell.Tab.0.bottom/0.0.1920.1080@0.0.1920.1080" timestamp="1586709290453" />
+    <state width="1065" height="263" key="GridCell.Tab.0.center" timestamp="1586709290452">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1065" height="263" key="GridCell.Tab.0.left/0.0.1920.1080@0.0.1920.1080" timestamp="1586663787692" />
-    <state width="1065" height="263" key="GridCell.Tab.0.right" timestamp="1586663787692">
+    <state width="1065" height="263" key="GridCell.Tab.0.center/0.0.1920.1080@0.0.1920.1080" timestamp="1586709290452" />
+    <state width="1065" height="263" key="GridCell.Tab.0.left" timestamp="1586709290452">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1065" height="263" key="GridCell.Tab.0.right/0.0.1920.1080@0.0.1920.1080" timestamp="1586663787692" />
-    <state width="1065" height="352" key="GridCell.Tab.1.bottom" timestamp="1586571750799">
+    <state width="1065" height="263" key="GridCell.Tab.0.left/0.0.1920.1080@0.0.1920.1080" timestamp="1586709290452" />
+    <state width="1065" height="263" key="GridCell.Tab.0.right" timestamp="1586709290452">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1065" height="352" key="GridCell.Tab.1.bottom/0.0.1920.1080@0.0.1920.1080" timestamp="1586571750799" />
-    <state width="1065" height="352" key="GridCell.Tab.1.center" timestamp="1586571750799">
+    <state width="1065" height="263" key="GridCell.Tab.0.right/0.0.1920.1080@0.0.1920.1080" timestamp="1586709290452" />
+    <state width="1065" height="352" key="GridCell.Tab.1.bottom" timestamp="1586709122525">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1065" height="352" key="GridCell.Tab.1.center/0.0.1920.1080@0.0.1920.1080" timestamp="1586571750799" />
-    <state width="1065" height="352" key="GridCell.Tab.1.left" timestamp="1586571750798">
+    <state width="1065" height="352" key="GridCell.Tab.1.bottom/0.0.1920.1080@0.0.1920.1080" timestamp="1586709122525" />
+    <state width="1065" height="352" key="GridCell.Tab.1.center" timestamp="1586709122525">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1065" height="352" key="GridCell.Tab.1.left/0.0.1920.1080@0.0.1920.1080" timestamp="1586571750798" />
-    <state width="1065" height="352" key="GridCell.Tab.1.right" timestamp="1586571750799">
+    <state width="1065" height="352" key="GridCell.Tab.1.center/0.0.1920.1080@0.0.1920.1080" timestamp="1586709122525" />
+    <state width="1065" height="352" key="GridCell.Tab.1.left" timestamp="1586709122525">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1065" height="352" key="GridCell.Tab.1.right/0.0.1920.1080@0.0.1920.1080" timestamp="1586571750799" />
+    <state width="1065" height="352" key="GridCell.Tab.1.left/0.0.1920.1080@0.0.1920.1080" timestamp="1586709122525" />
+    <state width="1065" height="352" key="GridCell.Tab.1.right" timestamp="1586709122525">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1065" height="352" key="GridCell.Tab.1.right/0.0.1920.1080@0.0.1920.1080" timestamp="1586709122525" />
     <state x="22" y="171" key="SettingsEditor" timestamp="1586469782181">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>

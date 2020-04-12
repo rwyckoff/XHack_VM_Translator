@@ -11,8 +11,10 @@ compatible with the XHAL Assembler.
 import os
 from sys import argv
 
+import config
 from parser_module import Parser
 from code_writer_module import CodeWriter
+from error_checker import create_error_file
 
 # TODO: NOTE: For testing .asm files, must move the file into the relevant nand2tetris project folder.
 
@@ -65,6 +67,11 @@ def process_vm_files(vm_files, output_path, input_path):
             print(f"\n\nCurrent command: {parser.current_command}")
             parser.current_command_type = parser.command_type()
             print(f"Current command type: {parser.current_command_type}")
+
+            # If the command returns and error, it is invalid, so record the error and skip to the next command.
+            if parser.current_command_type == 'INVALID':
+                continue
+
             if parser.current_command_type == 'C_PUSH':
                 code_writer.write_push_pop('C_PUSH', parser.arg1(), parser.arg2())
             elif parser.current_command_type == 'C_POP':
@@ -98,6 +105,11 @@ program_path = os.path.abspath(__file__)
 program_dir = os.path.split(program_path)[0]
 input_file_or_dir_path = os.path.join(program_dir, "vm_input", argv[1])
 output_file_path = os.path.join(program_dir, "asm_output", argv[1] + ".asm")
+
+# Create and open an error file if the option to is set.
+error_file = None
+if config.WRITE_ERRORS_TO_LOG:
+    error_file = open(create_error_file(argv[1]), "w")
 
 input_files = get_vm_files(input_file_or_dir_path)
 process_vm_files(input_files, output_file_path, input_file_or_dir_path)

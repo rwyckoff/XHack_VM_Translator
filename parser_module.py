@@ -4,9 +4,8 @@ The parser module exports the Parser class.
 Parser class: Handles the parsing of a single .vm file. One parser will be created for each input file.
 """
 import re
+from error_checker import *
 
-
-# TODO: Consider making current_command_type an instance variable to avoid calling current_command() a lot.
 
 class Parser:
     """
@@ -94,23 +93,44 @@ class Parser:
             C_FUNCTION:
             C_RETURN:
             C_CALL:
-            # TODO: Keep some or all of the below types?
             BLANK: A blank command, with no content. Will be skipped over by the assembler.
             COMMENT: A line with only a comment in it. Will be skipped over by the assembler.
+            INVALID: A command that returned some error. Should be skipped over so the program can continue.
         """
-        # TODO: Probably put syntax error checking near start of if-else block. Or at end?
-
-        # TODO: So...First check that it's a valid syntax (error-checking), then remove in-line comments, then split
-        #  command into a list of size 1, 2, or 3. Then do the below.
         if self.regex_comment.match(self.current_command):
             return "COMMENT"
         elif self.current_command == "":
             return "BLANK"
         else:
+            # TODO: Probably do several error checks here-ish: or maybe even all of them except maybe unresolved label.
+            #  Can use self.command_idx to do line # reporting.
+
             # Strip in-line comments and make the command string into a list of parts of the command.
             self.current_command = self.strip_comments(self.current_command).strip().split()
-            print(f"command in list form: {self.current_command}")
-            return self.command_types.get(self.current_command[0].lower())
+
+            # Check that the first part of the command (the VM command itself) is valid.
+            if check_unknown_command(self.current_command, self.command_idx):
+                return 'INVALID'
+
+            # Check that the command is in the proper format for its type.
+            if check_improper_command_format(self.current_command, self.command_idx):
+                return 'INVALID'
+
+            # Set the command_type (one of C_PUSH, C_POP, or C_ARITHMETIC)
+            command_type = self.command_types.get(self.current_command[0].lower())
+
+            # If it's a push or pop command, check that its memory segment is valid, that its index is non-negative,
+            # and that its index doesn't go outside its memory segment.
+            if command_type in ['C_PUSH', 'C_POP']:
+                if check_unknown_mem_segment(self.current_command, self.command_idx) or \
+                        check_illegal_index(self.current_command, self.command_idx) or \
+                        check_index_out_of_range(self.current_command, self.command_idx):
+                    return 'INVALID'
+
+            # TODO: Next, do the label, goto, if-goto error-checking. (maybe above the push command_type assignment).
+
+            # If there are no errors, return the current command's type.
+            return command_type
 
     def arg1(self):
         """
