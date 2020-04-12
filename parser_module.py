@@ -132,7 +132,7 @@ class Parser:
         C_POP, C_FUNCTION, or C_CALL.
         """
         print(f"Arg2: {self.current_command[2]}")
-        return self.current_command[2]
+        return int(self.current_command[2])
 
     def strip_whitespace(self):
         """Edit the current command, stripping off any whitespace"""

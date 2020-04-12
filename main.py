@@ -15,10 +15,10 @@ from parser_module import Parser
 from code_writer_module import CodeWriter
 
 # TODO: NOTE: For testing .asm files, must move the file into the relevant nand2tetris project folder.
-# TODO: NEXT, refactor more function and variable names, then move on to part 2.
 
 # ************************************************************************************************
 # Main functions:
+
 
 def get_vm_files(input_path):
     """Detect if there is one or several (a directory of) .vm files, and return a list of them.
@@ -40,7 +40,7 @@ def get_vm_files(input_path):
     return vm_files
 
 
-def process_vm_files(vm_files, output_path):
+def process_vm_files(vm_files, output_path, input_path):
     """
     Processes each of the .vm files, which includes both parsing them (one parser per file) and writing the translated
     .asm code to output using one code_writer.
@@ -49,12 +49,17 @@ def process_vm_files(vm_files, output_path):
         output_path: The location of where the translated .asm code should go.
     """
     # Instantiate a code_writer, opening the .asm output file and preparing it for being written to.
-    code_writer = CodeWriter(output_path)
+    code_writer = CodeWriter(output_path, input_path)
+
+    # Write the bootstrap code at the top of the .asm file.
+    code_writer.write_init()
 
     # Process all the .vm files, parsing them and writing the translated .asm code to the output file.
     for input_file in vm_files:
-        parser = Parser(input_file)
+        print(f"\nTRANSLATING FILE {input_file}")
         code_writer.set_file_name(input_file)
+        parser = Parser(input_file)
+
         while parser.has_more_commands():
             parser.advance()
             print(f"\n\nCurrent command: {parser.current_command}")
@@ -66,18 +71,24 @@ def process_vm_files(vm_files, output_path):
                 code_writer.write_push_pop('C_POP', parser.arg1(), parser.arg2())
             elif parser.current_command_type == 'C_ARITHMETIC':
                 code_writer.write_arithmetic(parser.arg1())
+            elif parser.current_command_type == 'C_LABEL':
+                code_writer.write_label(parser.arg1())
+            elif parser.current_command_type == 'C_GOTO':
+                code_writer.write_goto(parser.arg1())
+            elif parser.current_command_type == 'C_IF':
+                code_writer.write_if(parser.arg1())
+            elif parser.current_command_type == 'C_FUNCTION':
+                code_writer.write_function(parser.arg1(), parser.arg2())
+            elif parser.current_command_type == 'C_CALL':
+                code_writer.write_call(parser.arg1(), parser.arg2())
+            elif parser.current_command_type == 'C_RETURN':
+                code_writer.write_return()
 
     # Close the output file.
     code_writer.close()
 
-
 # ************************************************************************************************
 # Program begins here:
-
-
-# TODO: Change this to a function that checks if argv[1] is a directory or a file and does something different from
-#  there. Part of it will include opening one .asm file to write to. Remember: the parser module will open the input
-#  file and get it ready for parsing in its init function, but main will have to pass in each vm file in a loop.
 
 
 # Open a .asm file for writing the assembly output code to.
@@ -89,6 +100,6 @@ input_file_or_dir_path = os.path.join(program_dir, "vm_input", argv[1])
 output_file_path = os.path.join(program_dir, "asm_output", argv[1] + ".asm")
 
 input_files = get_vm_files(input_file_or_dir_path)
-process_vm_files(input_files, output_file_path)
+process_vm_files(input_files, output_file_path, input_file_or_dir_path)
 
 print("\n\n\n%%%%%%%%%%%%%%%%     Done!     %%%%%%%%%%%%%%%%")
