@@ -30,10 +30,15 @@ def get_vm_files(input_path):
     vm_files = []
     if os.path.isdir(input_path):
         for _, _, files in os.walk(input_path, topdown=True):
-            print(files)
-            vm_files.append(files)
-        # Flatten the list of input files, if necessary, and join the input path with them.
-        vm_files = [os.path.join(input_path, f) for file in vm_files for f in file]
+            print(f'All files: {files}')
+            # Ensure we grab only the .vm files.
+            for file in files:
+                print(str(file))
+                if str(file).endswith('.vm'):
+                    vm_files.append(file)
+        # Join the input path with the files to get the full paths.
+        vm_files = [os.path.join(input_path, f) for f in vm_files]
+        print(f'VM files: {vm_files}')
 
     # Else there is only one vm file, so append it with .vm and add just it to the list.
     else:

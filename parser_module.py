@@ -116,7 +116,7 @@ class Parser:
             if check_improper_command_format(self.current_command, self.command_idx):
                 return 'INVALID'
 
-            # Set the command_type (one of C_PUSH, C_POP, or C_ARITHMETIC)
+            # Set the command_type.
             command_type = self.command_types.get(self.current_command[0].lower())
 
             # If it's a push or pop command, check that its memory segment is valid, that its index is non-negative,
@@ -128,6 +128,7 @@ class Parser:
                     return 'INVALID'
 
             # TODO: Next, do the label, goto, if-goto error-checking. (maybe above the push command_type assignment).
+            # if command_type in ['C']
 
             # If there are no errors, return the current command's type.
             return command_type

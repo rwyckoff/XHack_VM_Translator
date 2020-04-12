@@ -39,16 +39,16 @@ class CodeWriter:
         # Initialize the addresses dictionary, which maps VM labels to RAM addresses and .asm labels.
         self.addresses = {
             # The below 4 segments are mapped directly on the RAM.
-            'local': 'LCL',  # RAM[1]. Points to base of current VM function's local segment.
+            'local': 'LCL',     # RAM[1]. Points to base of current VM function's local segment.
             'argument': 'ARG',  # RAM[2]. Points to base of current VM function's argument segment.
-            'this': 'THIS',  # RAM[3]. Points to base of current this segment (within the heap).
-            'that': 'THAT',  # RAM[4]. Points to base of current that segment (within the heap).
+            'this': 'THIS',     # RAM[3]. Points to base of current this segment (within the heap).
+            'that': 'THAT',     # RAM[4]. Points to base of current that segment (within the heap).
             # The below two segments are mapped directly onto a fixed area in the RAM.
-            'pointer': 3,  # Mapped on RAM locations 3-4 (THIS and THAT).
-            'temp': 5,  # Mapped on RAM locations 5-12 (R5-R12).
+            'pointer': 3,       # Mapped on RAM locations 3-4 (THIS and THAT).
+            'temp': 5,          # Mapped on RAM locations 5-12 (R5-R12).
             # R13-15 can be used for any purpose, so is not in here.
             # The constant segment is fully virtual, so this translator simply supplied the literal constant.
-            'static': 16,  # Static variables are stored in R16-R255.
+            'static': 16,       # Static variables are stored in R16-R255.
         }
 
     def set_file_name(self, filename):
@@ -196,7 +196,7 @@ class CodeWriter:
         Writes assembly code that effects the call command.
         """
         self.call_label += 1
-        return_label = function_name + 'RETURN#' + str(self.call_label)  # Unique return label
+        return_label = function_name + 'RETURN' + str(self.call_label)  # Unique return label
 
         # push return address
         self.write_output('@' + return_label)

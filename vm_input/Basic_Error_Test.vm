@@ -31,3 +31,7 @@ add
 sub
 push temp -1        // illegal index
 add
+pop pointer 2       // pointer index oob
+push temp 10            // temp index oob
+pop constant 32767
+push constant 32768         // constant index oob

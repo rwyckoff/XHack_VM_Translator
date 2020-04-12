@@ -112,7 +112,20 @@ def check_illegal_index(command, line):
 def check_index_out_of_range(command, line):
     """For any memory segment that has a known size, checks that the given push or pop instruction does not use an
     index outside of that known region."""
-    pass
+    # If command's segment is one with a known size, check the index's range.
+    idx = int(command[2])
+    if command[1] == 'pointer' and idx not in [0, 1]:
+        write_error(line, f"'{' '.join(command)}'\n has an index that is out of range of the pointer segment.")
+        return True
+    elif command[1] == 'temp' and (idx < 0 or idx > 7):
+        write_error(line, f"'{' '.join(command)}'\n has an index that is out of range of the temp segment.")
+        return True
+    elif command[1] == 'constant' and (idx < 0 or idx > 32767):
+        write_error(line, f"'{' '.join(command)}'\n has an index that is out of range of the constant segment.")
+        return True
+    else:
+        return False
+
 
 
 def check_illegal_label(command, line):
