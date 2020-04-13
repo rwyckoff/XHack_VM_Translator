@@ -13,6 +13,8 @@ valid_vm_commands = ['add', 'sub', 'neg', 'eq', 'gt', 'lt', 'and', 'or', 'not', 
                      'if-goto', 'function', 'return', 'call']
 valid_mem_segments = ['argument', 'local', 'static', 'constant', 'this', 'that', 'pointer', 'temp']
 
+regex_legal_name= re.compile(r'^[A-Za-z_.:][A-Za-z0-9_.:]*$')
+
 
 def create_error_file(io_file):
     # Below lines generate a random error file name based on the current date and time.
@@ -59,29 +61,34 @@ def check_unknown_command(command, line):
         return False
 
 
-def check_improper_command_format(command, line):
+def check_improper_command_format(command, line, write=True):
     """Check that the VM command follows the format specified for its type. Primarily, this means detecting if the
     command has the wrong number of elements."""
     num_elems = len(command)
     if command[0] in ['add', 'sub', 'neg', 'eq', 'gt', 'lt', 'and', 'or', 'not'] and num_elems != 1:
-        write_error(line, f"'{' '.join(command)}'\n is an arithmetic or logical command that does not conform to "
-                          f"its specified format (there should be only one element in the command).")
+        if write:
+            write_error(line, f"'{' '.join(command)}'\n is an arithmetic or logical command that does not conform to "
+                              f"its specified format (there should be only one element in the command).")
         return True
     elif command[0] in ['push', 'pop'] and num_elems != 3:
-        write_error(line, f"'{' '.join(command)}'\n is a push or pop command that does not conform to "
-                          f"its specified format (there should be exactly three elements in the command).")
+        if write:
+            write_error(line, f"'{' '.join(command)}'\n is a push or pop command that does not conform to "
+                              f"its specified format (there should be exactly three elements in the command).")
         return True
     elif command[0] in ['label', 'goto', 'if-goto'] and num_elems != 2:
-        write_error(line, f"'{' '.join(command)}'\n is a program flow command that does not conform to "
-                          f"its specified format (there should be exactly two elements in the command).")
+        if write:
+            write_error(line, f"'{' '.join(command)}'\n is a program flow command that does not conform to "
+                              f"its specified format (there should be exactly two elements in the command).")
         return True
     elif command[0] in ['function', 'call'] and num_elems != 3:
-        write_error(line, f"'{' '.join(command)}'\n is a function or call command that does not conform to "
-                          f"its specified format (there should be exactly three elements in the command).")
+        if write:
+            write_error(line, f"'{' '.join(command)}'\n is a function or call command that does not conform to "
+                              f"its specified format (there should be exactly three elements in the command).")
         return True
     elif command[0] in ['return'] and num_elems != 1:
-        write_error(line, f"'{' '.join(command)}'\n is a return command that does not conform to "
-                          f"its specified format (there should be only one element in the command).")
+        if write:
+            write_error(line, f"'{' '.join(command)}'\n is a return command that does not conform to "
+                              f"its specified format (there should be only one element in the command).")
         return True
     else:
         return False
@@ -127,27 +134,49 @@ def check_index_out_of_range(command, line):
         return False
 
 
-
 def check_illegal_label(command, line):
-    """Ensure that the given label, goto, or if-goto command does not reference an illegal label."""
-    pass
+    """Ensure that the given label, goto, or if-goto command does not reference an illegal label.That is, the label
+    must follow the syntax outlined on page 159: the label is an arbitrary string composed of any sequence
+    of letters, digits, underscore, dot, and colon that does not begin with a digit."""
+    if not re.fullmatch(regex_legal_name, command[1]):
+        write_error(line, f"'{' '.join(command)}'\n contains an illegal label.")
+        return True
+    else:
+        return False
 
 
-def check_unresolved_label(command, line):
+def check_unresolved_label(command, line, current_fn, fn_dict):
     """Check that the given goto or if-goto command does not refer to a label not defined within the
     current function."""
-    # TODO: Probably just pass in two more args: the current in-scope function, and the command's function. They need
-    #  to be the same to not be an error.
-    pass
+    print(f"CURRENT FN DICT: {fn_dict}")
+    if command[1] not in fn_dict[current_fn]:
+        write_error(line, f"'{' '.join(command)}'\n has a label not defined within the current function.")
+        return True
+    else:
+        return False
 
 
 def check_illegal_fn_name(command, line):
     """Ensure that the given function or call command is not using an illegal function name. That is, the command
     must follow the syntax outlined on page 160: the function name is an arbitrary string composed of any sequence
     of letters, digits, underscore, dot, and colon that does not begin with a digit."""
-    pass
+    if not re.fullmatch(regex_legal_name, command[1]):
+        write_error(line, f"'{' '.join(command)}'\n contains an illegal function name.")
+        return True
+    else:
+        return False
 
 
 def check_illegal_arg_count(command, line):
     """Ensure that the given function or call command uses a non-negative integer for the number of locals/args."""
-    pass
+    try:
+        int(command[2])
+        if int(command[2]) < 0:
+            write_error(line, f"'{' '.join(command)}'\n is a function or call command with a negative number of local "
+                              f"variables or arguments.")
+            return True
+        return False
+    except ValueError:
+        write_error(line, f"'{' '.join(command)}'\n is a function or call command with a non-integer as a number of "
+                          f"local variables or arguments.")
+        return True

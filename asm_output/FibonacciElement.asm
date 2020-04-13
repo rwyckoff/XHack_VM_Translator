@@ -2,7 +2,7 @@
 D=A
 @SP
 M=D
-@Sys.initRETURN#1
+@Sys.initRETURN1
 D=A
 @SP
 A=M
@@ -113,7 +113,7 @@ D=M
 M=D
 @Sys.init
 0;JMP
-(Sys.initRETURN#1)
+(Sys.initRETURN1)
 (Main.fibonacci)
 D=0
 @ARG
@@ -263,7 +263,7 @@ A=M
 M=M-D
 @SP
 M=M+1
-@Main.fibonacciRETURN#2
+@Main.fibonacciRETURN2
 D=A
 @SP
 A=M
@@ -374,7 +374,7 @@ D=M
 M=D
 @Main.fibonacci
 0;JMP
-(Main.fibonacciRETURN#2)
+(Main.fibonacciRETURN2)
 @ARG
 D=M
 @0
@@ -403,7 +403,7 @@ A=M
 M=M-D
 @SP
 M=M+1
-@Main.fibonacciRETURN#3
+@Main.fibonacciRETURN3
 D=A
 @SP
 A=M
@@ -514,7 +514,7 @@ D=M
 M=D
 @Main.fibonacci
 0;JMP
-(Main.fibonacciRETURN#3)
+(Main.fibonacciRETURN3)
 @SP
 M=M-1
 A=M
@@ -594,7 +594,7 @@ A=M
 M=D
 @SP
 M=M+1
-@Main.fibonacciRETURN#4
+@Main.fibonacciRETURN4
 D=A
 @SP
 A=M
@@ -705,7 +705,7 @@ D=M
 M=D
 @Main.fibonacci
 0;JMP
-(Main.fibonacciRETURN#4)
+(Main.fibonacciRETURN4)
 (Sys$WHILE)
 @Sys$WHILE
 0;JMP

@@ -67,6 +67,16 @@ def process_vm_files(vm_files, output_path, input_path):
         code_writer.set_file_name(input_file)
         parser = Parser(input_file)
 
+        # TODO: Will have to loop through all commands, finding label and adding them to a list to check for
+        #  unresolved labels, just like the assembler.
+        print("Conducting first pass to collect labels.")
+        while parser.has_more_commands():
+            parser.advance()
+            parser.collect_fn_labels()
+
+        parser.reset_parser()
+
+        print("\n\n\n\n\nSecond pass\n\n")
         while parser.has_more_commands():
             parser.advance()
             print(f"\n\nCurrent command: {parser.current_command}")

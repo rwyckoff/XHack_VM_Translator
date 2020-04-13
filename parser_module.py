@@ -4,6 +4,8 @@ The parser module exports the Parser class.
 Parser class: Handles the parsing of a single .vm file. One parser will be created for each input file.
 """
 import re
+from collections import defaultdict
+
 from error_checker import *
 
 
@@ -46,6 +48,9 @@ class Parser:
         self.command_idx = 0
         self.current_command = None
         self.current_command_type = None
+        self.current_function = None
+
+        self.function_dict = defaultdict(list)
 
         # Initialize the dictionary of command types:
         self.command_types = {
@@ -119,6 +124,11 @@ class Parser:
             # Set the command_type.
             command_type = self.command_types.get(self.current_command[0].lower())
 
+            # Set the current function, which will be useful in checking for unresolved labels.
+            if command_type == 'C_FUNCTION':
+                self.current_function = self.current_command[1]
+                print(f"CURRENT FN DICT: {self.function_dict}")
+
             # If it's a push or pop command, check that its memory segment is valid, that its index is non-negative,
             # and that its index doesn't go outside its memory segment.
             if command_type in ['C_PUSH', 'C_POP']:
@@ -127,8 +137,22 @@ class Parser:
                         check_index_out_of_range(self.current_command, self.command_idx):
                     return 'INVALID'
 
-            # TODO: Next, do the label, goto, if-goto error-checking. (maybe above the push command_type assignment).
-            # if command_type in ['C']
+            # If it's a label, goto, or if-goto command, check to ensure its not referencing an illegal label.
+            if command_type in ['C_LABEL', 'C_GOTO', 'C_IF'] and \
+                    check_illegal_label(self.current_command, self.command_idx):
+                return 'INVALID'
+
+            # If it's a goto or if-goto command, check to ensure its referencing a label defined in its function.
+            if command_type in ['C_GOTO', 'C_IF'] and check_unresolved_label(self.current_command, self.command_idx,
+                                                                             self.current_function, self.function_dict):
+                return 'INVALID'
+
+            # If its a function or call command, check the legality of its function name.
+            if command_type in ['C_FUNCTION', 'C_CALL']:
+                if check_illegal_fn_name(self.current_command, self.command_idx) or \
+                        check_illegal_arg_count(self.current_command, self.command_idx):
+                    return 'INVALID'
+
 
             # If there are no errors, return the current command's type.
             return command_type
@@ -166,3 +190,30 @@ class Parser:
             return current_command.replace(comment_text[0], "")
         else:
             return current_command
+
+    def reset_parser(self):
+        """Reset the command index of the parser so that the VMT can run through the VM code multiple times."""
+        self.command_idx = 0
+        self.current_command = None
+
+    def collect_fn_labels(self):
+
+        if self.regex_comment.match(self.current_command) or self.current_command == "":
+            return
+
+        # Strip in-line comments and make the command string into a list of parts of the command.
+        self.current_command = self.strip_comments(self.current_command).strip().split()
+
+        # Check that the command is in the proper format for its type.
+        if not check_improper_command_format(self.current_command, self.command_idx, write=False):
+            # Set the command_type.
+            command_type = self.command_types.get(self.current_command[0].lower())
+
+            # Set the current function, which will be useful in checking for unresolved labels.
+            if command_type == 'C_FUNCTION':
+                self.current_function = self.current_command[1]
+                print(f"CURRENT FN DICT: {self.function_dict}")
+
+            if command_type == 'C_LABEL':
+                self.function_dict[self.current_function].append(self.current_command[1])
+                print(f"CURRENT FN DICT: {self.function_dict}")
