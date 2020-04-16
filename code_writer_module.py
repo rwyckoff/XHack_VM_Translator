@@ -35,6 +35,7 @@ class CodeWriter:
         self.current_directory = os.path.basename(input_path)
         self.tf_label = 0  # The number to differentiate various true-false enabling labels.
         self.call_label = 0  # The number to differentiate various call labels.
+        self.bool_label = 0     # The number to differentiate calls to bool().
 
         # Initialize the addresses dictionary, which maps VM labels to RAM addresses and .asm labels.
         self.addresses = {
@@ -47,7 +48,7 @@ class CodeWriter:
             'pointer': 3,       # Mapped on RAM locations 3-4 (THIS and THAT).
             'temp': 5,          # Mapped on RAM locations 5-12 (R5-R12).
             # R13-15 can be used for any purpose, so is not in here.
-            # The constant segment is fully virtual, so this translator simply supplied the literal constant.
+            # The constant segment is fully virtual, so this translator simply supplies the literal constant.
             'static': 16,       # Static variables are stored in R16-R255.
         }
 
@@ -69,27 +70,58 @@ class CodeWriter:
         # TODO: Encapsulate some or all of the VM commands (like 'add') into their own functions, then try to optimize
         #  each individually. Not as clean and will repeat more, but may be easier to see and do optimizations.
         '''Apply operation to top of stack'''
-        # If command is not a binary operator, pop the top of the stack to the D register.
-        if command not in ['neg', 'not']:
+        # If command is not a unary operator, pop the top of the stack to the D register.
+        # (If it's unary, only need the top of the stack, not the top two items.)
+        if command not in ['neg', 'not', 'bool', 'l-not', 'l-and', 'l-or', 'l-xor']:   # TODO: Add l-and, l-or, l-xor?
             self.pop_d()
         self.dec_SP()
         self.set_a_to_sp()
-        # 8 lines so far, if not binary.
+        # 8 lines so far, if not unary.
 
         # Do something different depending on the type of command.
         if command == 'add':  # Currently 11 lines. Could be as low as 5.
-            self.write_output('M=D+M')  # TODO: Changed from M=M+D
+            self.write_output('D=D+M')  # TODO: Changed from M=M+D
         elif command == 'sub':
-            self.write_output('M=M-D')
+            self.write_output('D=M-D')
         elif command == 'and':
-            self.write_output('M=D&M')  # TODO: Changed from M=M&D
+            self.write_output('D=D&M')
         elif command == 'or':
-            self.write_output('M=D|M')  # TODO: Changed from M=M|D
-        # TODO: Prof does this differently, negating the D reg.
+            self.write_output('D=D|M')
         elif command == 'neg':  # Currently 11 lines. Could be as low as 3.
-            self.write_output('M=-M')
+            self.write_output('D=-M')
         elif command == 'not':
-            self.write_output('M=!M')
+            self.write_output('D=!M')
+        elif command == 'bool':
+            self.bool()
+        elif command == 'l-not':
+            self.bool()
+            self.set_a_to_sp()
+            self.write_output('D=!M')
+        elif command in ['l-and', 'l-or', 'l-xor']:
+            self.bool()
+            self.dec_SP()
+            self.set_a_to_sp()
+            self.bool()
+            self.set_a_to_sp()
+            self.write_output('D=M')
+            self.inc_SP()
+            self.write_output('A=M')
+            if command == 'l-and':
+                self.write_output('D=D&M')
+            elif command == 'l-or':
+                self.write_output('D=D|M')
+            elif command == 'l-xor':
+                self.write_output('D=D&M')
+                self.write_output('D=!D')
+                self.write_output('@R13')   # Temporarily store complement(M and D) in reg 13
+                self.write_output('M=D')
+                self.set_a_to_sp()
+                self.write_output('D=M')
+                self.dec_SP()
+                self.set_a_to_sp()
+                self.write_output('D=D|M')
+                self.write_output('@R13')   # Retrieve the sub-result from R13
+                self.write_output('D=D&M')  # Final logic for logical xor.
         elif command in ['eq', 'gt', 'lt']:  # Each boolean operator takes 23 lines. Could be as low as 9.
             self.write_output('D=M-D')
             self.write_output(f'@TRUE{self.tf_label}')
@@ -100,42 +132,59 @@ class CodeWriter:
                 self.write_output('D;JGT')
             elif command == 'lt':
                 self.write_output('D;JLT')
+            # Added support for le, ge, and ne commands.
+            elif command == 'le':
+                self.write_output('D;JLE')
+            elif command == 'ge':
+                self.write_output('D;JGE')
+            elif command == 'ne':
+                self.write_output('D;JNE')
 
             self.set_a_to_sp()
-            self.write_output('M=0')  # 0 is False
+            self.write_output('D=0')  # 0 is False
             self.write_output(f'@END{self.tf_label}')
             self.write_output('0;JMP')
 
             self.write_output(f'(TRUE{self.tf_label})')
             self.set_a_to_sp()
-            self.write_output('M=-1')  # -1 is True
+            self.write_output('D=-1')  # -1 is True
 
             self.write_output(f'(END{self.tf_label})')
             self.tf_label += 1
 
-        # Finally, increment the stack pointer.
-        self.inc_SP()
+        # Finally, push the result to the top of the stack.
+        # self.inc_SP()
+        self.push_d()
 
     def write_push_pop(self, command, segment, index):
         """
         Write the assembly code that is the translation of the given command, where the command type must be either
         C_PUSH or C_POP.
         """
-        # TODO: Not splitting push/pop may help optimization.
+        # TODO: Not splitting push/pop into two subtasks as described in the VMT Memory commands (2:00) video may help
+        #  efficiency.
         # TODO: Add ability to pop to constant as described in the VMT Memory Commands video, time 04:14.
         # Set the address in the A-register depending on what type of segment is being popped to or pushed from.
         address = self.addresses.get(segment)
+
+        # Provides support for popping to the constant segment, which just removes the value on top of the stack.
+        if segment == 'constant' and command == 'C_POP':
+            self.pop_d()
+            return
+
         if segment == 'constant':  # Constant (truly virtual) segment.
             self.write_output('@' + str(index))
         elif segment == 'static':  # Static segment.
             self.write_output('@' + self.current_input_file + '.' + str(index))
         elif segment in ['pointer', 'temp']:  # Direct-indexed segments.
-            self.write_output('@' + str(address + index))           # TODO: Changed from '@R' + ...
+            self.write_output('@' + str(address + index))
         elif segment in ['local', 'argument', 'this', 'that']:  # Indirect-indexed segments.
             self.write_output('@' + address)
             self.write_output('D=M')  # Set register D to the base of the segment.
             self.write_output('@' + str(index))
             self.write_output('A=D+A')
+        elif segment == 'ram':      # Extended support for pushing/popping directly to RAM.
+            self.write_output('@' + str(index))
 
         # Either push or pop from or to the given segment.
         if command == 'C_PUSH':
@@ -212,12 +261,6 @@ class CodeWriter:
             self.write_output('D=M')
             self.push_d()
 
-        """Old version of the below block:
-        self.write_output('D=M')
-        self.write_output('@0') 
-        self.write_output('D=D-A')
-        """
-
         # Push SP
         self.write_output('@SP')
         self.write_output('D=M')
@@ -277,9 +320,7 @@ class CodeWriter:
         """
         Writes assembly code that effects the return command.
         """
-        # Temporary variables
-        FRAME = 'R13'
-        RET = 'R14'
+        # TODO: See VMT Function Calling Comands video 11:00 for optimization hints.
 
         # FRAME = LCL
         self.write_output('@LCL')
@@ -346,6 +387,7 @@ class CodeWriter:
         """
         Writes assembly code that effects the function command.
         """
+        # TODO: See VMT Funtion Calling commands video 10:00 to see optimization strategies.
         self.write_output('({})'.format(function_name))
 
         self.write_output('D=0')
@@ -394,3 +436,17 @@ class CodeWriter:
         self.set_a_to_sp()  # Set SP to register A.
         self.write_output('M=D')
         self.inc_SP()  # Increment the stack pointer.
+
+    def bool(self):
+        """An XVM command that replaces the value on top of the stack with its Boolean equivalent. This means
+        replacing and non-zero value on top of the stack with a -1."""
+        self.write_output('D=0')
+        self.write_output('D=M-D')
+        # If the top of the stack = 0, skip the below and do nothing. Else, change the top of the stack to -1.
+        self.write_output(f'@BOOL{self.bool_label}')
+        self.write_output('D;JEQ')
+        self.write_output('@SP')
+        self.write_output('A=M')
+        self.write_output('M=-1')
+        self.write_output(f'(BOOL{self.bool_label})')
+        self.bool_label += 1

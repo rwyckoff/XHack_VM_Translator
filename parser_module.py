@@ -60,9 +60,17 @@ class Parser:
             'eq': 'C_ARITHMETIC',
             'gt': 'C_ARITHMETIC',
             'lt': 'C_ARITHMETIC',
+            'le': 'C_ARITHMETIC',       # XVM
+            'ge': 'C_ARITHMETIC',       # XVM
+            'ne': 'C_ARITHMETIC',       # XVM
             'and': 'C_ARITHMETIC',
             'or': 'C_ARITHMETIC',
             'not': 'C_ARITHMETIC',
+            'bool': 'C_ARITHMETIC',     # XVM
+            'l-not': 'C_ARITHMETIC',    # XVM
+            'l-and': 'C_ARITHMETIC',    # XVM
+            'l-or': 'C_ARITHMETIC',     # XVM
+            'l-xor': 'C_ARITHMETIC',    # XVM
             'push': 'C_PUSH',
             'pop': 'C_POP',
             'label': 'C_LABEL',

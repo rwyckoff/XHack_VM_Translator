@@ -4,6 +4,7 @@
     <list default="true" id="8a860e88-fa98-4fd0-b02c-634e22bc9385" name="Default Changelist" comment="">
       <change afterPath="$PROJECT_DIR$/../../Project One/Robert_Wyckoff_PJ01_XHack/HAL_input/BasicLoop.asm" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../../Project One/Robert_Wyckoff_PJ01_XHack/HAL_input/BasicTest.asm" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Project One/Robert_Wyckoff_PJ01_XHack/HAL_input/Basic_Logical_Test.asm" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../../Project One/Robert_Wyckoff_PJ01_XHack/HAL_input/FibonacciElement.asm" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../../Project One/Robert_Wyckoff_PJ01_XHack/HAL_input/FibonacciSeries.asm" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../../Project One/Robert_Wyckoff_PJ01_XHack/HAL_input/NestedCall.asm" afterDir="false" />
@@ -14,17 +15,30 @@
       <change afterPath="$PROJECT_DIR$/../../Project One/Robert_Wyckoff_PJ01_XHack/HAL_input/StaticTest.asm" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../../Project One/Robert_Wyckoff_PJ01_XHack/HAL_input/StaticsTest.asm" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../../Project One/Robert_Wyckoff_PJ01_XHack/HAL_input/VMTa.asm" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/vm_input/XVMTa/Sys.vm" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/vm_input/XVMTa/Test.vm" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/vm_input/XVMTa/test.tst" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Project One/Robert_Wyckoff_PJ01_XHack/HAL_input/pop_push_ram_test.asm" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vm_input/Basic_Logical_Test.vm" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vm_input/XVMTb/Sys.vm" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vm_input/XVMTb/Test.vm" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vm_input/XVMTb/test.tst" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vm_input/pop_push_ram_test.vm" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../Project One/Robert_Wyckoff_PJ01_XHack/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/../../Project One/Robert_Wyckoff_PJ01_XHack/main.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/asm_output/Basic_Error_Test.asm" beforeDir="false" afterPath="$PROJECT_DIR$/asm_output/Basic_Error_Test.asm" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/asm_output/BasicLoop.asm" beforeDir="false" afterPath="$PROJECT_DIR$/asm_output/BasicLoop.asm" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/asm_output/BasicTest.asm" beforeDir="false" afterPath="$PROJECT_DIR$/asm_output/BasicTest.asm" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/asm_output/FibonacciElement.asm" beforeDir="false" afterPath="$PROJECT_DIR$/asm_output/FibonacciElement.asm" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/asm_output/FibonacciSeries.asm" beforeDir="false" afterPath="$PROJECT_DIR$/asm_output/FibonacciSeries.asm" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/asm_output/NestedCall.asm" beforeDir="false" afterPath="$PROJECT_DIR$/asm_output/NestedCall.asm" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/asm_output/PointerTest.asm" beforeDir="false" afterPath="$PROJECT_DIR$/asm_output/PointerTest.asm" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/asm_output/SimpleAdd.asm" beforeDir="false" afterPath="$PROJECT_DIR$/asm_output/SimpleAdd.asm" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/asm_output/SimpleFunction.asm" beforeDir="false" afterPath="$PROJECT_DIR$/asm_output/SimpleFunction.asm" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/asm_output/StackTest.asm" beforeDir="false" afterPath="$PROJECT_DIR$/asm_output/StackTest.asm" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/asm_output/StaticTest.asm" beforeDir="false" afterPath="$PROJECT_DIR$/asm_output/StaticTest.asm" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/asm_output/StaticsTest.asm" beforeDir="false" afterPath="$PROJECT_DIR$/asm_output/StaticsTest.asm" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/asm_output/VMTa.asm" beforeDir="false" afterPath="$PROJECT_DIR$/asm_output/VMTa.asm" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/code_writer_module.py" beforeDir="false" afterPath="$PROJECT_DIR$/code_writer_module.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/error_checker.py" beforeDir="false" afterPath="$PROJECT_DIR$/error_checker.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/parser_module.py" beforeDir="false" afterPath="$PROJECT_DIR$/parser_module.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vm_input/Basic_Error_Test.vm" beforeDir="false" afterPath="$PROJECT_DIR$/vm_input/Basic_Error_Test.vm" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -59,7 +73,7 @@
       <recent name="C:\Users\Robert Sirois\Dropbox\Shpob Storage\School\Compiler Design\Projects\Project Two\Robert_Wyckoff_PJ02_XHack\vm_input\FibonacciElement" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.Basic_Error_Test">
+  <component name="RunManager" selected="Python.XVMTa">
     <configuration name="BasicLoop" type="PythonConfigurationType" factoryName="Python">
       <module name="Robert_Wyckoff_PJ02_XHack" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -116,6 +130,27 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/main.py" />
       <option name="PARAMETERS" value="&quot;Basic_Error_Test&quot;" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Basic_Logical_Test" type="PythonConfigurationType" factoryName="Python">
+      <module name="Robert_Wyckoff_PJ02_XHack" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/main.py" />
+      <option name="PARAMETERS" value="&quot;Basic_Logical_Test&quot;" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
@@ -354,6 +389,27 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <configuration name="XVMTb" type="PythonConfigurationType" factoryName="Python">
+      <module name="Robert_Wyckoff_PJ02_XHack" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/main.py" />
+      <option name="PARAMETERS" value="&quot;XVMTb&quot;" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="example1" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="1" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -375,6 +431,27 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <configuration name="pop_push_ram_test" type="PythonConfigurationType" factoryName="Python">
+      <module name="Robert_Wyckoff_PJ02_XHack" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/main.py" />
+      <option name="PARAMETERS" value="&quot;pop_push_ram_test&quot;" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <list>
       <item itemvalue="Python.FibonacciElement" />
       <item itemvalue="Python.FibonacciSeries" />
@@ -388,8 +465,11 @@
       <item itemvalue="Python.StackTest" />
       <item itemvalue="Python.BasicLoop" />
       <item itemvalue="Python.Basic_Error_Test" />
+      <item itemvalue="Python.pop_push_ram_test" />
+      <item itemvalue="Python.Basic_Logical_Test" />
       <item itemvalue="Python.VMTa" />
       <item itemvalue="Python.XVMTa" />
+      <item itemvalue="Python.XVMTb" />
       <item itemvalue="Python.example1" />
     </list>
     <recent_temporary>
@@ -416,34 +496,34 @@
     <option featureType="com.intellij.fileTypeFactory" implementationName="*.vm" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="251" y="149" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1586732510589">
+    <state x="251" y="149" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1587009946020">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state x="251" y="149" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1586732510589" />
-    <state x="271" y="342" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1586485026215">
+    <state x="251" y="149" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1587009946020" />
+    <state x="271" y="342" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1586982086995">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state x="271" y="342" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1920.1080@0.0.1920.1080" timestamp="1586485026215" />
+    <state x="271" y="342" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1920.1080@0.0.1920.1080" timestamp="1586982086995" />
     <state x="281" y="286" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1586700443550">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="281" y="286" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1586700443550" />
-    <state width="1065" height="263" key="GridCell.Tab.0.bottom" timestamp="1586743668669">
+    <state width="1065" height="263" key="GridCell.Tab.0.bottom" timestamp="1587010271651">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1065" height="263" key="GridCell.Tab.0.bottom/0.0.1920.1080@0.0.1920.1080" timestamp="1586743668669" />
-    <state width="1065" height="263" key="GridCell.Tab.0.center" timestamp="1586743668669">
+    <state width="1065" height="263" key="GridCell.Tab.0.bottom/0.0.1920.1080@0.0.1920.1080" timestamp="1587010271651" />
+    <state width="1065" height="263" key="GridCell.Tab.0.center" timestamp="1587010271651">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1065" height="263" key="GridCell.Tab.0.center/0.0.1920.1080@0.0.1920.1080" timestamp="1586743668669" />
-    <state width="1065" height="263" key="GridCell.Tab.0.left" timestamp="1586743668668">
+    <state width="1065" height="263" key="GridCell.Tab.0.center/0.0.1920.1080@0.0.1920.1080" timestamp="1587010271651" />
+    <state width="1065" height="263" key="GridCell.Tab.0.left" timestamp="1587010271651">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1065" height="263" key="GridCell.Tab.0.left/0.0.1920.1080@0.0.1920.1080" timestamp="1586743668668" />
-    <state width="1065" height="263" key="GridCell.Tab.0.right" timestamp="1586743668669">
+    <state width="1065" height="263" key="GridCell.Tab.0.left/0.0.1920.1080@0.0.1920.1080" timestamp="1587010271651" />
+    <state width="1065" height="263" key="GridCell.Tab.0.right" timestamp="1587010271651">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1065" height="263" key="GridCell.Tab.0.right/0.0.1920.1080@0.0.1920.1080" timestamp="1586743668669" />
+    <state width="1065" height="263" key="GridCell.Tab.0.right/0.0.1920.1080@0.0.1920.1080" timestamp="1587010271651" />
     <state width="1065" height="352" key="GridCell.Tab.1.bottom" timestamp="1586731847980">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>

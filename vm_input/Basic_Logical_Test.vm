@@ -1,0 +1,78 @@
+// For testing the XVM logical operators
+
+// Should replace 0 with 0 on the top of the stack. (So it does nothing).
+//push constant 0
+//bool
+
+// Should replace 42 with -1 on the top of the stack.
+//push constant 42
+//bool
+
+// Should perform an l-not on the top item of the stack. This means calling bool() then not() on the top of the stack.
+// So, should keep 0 as 0, then replace it with -1.
+//push constant 0
+//l-not
+
+// Should replace 42 with -1, then replace it with 0.
+//push constant 42
+//l-not
+
+// Should be 0
+push constant 0
+push constant 42
+l-and
+
+//Should be -1
+push constant 42
+push constant 42
+l-and
+
+//Should be 0
+push constant 0
+push constant 0
+l-and
+
+//Should be 0
+push constant 42
+push constant 0
+l-and
+
+//Should be -1
+push constant 0
+push constant 42
+l-or
+
+//Should be -1
+push constant 42
+push constant 42
+l-or
+
+//Should be 0
+push constant 0
+push constant 0
+l-or
+
+//Should be -1
+push constant 42
+push constant 0
+l-or
+
+//Should be -1
+push constant 0
+push constant 42
+l-xor
+
+//Should be 0
+push constant 42
+push constant 42
+l-xor
+
+//Should be 0
+push constant 0
+push constant 0
+l-xor
+
+//Should be -1
+push constant 42
+push constant 0
+l-xor

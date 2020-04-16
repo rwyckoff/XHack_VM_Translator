@@ -10,8 +10,8 @@ import os
 FILENAME = "default_filename.txt"
 
 valid_vm_commands = ['add', 'sub', 'neg', 'eq', 'gt', 'lt', 'and', 'or', 'not', 'push', 'pop', 'label', 'goto',
-                     'if-goto', 'function', 'return', 'call']
-valid_mem_segments = ['argument', 'local', 'static', 'constant', 'this', 'that', 'pointer', 'temp']
+                     'if-goto', 'function', 'return', 'call', 'bool', 'l-not', 'l-and', 'l-or', 'l-xor']
+valid_mem_segments = ['argument', 'local', 'static', 'constant', 'this', 'that', 'pointer', 'temp', 'ram']
 
 regex_legal_name= re.compile(r'^[A-Za-z_.:][A-Za-z0-9_.:]*$')
 

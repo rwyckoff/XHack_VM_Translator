@@ -2,7 +2,7 @@
 D=A
 @SP
 M=D
-@Sys.initRETURN#1
+@Sys.initRETURN1
 D=A
 @SP
 A=M
@@ -113,7 +113,7 @@ D=M
 M=D
 @Sys.init
 0;JMP
-(Sys.initRETURN#1)
+(Sys.initRETURN1)
 (Sys.init)
 D=0
 @4000
@@ -123,7 +123,7 @@ A=M
 M=D
 @SP
 M=M+1
-@R3
+@3
 D=A
 @R13
 M=D
@@ -141,7 +141,7 @@ A=M
 M=D
 @SP
 M=M+1
-@R4
+@4
 D=A
 @R13
 M=D
@@ -152,7 +152,7 @@ D=M
 @R13
 A=M
 M=D
-@Sys.mainRETURN#2
+@Sys.mainRETURN2
 D=A
 @SP
 A=M
@@ -263,8 +263,8 @@ D=M
 M=D
 @Sys.main
 0;JMP
-(Sys.mainRETURN#2)
-@R6
+(Sys.mainRETURN2)
+@6
 D=A
 @R13
 M=D
@@ -312,7 +312,7 @@ A=M
 M=D
 @SP
 M=M+1
-@R3
+@3
 D=A
 @R13
 M=D
@@ -330,7 +330,7 @@ A=M
 M=D
 @SP
 M=M+1
-@R4
+@4
 D=A
 @R13
 M=D
@@ -411,7 +411,7 @@ A=M
 M=D
 @SP
 M=M+1
-@Sys.add12RETURN#3
+@Sys.add12RETURN3
 D=A
 @SP
 A=M
@@ -522,8 +522,8 @@ D=M
 M=D
 @Sys.add12
 0;JMP
-(Sys.add12RETURN#3)
-@R5
+(Sys.add12RETURN3)
+@5
 D=A
 @R13
 M=D
@@ -592,7 +592,10 @@ D=M
 M=M-1
 @SP
 A=M
-M=D+M
+D=D+M
+@SP
+A=M
+M=D
 @SP
 M=M+1
 @SP
@@ -603,7 +606,10 @@ D=M
 M=M-1
 @SP
 A=M
-M=D+M
+D=D+M
+@SP
+A=M
+M=D
 @SP
 M=M+1
 @SP
@@ -614,7 +620,10 @@ D=M
 M=M-1
 @SP
 A=M
-M=D+M
+D=D+M
+@SP
+A=M
+M=D
 @SP
 M=M+1
 @SP
@@ -625,7 +634,10 @@ D=M
 M=M-1
 @SP
 A=M
-M=D+M
+D=D+M
+@SP
+A=M
+M=D
 @SP
 M=M+1
 @LCL
@@ -696,7 +708,7 @@ A=M
 M=D
 @SP
 M=M+1
-@R3
+@3
 D=A
 @R13
 M=D
@@ -714,7 +726,7 @@ A=M
 M=D
 @SP
 M=M+1
-@R4
+@4
 D=A
 @R13
 M=D
@@ -750,7 +762,10 @@ D=M
 M=M-1
 @SP
 A=M
-M=D+M
+D=D+M
+@SP
+A=M
+M=D
 @SP
 M=M+1
 @LCL

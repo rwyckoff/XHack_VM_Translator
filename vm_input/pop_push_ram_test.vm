@@ -1,0 +1,5 @@
+// Simply tests the pop and push to and from RAM.
+push constant 42
+pop ram 3003
+
+push ram 0

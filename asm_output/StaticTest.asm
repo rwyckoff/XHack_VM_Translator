@@ -78,7 +78,10 @@ D=M
 M=M-1
 @SP
 A=M
-M=M-D
+D=M-D
+@SP
+A=M
+M=D
 @SP
 M=M+1
 @StaticTest.8
@@ -96,6 +99,9 @@ D=M
 M=M-1
 @SP
 A=M
-M=D+M
+D=D+M
+@SP
+A=M
+M=D
 @SP
 M=M+1
