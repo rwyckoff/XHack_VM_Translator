@@ -1,7 +1,9 @@
+// Bootstrapping ASM file...
 @256
 D=A
 @SP
 M=D
+// Push from constant
 @111
 D=A
 @SP
@@ -9,6 +11,7 @@ A=M
 M=D
 @SP
 M=M+1
+// Push from constant
 @333
 D=A
 @SP
@@ -16,6 +19,7 @@ A=M
 M=D
 @SP
 M=M+1
+// Push from constant
 @888
 D=A
 @SP
@@ -23,39 +27,34 @@ A=M
 M=D
 @SP
 M=M+1
+// Pop to static
+@SP
+A=M
+A=A-1
+D=M
+@SP
+M=M-1
 @StaticTest.8
-D=A
-@R13
 M=D
+// Pop to static
+@SP
+A=M
+A=A-1
+D=M
 @SP
 M=M-1
-A=M
-D=M
-@R13
-A=M
-M=D
 @StaticTest.3
-D=A
-@R13
 M=D
+// Pop to static
+@SP
+A=M
+A=A-1
+D=M
 @SP
 M=M-1
-A=M
-D=M
-@R13
-A=M
-M=D
 @StaticTest.1
-D=A
-@R13
 M=D
-@SP
-M=M-1
-A=M
-D=M
-@R13
-A=M
-M=D
+// Push from static
 @StaticTest.3
 D=M
 @SP
@@ -63,6 +62,7 @@ A=M
 M=D
 @SP
 M=M+1
+// Push from static
 @StaticTest.1
 D=M
 @SP
@@ -70,20 +70,29 @@ A=M
 M=D
 @SP
 M=M+1
+// sub
 @SP
-M=M-1
 A=M
+A=A-1
 D=M
 @SP
 M=M-1
+@R14
+M=D
 @SP
 A=M
-D=M-D
+A=A-1
+D=M
+@SP
+M=M-1
+@R14
+D=D-M
 @SP
 A=M
 M=D
 @SP
 M=M+1
+// Push from static
 @StaticTest.8
 D=M
 @SP
@@ -91,14 +100,22 @@ A=M
 M=D
 @SP
 M=M+1
+// add
 @SP
-M=M-1
 A=M
+A=A-1
 D=M
 @SP
 M=M-1
+@R14
+M=D
 @SP
 A=M
+A=A-1
+D=M
+@SP
+M=M-1
+@R14
 D=D+M
 @SP
 A=M

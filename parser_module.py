@@ -22,13 +22,15 @@ class Parser:
         command_type: Returns the type of the current VM command.
         arg1: Returns the first argument of the current command.
         arg2: Returns the second argument of the current command.
-        strip_whitespace: Strips all whitespace out of a command. # TODO: Probably do this method and strip_comments?
+        strip_whitespace: Strips all whitespace out of a command.
         strip_comments: Removes comments from commands.
     """
 
     # Initialize all regular expressions for the parser. Done at the class level so they don't have to be initialized
     # more than once.
     regex_comment = re.compile(r'//.*')
+    regex_binary = re.compile(r'^0b|0B.*')
+    regex_hex = re.compile(r'^0x|0X.*')
 
     def __init__(self, input_file):
         """Construct the Parser object and open the given .vm input file to enable parsing of it.
@@ -115,9 +117,6 @@ class Parser:
         elif self.current_command == "":
             return "BLANK"
         else:
-            # TODO: Probably do several error checks here-ish: or maybe even all of them except maybe unresolved label.
-            #  Can use self.command_idx to do line # reporting.
-
             # Strip in-line comments and make the command string into a list of parts of the command.
             self.current_command = self.strip_comments(self.current_command).strip().split()
 
@@ -161,7 +160,6 @@ class Parser:
                         check_illegal_arg_count(self.current_command, self.command_idx):
                     return 'INVALID'
 
-
             # If there are no errors, return the current command's type.
             return command_type
 
@@ -185,11 +183,9 @@ class Parser:
         C_POP, C_FUNCTION, or C_CALL.
         """
         print(f"Arg2: {self.current_command[2]}")
-        return int(self.current_command[2])
-
-    def strip_whitespace(self):
-        """Edit the current command, stripping off any whitespace"""
-        # self.current_command = self.current_command.replace(" ", "")
+        # Check arg2 for binary and hex, translating to decimal if necessary.
+        translated_arg = self.translate_bin_hex(self.current_command[2])
+        return int(translated_arg)
 
     def strip_comments(self, current_command):
         """Edit the current command, stripping off any inline comments."""
@@ -205,7 +201,7 @@ class Parser:
         self.current_command = None
 
     def collect_fn_labels(self):
-
+        """Collect a dictionary of function labels. To be called before main processing of the .vm files."""
         if self.regex_comment.match(self.current_command) or self.current_command == "":
             return
 
@@ -225,3 +221,26 @@ class Parser:
             if command_type == 'C_LABEL':
                 self.function_dict[self.current_function].append(self.current_command[1])
                 print(f"CURRENT FN DICT: {self.function_dict}")
+
+    def translate_bin_hex(self, content):
+        """Detect if the content of the command is written in binary or hexadecimal, then translate and redefine the
+        content into decimal and return that value."""
+        if self.regex_binary.match(content):
+            print("Binary detected! Translating....")
+            stripped_content = content.replace('0b', '').replace('0B', '')
+            try:
+                return str(int(stripped_content, 2))
+            except ValueError:
+                # Record error if binary content is invalid.
+                return "ERROR"
+        elif self.regex_hex.match(content):
+            print("Hex detected! Translating....")
+            stripped_content = content.replace('0x', '').replace('0X', '')
+            try:
+                return str(int(stripped_content, 16))
+            except ValueError:
+                # Record error if hex content is invalid.
+                return "ERROR"
+        # No binary or hexadecimal is detected, so return the content unchanged.
+        else:
+            return content

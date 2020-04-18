@@ -10,7 +10,8 @@ import os
 FILENAME = "default_filename.txt"
 
 valid_vm_commands = ['add', 'sub', 'neg', 'eq', 'gt', 'lt', 'and', 'or', 'not', 'push', 'pop', 'label', 'goto',
-                     'if-goto', 'function', 'return', 'call', 'bool', 'l-not', 'l-and', 'l-or', 'l-xor']
+                     'if-goto', 'function', 'return', 'call', 'bool', 'le', 'ge', 'ne', 'l-not',
+                     'l-and', 'l-or', 'l-xor']
 valid_mem_segments = ['argument', 'local', 'static', 'constant', 'this', 'that', 'pointer', 'temp', 'ram']
 
 regex_legal_name= re.compile(r'^[A-Za-z_.:][A-Za-z0-9_.:]*$')
@@ -105,33 +106,35 @@ def check_unknown_mem_segment(command, line):
 
 def check_illegal_index(command, line):
     """Ensure that the given push or pop command does not contain a negative index."""
-    try:
-        int(command[2])
-        if int(command[2]) < 0:
-            write_error(line, f"'{' '.join(command)}'\n is a push or pop command with a negative index.")
-            return True
-        return False
-    except ValueError:
-        write_error(line, f"'{' '.join(command)}'\n is a push or pop command with a non-integer index.")
-        return True
+    # try:
+    #     int(command[2])
+    #     if int(command[2]) < 0:
+    #         write_error(line, f"'{' '.join(command)}'\n is a push or pop command with a negative index.")
+    #         return True
+    #     return False
+    # except ValueError:
+    #     write_error(line, f"'{' '.join(command)}'\n is a push or pop command with a non-integer index.")
+    #     return True
+    return False
 
 
 def check_index_out_of_range(command, line):
     """For any memory segment that has a known size, checks that the given push or pop instruction does not use an
     index outside of that known region."""
     # If command's segment is one with a known size, check the index's range.
-    idx = int(command[2])
-    if command[1] == 'pointer' and idx not in [0, 1]:
-        write_error(line, f"'{' '.join(command)}'\n has an index that is out of range of the pointer segment.")
-        return True
-    elif command[1] == 'temp' and (idx < 0 or idx > 7):
-        write_error(line, f"'{' '.join(command)}'\n has an index that is out of range of the temp segment.")
-        return True
-    elif command[1] == 'constant' and (idx < 0 or idx > 32767):
-        write_error(line, f"'{' '.join(command)}'\n has an index that is out of range of the constant segment.")
-        return True
-    else:
-        return False
+    # idx = int(command[2])
+    # if command[1] == 'pointer' and idx not in [0, 1]:
+    #     write_error(line, f"'{' '.join(command)}'\n has an index that is out of range of the pointer segment.")
+    #     return True
+    # elif command[1] == 'temp' and (idx < 0 or idx > 7):
+    #     write_error(line, f"'{' '.join(command)}'\n has an index that is out of range of the temp segment.")
+    #     return True
+    # elif command[1] == 'constant' and (idx < 0 or idx > 32767):
+    #     write_error(line, f"'{' '.join(command)}'\n has an index that is out of range of the constant segment.")
+    #     return True
+    # else:
+    #     return False
+    return False
 
 
 def check_illegal_label(command, line):

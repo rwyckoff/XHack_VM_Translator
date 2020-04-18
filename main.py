@@ -16,6 +16,7 @@ from parser_module import Parser
 from code_writer_module import CodeWriter
 from error_checker import create_error_file
 
+
 # ************************************************************************************************
 # Main functions:
 
@@ -104,6 +105,7 @@ def process_vm_files(vm_files, output_path, input_path):
 
     # Close the output file.
     code_writer.close()
+
 
 # ************************************************************************************************
 # Program begins here:

@@ -1104,110 +1104,37 @@ M=M-1
 @3
 M=D
 // Push from constant
-@0
+@255
 D=A
 @SP
 A=M
 M=D
 @SP
 M=M+1
+// Pop to this
+@SP
+A=M
+A=A-1
+D=M
+@SP
+M=M-1
+@R14
+M=D
+@1
+D=A
+@THIS
+A=M
+D=D+A
+@R13
+M=D
+@R14
+D=M
+@R13
+A=M
+M=D
 // Push from constant
-@42
+@255
 D=A
-@SP
-A=M
-M=D
-@SP
-M=M+1
-// Pop to constant (remove top value from stack)
-@SP
-A=M
-A=A-1
-D=M
-@SP
-M=M-1
-// Push from constant
-@0
-D=A
-@SP
-A=M
-M=D
-@SP
-M=M+1
-// eq
-@SP
-A=M
-A=A-1
-D=M
-@SP
-M=M-1
-@R14
-M=D
-@SP
-A=M
-A=A-1
-D=M
-@SP
-M=M-1
-@R14
-D=D-M
-@TRUE0
-D;JEQ
-D=0
-@END0
-0;JMP
-(TRUE0)
-D=-1
-(END0)
-@SP
-A=M
-M=D
-@SP
-M=M+1
-// Pop to RAM
-@3001
-M=D
-// Push from RAM
-@3
-D=M
-@SP
-A=M
-M=D
-@SP
-M=M+1
-// Push from pointer
-@3
-D=M
-@SP
-A=M
-M=D
-@SP
-M=M+1
-// eq
-@SP
-A=M
-A=A-1
-D=M
-@SP
-M=M-1
-@R14
-M=D
-@SP
-A=M
-A=A-1
-D=M
-@SP
-M=M-1
-@R14
-D=D-M
-@TRUE1
-D;JEQ
-D=0
-@END1
-0;JMP
-(TRUE1)
-D=-1
-(END1)
 @SP
 A=M
 M=D
@@ -1235,19 +1162,37 @@ D=M
 A=M
 M=D
 // Push from constant
-@42
+@32767
 D=A
 @SP
 A=M
 M=D
 @SP
 M=M+1
-// Pop to RAM
-@3003
-M=D
-// Push from RAM
-@0
+// Pop to this
+@SP
+A=M
+A=A-1
 D=M
+@SP
+M=M-1
+@R14
+M=D
+@3
+D=A
+@THIS
+A=M
+D=D+A
+@R13
+M=D
+@R14
+D=M
+@R13
+A=M
+M=D
+// Push from constant
+@32767
+D=A
 @SP
 A=M
 M=D
@@ -1274,47 +1219,9 @@ D=M
 @R13
 A=M
 M=D
-// Push from RAM
-@4
-D=M
-@SP
-A=M
-M=D
-@SP
-M=M+1
-// Push from pointer
-@4
-D=M
-@SP
-A=M
-M=D
-@SP
-M=M+1
-// eq
-@SP
-A=M
-A=A-1
-D=M
-@SP
-M=M-1
-@R14
-M=D
-@SP
-A=M
-A=A-1
-D=M
-@SP
-M=M-1
-@R14
-D=D-M
-@TRUE2
-D;JEQ
-D=0
-@END2
-0;JMP
-(TRUE2)
-D=-1
-(END2)
+// Push from constant
+@127
+D=A
 @SP
 A=M
 M=D
@@ -1342,6 +1249,35 @@ D=M
 A=M
 M=D
 // Push from constant
+@127
+D=A
+@SP
+A=M
+M=D
+@SP
+M=M+1
+// Pop to this
+@SP
+A=M
+A=A-1
+D=M
+@SP
+M=M-1
+@R14
+M=D
+@6
+D=A
+@THIS
+A=M
+D=D+A
+@R13
+M=D
+@R14
+D=M
+@R13
+A=M
+M=D
+// Push from constant
 @32767
 D=A
 @SP
@@ -1349,67 +1285,7 @@ A=M
 M=D
 @SP
 M=M+1
-// Pop to RAM
-@3006
-M=D
-// Push from RAM
-@3006
-D=M
-@SP
-A=M
-M=D
-@SP
-M=M+1
-// neg
-@SP
-A=M
-A=A-1
-D=M
-@SP
-M=M-1
-D=-D
-@SP
-A=M
-M=D
-@SP
-M=M+1
-// Pop to RAM
-@3007
-M=D
-// Push from RAM
-@3006
-D=M
-@SP
-A=M
-M=D
-@SP
-M=M+1
-// Pop to temp
-@SP
-A=M
-A=A-1
-D=M
-@SP
-M=M-1
-@12
-M=D
-// Push from RAM
-@12
-D=M
-@SP
-A=M
-M=D
-@SP
-M=M+1
-// Push from RAM
-@3007
-D=M
-@SP
-A=M
-M=D
-@SP
-M=M+1
-// sub
+// Pop to this
 @SP
 A=M
 A=A-1
@@ -1418,6 +1294,27 @@ D=M
 M=M-1
 @R14
 M=D
+@7
+D=A
+@THIS
+A=M
+D=D+A
+@R13
+M=D
+@R14
+D=M
+@R13
+A=M
+M=D
+// Push from constant
+@32767
+D=A
+@SP
+A=M
+M=D
+@SP
+M=M+1
+// Pop to this
 @SP
 A=M
 A=A-1
@@ -1425,14 +1322,18 @@ D=M
 @SP
 M=M-1
 @R14
-D=D-M
-@SP
-A=M
 M=D
-@SP
-M=M+1
-// Pop to RAM
-@3008
+@8
+D=A
+@THIS
+A=M
+D=D+A
+@R13
+M=D
+@R14
+D=M
+@R13
+A=M
 M=D
 // Call Sys.output
 @Sys.outputRETURN5

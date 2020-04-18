@@ -69,35 +69,55 @@ class CodeWriter:
         """
         # TODO: Encapsulate some or all of the VM commands (like 'add') into their own functions, then try to optimize
         #  each individually. Not as clean and will repeat more, but may be easier to see and do optimizations.
-        '''Apply operation to top of stack'''
-        # If command is not a unary operator, pop the top of the stack to the D register.
-        # (If it's unary, only need the top of the stack, not the top two items.)
-        if command not in ['neg', 'not', 'bool', 'l-not', 'l-and', 'l-or', 'l-xor']:   # TODO: Add l-and, l-or, l-xor?
-            self.pop_d()
-        self.dec_SP()
-        self.set_a_to_sp()
-        # 8 lines so far, if not unary.
 
         # Do something different depending on the type of command.
-        if command == 'add':  # Currently 11 lines. Could be as low as 5.
-            self.write_output('D=D+M')  # TODO: Changed from M=M+D
+        if command == 'add':
+            self.pop_d()
+            self.write_output('@R14')
+            self.write_output('M=D')
+            self.pop_d()
+            self.write_output('@R14')
+            self.write_output('D=D+M')
         elif command == 'sub':
-            self.write_output('D=M-D')
+            self.pop_d()
+            self.write_output('@R14')
+            self.write_output('M=D')
+            self.pop_d()
+            self.write_output('@R14')
+            self.write_output('D=D-M')
         elif command == 'and':
+            self.pop_d()
+            self.write_output('@R14')
+            self.write_output('M=D')
+            self.pop_d()
+            self.write_output('@R14')
             self.write_output('D=D&M')
         elif command == 'or':
+            self.pop_d()
+            self.write_output('@R14')
+            self.write_output('M=D')
+            self.pop_d()
+            self.write_output('@R14')
             self.write_output('D=D|M')
-        elif command == 'neg':  # Currently 11 lines. Could be as low as 3.
-            self.write_output('D=-M')
+        elif command == 'neg':
+            self.pop_d()
+            self.write_output('D=-D')
         elif command == 'not':
-            self.write_output('D=!M')
+            self.pop_d()
+            self.write_output('D=!D')
         elif command == 'bool':
+            self.dec_SP()
+            self.set_a_to_sp()
             self.bool()
         elif command == 'l-not':
+            self.dec_SP()
+            self.set_a_to_sp()
             self.bool()
             self.set_a_to_sp()
             self.write_output('D=!M')
         elif command in ['l-and', 'l-or', 'l-xor']:
+            self.dec_SP()
+            self.set_a_to_sp()
             self.bool()
             self.dec_SP()
             self.set_a_to_sp()
@@ -123,7 +143,12 @@ class CodeWriter:
                 self.write_output('@R13')   # Retrieve the sub-result from R13
                 self.write_output('D=D&M')  # Final logic for logical xor.
         elif command in ['eq', 'gt', 'lt']:  # Each boolean operator takes 23 lines. Could be as low as 9.
-            self.write_output('D=M-D')
+            self.pop_d()
+            self.write_output('@R14')
+            self.write_output('M=D')
+            self.pop_d()
+            self.write_output('@R14')
+            self.write_output('D=D-M')
             self.write_output(f'@TRUE{self.tf_label}')
 
             if command == 'eq':
@@ -140,20 +165,17 @@ class CodeWriter:
             elif command == 'ne':
                 self.write_output('D;JNE')
 
-            self.set_a_to_sp()
             self.write_output('D=0')  # 0 is False
             self.write_output(f'@END{self.tf_label}')
             self.write_output('0;JMP')
 
             self.write_output(f'(TRUE{self.tf_label})')
-            self.set_a_to_sp()
             self.write_output('D=-1')  # -1 is True
 
             self.write_output(f'(END{self.tf_label})')
             self.tf_label += 1
 
         # Finally, push the result to the top of the stack.
-        # self.inc_SP()
         self.push_d()
 
     def write_push_pop(self, command, segment, index):
@@ -163,44 +185,91 @@ class CodeWriter:
         """
         # TODO: Not splitting push/pop into two subtasks as described in the VMT Memory commands (2:00) video may help
         #  efficiency.
-        # TODO: Add ability to pop to constant as described in the VMT Memory Commands video, time 04:14.
         # Set the address in the A-register depending on what type of segment is being popped to or pushed from.
         address = self.addresses.get(segment)
 
-        # Provides support for popping to the constant segment, which just removes the value on top of the stack.
-        if segment == 'constant' and command == 'C_POP':
-            self.pop_d()
-            return
-
-        if segment == 'constant':  # Constant (truly virtual) segment.
-            self.write_output('@' + str(index))
-        elif segment == 'static':  # Static segment.
-            self.write_output('@' + self.current_input_file + '.' + str(index))
-        elif segment in ['pointer', 'temp']:  # Direct-indexed segments.
-            self.write_output('@' + str(address + index))
-        elif segment in ['local', 'argument', 'this', 'that']:  # Indirect-indexed segments.
-            self.write_output('@' + address)
-            self.write_output('D=M')  # Set register D to the base of the segment.
-            self.write_output('@' + str(index))
-            self.write_output('A=D+A')
-        elif segment == 'ram':      # Extended support for pushing/popping directly to RAM.
-            self.write_output('@' + str(index))
-
-        # Either push or pop from or to the given segment.
         if command == 'C_PUSH':
             if segment == 'constant':
+                self.write_output('// Push from constant')
+                self.write_output('@' + str(index))
                 self.write_output('D=A')
-            else:
+            elif segment == 'pointer':
+                self.write_output('// Push from pointer')
+                self.write_output('@' + str(3 + index))
                 self.write_output('D=M')
+            elif segment == 'temp':
+                self.write_output('// Push from temp')
+                self.write_output('@' + str(5 + index))
+                self.write_output('D=M')
+            elif segment in ['local', 'argument', 'this', 'that']:  # Indirect-indexed segments.
+                self.write_output(f'// Push from {segment}')
+                self.write_output("@" + str(index))
+                self.write_output("D=A")
+                self.write_output("@" + str(address))
+                self.write_output("A=M")
+                self.write_output("D=D+A")
+                self.write_output("@R13")
+                self.write_output("M=D")
+                self.write_output("@R13")
+                self.write_output("A=M")
+                self.write_output("D=M")
+            elif segment == 'static':
+                self.write_output('@' + self.current_input_file + '.' + str(index))
+                self.write_output('D=M')
+            elif segment == 'ram':      # Extended support for pushing/popping directly to RAM.
+                self.write_output('@' + str(index))
+                self.write_output('D=M')
+
+            # Finally, push D onto the stack
             self.push_d()
+
         elif command == 'C_POP':
-            self.write_output('D=A')
-            self.write_output('@R13')  # Store the set address in R13
-            self.write_output('M=D')
-            self.pop_d()
-            self.write_output('@R13')
-            self.write_output('A=M')
-            self.write_output('M=D')
+            # Provides support for popping to the constant segment, which just removes the value on top of the stack.
+            if segment == 'constant':
+                self.write_output('// Pop to constant (remove top value from stack)')
+                self.pop_d()
+            elif segment == 'pointer':
+                self.write_output('// Pop to pointer')
+                self.pop_d()
+                self.write_output('@' + str(3 + index))
+                self.write_output('M=D')
+            elif segment == 'temp':
+                self.write_output('// Pop to temp')
+                self.pop_d()
+                self.write_output('@' + str(5 + index))
+                self.write_output('M=D')
+            elif segment in ['local', 'argument', 'this', 'that']:      # TODO: FOUND THE PROBLEM! Was == instead of in
+                self.write_output(f'// Pop to {segment}')
+                self.pop_d()
+                self.write_output("@R14")
+                self.write_output("M=D")
+                self.write_output("@" + str(index))
+                self.write_output("D=A")
+                self.write_output("@" + str(address))
+                self.write_output("A=M")
+                self.write_output("D=D+A")
+                self.write_output("@R13")
+                self.write_output("M=D")
+                self.write_output("@R14")
+                self.write_output("D=M")
+                self.write_output("@R13")
+                self.write_output("A=M")
+                self.write_output("M=D")
+            elif segment == 'static':
+                self.pop_d()
+                self.write_output('@' + self.current_input_file + '.' + str(index))
+                self.write_output('M=D')
+            elif segment == 'ram':
+                self.write_output('@' + str(index))
+                self.write_output('M=D')
+                # TODO: May need to change to the below instead of the above line.
+                # self.write_output('D=A')
+                # self.write_output('@R13')
+                # self.write_output('M=D')
+                # self.pop_d()
+                # self.write_output('@R13')
+                # self.write_output('A=M')
+                # self.write_output('M=D')
 
     def write_init(self):
         """
@@ -320,7 +389,7 @@ class CodeWriter:
         """
         Writes assembly code that effects the return command.
         """
-        # TODO: See VMT Function Calling Comands video 11:00 for optimization hints.
+        # TODO: See VMT Function Calling Commands video 11:00 for optimization hints.
 
         # FRAME = LCL
         self.write_output('@LCL')
@@ -387,7 +456,7 @@ class CodeWriter:
         """
         Writes assembly code that effects the function command.
         """
-        # TODO: See VMT Funtion Calling commands video 10:00 to see optimization strategies.
+        # TODO: See VMT Function Calling commands video 10:00 to see optimization strategies.
         self.write_output('({})'.format(function_name))
 
         self.write_output('D=0')
@@ -427,9 +496,10 @@ class CodeWriter:
 
     def pop_d(self):
         """Pop the top of the stack into the D register."""
-        self.dec_SP()  # Decrement the stack pointer.
-        self.write_output('A=M')
+        self.set_a_to_sp()
+        self.write_output('A=A-1')
         self.write_output('D=M')
+        self.dec_SP()
 
     def push_d(self):
         """Push the data from the D register onto the top of the stack."""
