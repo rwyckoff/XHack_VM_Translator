@@ -1,10 +1,10 @@
-// Bootstrapping ASM file...
 @256
 D=A
 @SP
 M=D
-// Call Sys.init
-@Sys.initRETURN1
+
+// call Sys.init 0
+@Sys.init:1
 D=A
 @SP
 A=M
@@ -127,11 +127,13 @@ M=M-1
 M=D
 @Sys.init
 0;JMP
-(Sys.initRETURN1)
-// Defining function Sys.init...
+(Sys.init:1)
+
+// function Sys.init 0
 (Sys.init)
 D=0
-// Push from constant
+
+// push constant 3000
 @3000
 D=A
 @SP
@@ -139,7 +141,8 @@ A=M
 M=D
 @SP
 M=M+1
-// Pop to static
+
+// pop static 42
 @SP
 A=M
 A=A-1
@@ -148,7 +151,8 @@ D=M
 M=M-1
 @Sys.42
 M=D
-// Push from static
+
+// push static 42
 @Sys.42
 D=M
 @SP
@@ -156,7 +160,8 @@ A=M
 M=D
 @SP
 M=M+1
-// Push from constant
+
+// push constant 1
 @1
 D=A
 @SP
@@ -164,6 +169,7 @@ A=M
 M=D
 @SP
 M=M+1
+
 // sub
 @SP
 A=M
@@ -186,7 +192,8 @@ A=M
 M=D
 @SP
 M=M+1
-// Pop to pointer
+
+// pop pointer 1
 @SP
 A=M
 A=A-1
@@ -195,7 +202,8 @@ D=M
 M=M-1
 @4
 M=D
-// Push from constant
+
+// push constant 0
 @0
 D=A
 @SP
@@ -203,7 +211,8 @@ A=M
 M=D
 @SP
 M=M+1
-// Pop to that
+
+// pop that 0
 @SP
 A=M
 A=A-1
@@ -224,7 +233,8 @@ D=M
 @R13
 A=M
 M=D
-// Push from that
+
+// push that 0
 @0
 D=A
 @THAT
@@ -240,7 +250,8 @@ A=M
 M=D
 @SP
 M=M+1
-// Pop to that
+
+// pop that 1
 @SP
 A=M
 A=A-1
@@ -261,8 +272,9 @@ D=M
 @R13
 A=M
 M=D
-// Call Sys.output
-@Sys.outputRETURN2
+
+// call Sys.output 0
+@Sys.output:2
 D=A
 @SP
 A=M
@@ -385,8 +397,9 @@ M=M-1
 M=D
 @Sys.output
 0;JMP
-(Sys.outputRETURN2)
-// Pop to temp
+(Sys.output:2)
+
+// pop temp 0
 @SP
 A=M
 A=A-1
@@ -395,7 +408,8 @@ D=M
 M=M-1
 @5
 M=D
-// Push from static
+
+// push static 42
 @Sys.42
 D=M
 @SP
@@ -403,8 +417,9 @@ A=M
 M=D
 @SP
 M=M+1
-// Call Test.test
-@Test.testRETURN3
+
+// call Test.test 1
+@Test.test:3
 D=A
 @SP
 A=M
@@ -527,8 +542,9 @@ M=M-1
 M=D
 @Test.test
 0;JMP
-(Test.testRETURN3)
-// Pop to that
+(Test.test:3)
+
+// pop that 2
 @SP
 A=M
 A=A-1
@@ -549,8 +565,9 @@ D=M
 @R13
 A=M
 M=D
-// Call Sys.output
-@Sys.outputRETURN4
+
+// call Sys.output 0
+@Sys.output:4
 D=A
 @SP
 A=M
@@ -673,8 +690,9 @@ M=M-1
 M=D
 @Sys.output
 0;JMP
-(Sys.outputRETURN4)
-// Pop to temp
+(Sys.output:4)
+
+// pop temp 0
 @SP
 A=M
 A=A-1
@@ -683,11 +701,15 @@ D=M
 M=M-1
 @5
 M=D
+
+// label TRAP
 (Sys$TRAP)
-// goto
+
+// goto TRAP
 @Sys$TRAP
 0;JMP
-// Push from temp
+
+// Push temp 0
 @5
 D=M
 @SP
@@ -695,7 +717,8 @@ A=M
 M=D
 @SP
 M=M+1
-// Returning...
+
+// return
 @LCL
 D=M
 @R14
@@ -757,10 +780,12 @@ M=D
 @R13
 A=M
 0;JMP
-// Defining function Sys.output...
+
+// function Sys.output 0
 (Sys.output)
 D=0
-// Push from static
+
+// push static 42
 @Sys.42
 D=M
 @SP
@@ -768,7 +793,8 @@ A=M
 M=D
 @SP
 M=M+1
-// Push from constant
+
+// push constant 1
 @1
 D=A
 @SP
@@ -776,6 +802,7 @@ A=M
 M=D
 @SP
 M=M+1
+
 // sub
 @SP
 A=M
@@ -798,7 +825,8 @@ A=M
 M=D
 @SP
 M=M+1
-// Pop to pointer
+
+// pop pointer 1
 @SP
 A=M
 A=A-1
@@ -807,7 +835,8 @@ D=M
 M=M-1
 @4
 M=D
-// Push from that
+
+// push that 0
 @0
 D=A
 @THAT
@@ -823,7 +852,8 @@ A=M
 M=D
 @SP
 M=M+1
-// Push from constant
+
+// push constant 1
 @1
 D=A
 @SP
@@ -831,6 +861,7 @@ A=M
 M=D
 @SP
 M=M+1
+
 // add
 @SP
 A=M
@@ -853,7 +884,8 @@ A=M
 M=D
 @SP
 M=M+1
-// Pop to that
+
+// pop that 0
 @SP
 A=M
 A=A-1
@@ -874,7 +906,8 @@ D=M
 @R13
 A=M
 M=D
-// Push from that
+
+// push that 1
 @1
 D=A
 @THAT
@@ -890,7 +923,8 @@ A=M
 M=D
 @SP
 M=M+1
-// Push from constant
+
+// push constant 1
 @1
 D=A
 @SP
@@ -898,6 +932,7 @@ A=M
 M=D
 @SP
 M=M+1
+
 // add
 @SP
 A=M
@@ -920,7 +955,8 @@ A=M
 M=D
 @SP
 M=M+1
-// Pop to that
+
+// pop that 1
 @SP
 A=M
 A=A-1
@@ -941,7 +977,8 @@ D=M
 @R13
 A=M
 M=D
-// Push from that
+
+// push that 0
 @0
 D=A
 @THAT
@@ -957,7 +994,8 @@ A=M
 M=D
 @SP
 M=M+1
-// Returning...
+
+// return
 @LCL
 D=M
 @R14
@@ -1019,7 +1057,8 @@ M=D
 @R13
 A=M
 0;JMP
-// Defining function Test.test...
+
+// function Test.test 2
 (Test.test)
 D=0
 @SP
@@ -1032,7 +1071,8 @@ A=M
 M=D
 @SP
 M=M+1
-// Push from constant
+
+// push constant 8
 @8
 D=A
 @SP
@@ -1040,7 +1080,8 @@ A=M
 M=D
 @SP
 M=M+1
-// Pop to static
+
+// pop static 42
 @SP
 A=M
 A=A-1
@@ -1049,7 +1090,8 @@ D=M
 M=M-1
 @Test.42
 M=D
-// Push from constant
+
+// push constant 0
 @0
 D=A
 @SP
@@ -1057,7 +1099,8 @@ A=M
 M=D
 @SP
 M=M+1
-// Pop to local
+
+// pop local 1
 @SP
 A=M
 A=A-1
@@ -1078,7 +1121,8 @@ D=M
 @R13
 A=M
 M=D
-// Push from argument
+
+// push argument 0
 @0
 D=A
 @ARG
@@ -1094,7 +1138,8 @@ A=M
 M=D
 @SP
 M=M+1
-// Pop to pointer
+
+// pop pointer 0
 @SP
 A=M
 A=A-1
@@ -1103,7 +1148,8 @@ D=M
 M=M-1
 @3
 M=D
-// Push from constant
+
+// push constant 0
 @0
 D=A
 @SP
@@ -1111,7 +1157,8 @@ A=M
 M=D
 @SP
 M=M+1
-// Push from constant
+
+// push constant 0
 @0
 D=A
 @SP
@@ -1119,6 +1166,7 @@ A=M
 M=D
 @SP
 M=M+1
+
 // eq
 @SP
 A=M
@@ -1149,7 +1197,8 @@ A=M
 M=D
 @SP
 M=M+1
-// Pop to this
+
+// pop this 1
 @SP
 A=M
 A=A-1
@@ -1170,7 +1219,8 @@ D=M
 @R13
 A=M
 M=D
-// Push from constant
+
+// push constant 0
 @0
 D=A
 @SP
@@ -1178,6 +1228,7 @@ A=M
 M=D
 @SP
 M=M+1
+
 // not
 @SP
 A=M
@@ -1191,7 +1242,8 @@ A=M
 M=D
 @SP
 M=M+1
-// Push from constant
+
+// push constant 0
 @0
 D=A
 @SP
@@ -1199,6 +1251,7 @@ A=M
 M=D
 @SP
 M=M+1
+
 // eq
 @SP
 A=M
@@ -1229,7 +1282,8 @@ A=M
 M=D
 @SP
 M=M+1
-// Pop to this
+
+// pop this 2
 @SP
 A=M
 A=A-1
@@ -1250,7 +1304,8 @@ D=M
 @R13
 A=M
 M=D
-// Push from constant
+
+// push constant 0
 @0
 D=A
 @SP
@@ -1258,7 +1313,8 @@ A=M
 M=D
 @SP
 M=M+1
-// Push from constant
+
+// push constant 0
 @0
 D=A
 @SP
@@ -1266,6 +1322,7 @@ A=M
 M=D
 @SP
 M=M+1
+
 // not
 @SP
 A=M
@@ -1279,6 +1336,7 @@ A=M
 M=D
 @SP
 M=M+1
+
 // eq
 @SP
 A=M
@@ -1309,7 +1367,8 @@ A=M
 M=D
 @SP
 M=M+1
-// Pop to this
+
+// pop this 3
 @SP
 A=M
 A=A-1
@@ -1330,7 +1389,8 @@ D=M
 @R13
 A=M
 M=D
-// Push from constant
+
+// push constant 0
 @0
 D=A
 @SP
@@ -1338,6 +1398,7 @@ A=M
 M=D
 @SP
 M=M+1
+
 // not
 @SP
 A=M
@@ -1351,7 +1412,8 @@ A=M
 M=D
 @SP
 M=M+1
-// Push from constant
+
+// push constant 0
 @0
 D=A
 @SP
@@ -1359,6 +1421,7 @@ A=M
 M=D
 @SP
 M=M+1
+
 // not
 @SP
 A=M
@@ -1372,6 +1435,7 @@ A=M
 M=D
 @SP
 M=M+1
+
 // eq
 @SP
 A=M
@@ -1402,7 +1466,8 @@ A=M
 M=D
 @SP
 M=M+1
-// Pop to this
+
+// pop this 4
 @SP
 A=M
 A=A-1
@@ -1423,7 +1488,8 @@ D=M
 @R13
 A=M
 M=D
-// Push from constant
+
+// push constant 32767
 @32767
 D=A
 @SP
@@ -1431,7 +1497,8 @@ A=M
 M=D
 @SP
 M=M+1
-// Push from constant
+
+// push constant 32767
 @32767
 D=A
 @SP
@@ -1439,6 +1506,7 @@ A=M
 M=D
 @SP
 M=M+1
+
 // eq
 @SP
 A=M
@@ -1469,7 +1537,8 @@ A=M
 M=D
 @SP
 M=M+1
-// Pop to this
+
+// pop this 5
 @SP
 A=M
 A=A-1
@@ -1490,7 +1559,8 @@ D=M
 @R13
 A=M
 M=D
-// Push from constant
+
+// push constant 32767
 @32767
 D=A
 @SP
@@ -1498,7 +1568,8 @@ A=M
 M=D
 @SP
 M=M+1
-// Push from constant
+
+// push constant 32767
 @32767
 D=A
 @SP
@@ -1506,6 +1577,7 @@ A=M
 M=D
 @SP
 M=M+1
+
 // neg
 @SP
 A=M
@@ -1519,6 +1591,7 @@ A=M
 M=D
 @SP
 M=M+1
+
 // eq
 @SP
 A=M
@@ -1549,7 +1622,8 @@ A=M
 M=D
 @SP
 M=M+1
-// Pop to this
+
+// pop this 6
 @SP
 A=M
 A=A-1
@@ -1570,7 +1644,8 @@ D=M
 @R13
 A=M
 M=D
-// Push from constant
+
+// push constant 32767
 @32767
 D=A
 @SP
@@ -1578,6 +1653,7 @@ A=M
 M=D
 @SP
 M=M+1
+
 // neg
 @SP
 A=M
@@ -1591,7 +1667,8 @@ A=M
 M=D
 @SP
 M=M+1
-// Push from constant
+
+// push constant 32767
 @32767
 D=A
 @SP
@@ -1599,6 +1676,7 @@ A=M
 M=D
 @SP
 M=M+1
+
 // eq
 @SP
 A=M
@@ -1629,7 +1707,8 @@ A=M
 M=D
 @SP
 M=M+1
-// Pop to this
+
+// pop this 7
 @SP
 A=M
 A=A-1
@@ -1650,7 +1729,8 @@ D=M
 @R13
 A=M
 M=D
-// Push from constant
+
+// push constant 32767
 @32767
 D=A
 @SP
@@ -1658,6 +1738,7 @@ A=M
 M=D
 @SP
 M=M+1
+
 // neg
 @SP
 A=M
@@ -1671,7 +1752,8 @@ A=M
 M=D
 @SP
 M=M+1
-// Push from constant
+
+// push constant 32767
 @32767
 D=A
 @SP
@@ -1679,6 +1761,7 @@ A=M
 M=D
 @SP
 M=M+1
+
 // neg
 @SP
 A=M
@@ -1692,6 +1775,7 @@ A=M
 M=D
 @SP
 M=M+1
+
 // eq
 @SP
 A=M
@@ -1722,7 +1806,8 @@ A=M
 M=D
 @SP
 M=M+1
-// Pop to this
+
+// pop this 8
 @SP
 A=M
 A=A-1
@@ -1743,8 +1828,9 @@ D=M
 @R13
 A=M
 M=D
-// Call Sys.output
-@Sys.outputRETURN5
+
+// call Sys.output 0
+@Sys.output:5
 D=A
 @SP
 A=M
@@ -1867,8 +1953,9 @@ M=M-1
 M=D
 @Sys.output
 0;JMP
-(Sys.outputRETURN5)
-// Pop to local
+(Sys.output:5)
+
+// pop local 0
 @SP
 A=M
 A=A-1
@@ -1889,7 +1976,8 @@ D=M
 @R13
 A=M
 M=D
-// Push from static
+
+// push static 42
 @Test.42
 D=M
 @SP
@@ -1897,7 +1985,8 @@ A=M
 M=D
 @SP
 M=M+1
-// Push from local
+
+// push local 1
 @1
 D=A
 @LCL
@@ -1913,6 +2002,7 @@ A=M
 M=D
 @SP
 M=M+1
+
 // add
 @SP
 A=M
@@ -1935,7 +2025,8 @@ A=M
 M=D
 @SP
 M=M+1
-// Pop to local
+
+// pop local 1
 @SP
 A=M
 A=A-1
@@ -1956,7 +2047,8 @@ D=M
 @R13
 A=M
 M=D
-// Push from constant
+
+// push constant 0
 @0
 D=A
 @SP
@@ -1964,7 +2056,8 @@ A=M
 M=D
 @SP
 M=M+1
-// Push from constant
+
+// push constant 0
 @0
 D=A
 @SP
@@ -1977,7 +2070,8 @@ A=M
 M=D
 @SP
 M=M+1
-// Pop to this
+
+// pop this 1
 @SP
 A=M
 A=A-1
@@ -1998,7 +2092,8 @@ D=M
 @R13
 A=M
 M=D
-// Push from constant
+
+// push constant 0
 @0
 D=A
 @SP
@@ -2006,6 +2101,7 @@ A=M
 M=D
 @SP
 M=M+1
+
 // not
 @SP
 A=M
@@ -2019,7 +2115,8 @@ A=M
 M=D
 @SP
 M=M+1
-// Push from constant
+
+// push constant 0
 @0
 D=A
 @SP
@@ -2032,7 +2129,8 @@ A=M
 M=D
 @SP
 M=M+1
-// Pop to this
+
+// pop this 2
 @SP
 A=M
 A=A-1
@@ -2053,7 +2151,8 @@ D=M
 @R13
 A=M
 M=D
-// Push from constant
+
+// push constant 0
 @0
 D=A
 @SP
@@ -2061,7 +2160,8 @@ A=M
 M=D
 @SP
 M=M+1
-// Push from constant
+
+// push constant 0
 @0
 D=A
 @SP
@@ -2069,6 +2169,7 @@ A=M
 M=D
 @SP
 M=M+1
+
 // not
 @SP
 A=M
@@ -2087,7 +2188,8 @@ A=M
 M=D
 @SP
 M=M+1
-// Pop to this
+
+// pop this 3
 @SP
 A=M
 A=A-1
@@ -2108,7 +2210,8 @@ D=M
 @R13
 A=M
 M=D
-// Push from constant
+
+// push constant 0
 @0
 D=A
 @SP
@@ -2116,6 +2219,7 @@ A=M
 M=D
 @SP
 M=M+1
+
 // not
 @SP
 A=M
@@ -2129,7 +2233,8 @@ A=M
 M=D
 @SP
 M=M+1
-// Push from constant
+
+// push constant 0
 @0
 D=A
 @SP
@@ -2137,6 +2242,7 @@ A=M
 M=D
 @SP
 M=M+1
+
 // not
 @SP
 A=M
@@ -2155,7 +2261,8 @@ A=M
 M=D
 @SP
 M=M+1
-// Pop to this
+
+// pop this 4
 @SP
 A=M
 A=A-1
@@ -2176,7 +2283,8 @@ D=M
 @R13
 A=M
 M=D
-// Push from constant
+
+// push constant 32767
 @32767
 D=A
 @SP
@@ -2184,7 +2292,8 @@ A=M
 M=D
 @SP
 M=M+1
-// Push from constant
+
+// push constant 32767
 @32767
 D=A
 @SP
@@ -2197,7 +2306,8 @@ A=M
 M=D
 @SP
 M=M+1
-// Pop to this
+
+// pop this 5
 @SP
 A=M
 A=A-1
@@ -2218,7 +2328,8 @@ D=M
 @R13
 A=M
 M=D
-// Push from constant
+
+// push constant 32767
 @32767
 D=A
 @SP
@@ -2226,7 +2337,8 @@ A=M
 M=D
 @SP
 M=M+1
-// Push from constant
+
+// push constant 32767
 @32767
 D=A
 @SP
@@ -2234,6 +2346,7 @@ A=M
 M=D
 @SP
 M=M+1
+
 // neg
 @SP
 A=M
@@ -2252,7 +2365,8 @@ A=M
 M=D
 @SP
 M=M+1
-// Pop to this
+
+// pop this 6
 @SP
 A=M
 A=A-1
@@ -2273,7 +2387,8 @@ D=M
 @R13
 A=M
 M=D
-// Push from constant
+
+// push constant 32767
 @32767
 D=A
 @SP
@@ -2281,6 +2396,7 @@ A=M
 M=D
 @SP
 M=M+1
+
 // neg
 @SP
 A=M
@@ -2294,7 +2410,8 @@ A=M
 M=D
 @SP
 M=M+1
-// Push from constant
+
+// push constant 32767
 @32767
 D=A
 @SP
@@ -2307,7 +2424,8 @@ A=M
 M=D
 @SP
 M=M+1
-// Pop to this
+
+// pop this 7
 @SP
 A=M
 A=A-1
@@ -2328,7 +2446,8 @@ D=M
 @R13
 A=M
 M=D
-// Push from constant
+
+// push constant 32767
 @32767
 D=A
 @SP
@@ -2336,6 +2455,7 @@ A=M
 M=D
 @SP
 M=M+1
+
 // neg
 @SP
 A=M
@@ -2349,7 +2469,8 @@ A=M
 M=D
 @SP
 M=M+1
-// Push from constant
+
+// push constant 32767
 @32767
 D=A
 @SP
@@ -2357,6 +2478,7 @@ A=M
 M=D
 @SP
 M=M+1
+
 // neg
 @SP
 A=M
@@ -2375,7 +2497,8 @@ A=M
 M=D
 @SP
 M=M+1
-// Pop to this
+
+// pop this 8
 @SP
 A=M
 A=A-1
@@ -2396,8 +2519,9 @@ D=M
 @R13
 A=M
 M=D
-// Call Sys.output
-@Sys.outputRETURN6
+
+// call Sys.output 0
+@Sys.output:6
 D=A
 @SP
 A=M
@@ -2520,8 +2644,9 @@ M=M-1
 M=D
 @Sys.output
 0;JMP
-(Sys.outputRETURN6)
-// Pop to local
+(Sys.output:6)
+
+// pop local 0
 @SP
 A=M
 A=A-1
@@ -2542,7 +2667,8 @@ D=M
 @R13
 A=M
 M=D
-// Push from static
+
+// push static 42
 @Test.42
 D=M
 @SP
@@ -2550,7 +2676,8 @@ A=M
 M=D
 @SP
 M=M+1
-// Push from local
+
+// push local 1
 @1
 D=A
 @LCL
@@ -2566,6 +2693,7 @@ A=M
 M=D
 @SP
 M=M+1
+
 // add
 @SP
 A=M
@@ -2588,7 +2716,8 @@ A=M
 M=D
 @SP
 M=M+1
-// Pop to local
+
+// pop local 1
 @SP
 A=M
 A=A-1
@@ -2609,7 +2738,8 @@ D=M
 @R13
 A=M
 M=D
-// Push from constant
+
+// push constant 0
 @0
 D=A
 @SP
@@ -2617,7 +2747,8 @@ A=M
 M=D
 @SP
 M=M+1
-// Push from constant
+
+// push constant 0
 @0
 D=A
 @SP
@@ -2625,6 +2756,7 @@ A=M
 M=D
 @SP
 M=M+1
+
 // lt
 @SP
 A=M
@@ -2655,7 +2787,8 @@ A=M
 M=D
 @SP
 M=M+1
-// Pop to this
+
+// pop this 1
 @SP
 A=M
 A=A-1
@@ -2676,7 +2809,8 @@ D=M
 @R13
 A=M
 M=D
-// Push from constant
+
+// push constant 0
 @0
 D=A
 @SP
@@ -2684,6 +2818,7 @@ A=M
 M=D
 @SP
 M=M+1
+
 // not
 @SP
 A=M
@@ -2697,7 +2832,8 @@ A=M
 M=D
 @SP
 M=M+1
-// Push from constant
+
+// push constant 0
 @0
 D=A
 @SP
@@ -2705,6 +2841,7 @@ A=M
 M=D
 @SP
 M=M+1
+
 // lt
 @SP
 A=M
@@ -2735,7 +2872,8 @@ A=M
 M=D
 @SP
 M=M+1
-// Pop to this
+
+// pop this 2
 @SP
 A=M
 A=A-1
@@ -2756,7 +2894,8 @@ D=M
 @R13
 A=M
 M=D
-// Push from constant
+
+// push constant 0
 @0
 D=A
 @SP
@@ -2764,7 +2903,8 @@ A=M
 M=D
 @SP
 M=M+1
-// Push from constant
+
+// push constant 0
 @0
 D=A
 @SP
@@ -2772,6 +2912,7 @@ A=M
 M=D
 @SP
 M=M+1
+
 // not
 @SP
 A=M
@@ -2785,6 +2926,7 @@ A=M
 M=D
 @SP
 M=M+1
+
 // lt
 @SP
 A=M
@@ -2815,7 +2957,8 @@ A=M
 M=D
 @SP
 M=M+1
-// Pop to this
+
+// pop this 3
 @SP
 A=M
 A=A-1
@@ -2836,7 +2979,8 @@ D=M
 @R13
 A=M
 M=D
-// Push from constant
+
+// push constant 0
 @0
 D=A
 @SP
@@ -2844,6 +2988,7 @@ A=M
 M=D
 @SP
 M=M+1
+
 // not
 @SP
 A=M
@@ -2857,7 +3002,8 @@ A=M
 M=D
 @SP
 M=M+1
-// Push from constant
+
+// push constant 0
 @0
 D=A
 @SP
@@ -2865,6 +3011,7 @@ A=M
 M=D
 @SP
 M=M+1
+
 // not
 @SP
 A=M
@@ -2878,6 +3025,7 @@ A=M
 M=D
 @SP
 M=M+1
+
 // lt
 @SP
 A=M
@@ -2908,7 +3056,8 @@ A=M
 M=D
 @SP
 M=M+1
-// Pop to this
+
+// pop this 4
 @SP
 A=M
 A=A-1
@@ -2929,7 +3078,8 @@ D=M
 @R13
 A=M
 M=D
-// Push from constant
+
+// push constant 32767
 @32767
 D=A
 @SP
@@ -2937,7 +3087,8 @@ A=M
 M=D
 @SP
 M=M+1
-// Push from constant
+
+// push constant 32767
 @32767
 D=A
 @SP
@@ -2945,6 +3096,7 @@ A=M
 M=D
 @SP
 M=M+1
+
 // lt
 @SP
 A=M
@@ -2975,7 +3127,8 @@ A=M
 M=D
 @SP
 M=M+1
-// Pop to this
+
+// pop this 5
 @SP
 A=M
 A=A-1
@@ -2996,7 +3149,8 @@ D=M
 @R13
 A=M
 M=D
-// Push from constant
+
+// push constant 32767
 @32767
 D=A
 @SP
@@ -3004,7 +3158,8 @@ A=M
 M=D
 @SP
 M=M+1
-// Push from constant
+
+// push constant 32767
 @32767
 D=A
 @SP
@@ -3012,6 +3167,7 @@ A=M
 M=D
 @SP
 M=M+1
+
 // neg
 @SP
 A=M
@@ -3025,6 +3181,7 @@ A=M
 M=D
 @SP
 M=M+1
+
 // lt
 @SP
 A=M
@@ -3055,7 +3212,8 @@ A=M
 M=D
 @SP
 M=M+1
-// Pop to this
+
+// pop this 6
 @SP
 A=M
 A=A-1
@@ -3076,7 +3234,8 @@ D=M
 @R13
 A=M
 M=D
-// Push from constant
+
+// push constant 32767
 @32767
 D=A
 @SP
@@ -3084,6 +3243,7 @@ A=M
 M=D
 @SP
 M=M+1
+
 // neg
 @SP
 A=M
@@ -3097,7 +3257,8 @@ A=M
 M=D
 @SP
 M=M+1
-// Push from constant
+
+// push constant 32767
 @32767
 D=A
 @SP
@@ -3105,6 +3266,7 @@ A=M
 M=D
 @SP
 M=M+1
+
 // lt
 @SP
 A=M
@@ -3135,7 +3297,8 @@ A=M
 M=D
 @SP
 M=M+1
-// Pop to this
+
+// pop this 7
 @SP
 A=M
 A=A-1
@@ -3156,7 +3319,8 @@ D=M
 @R13
 A=M
 M=D
-// Push from constant
+
+// push constant 32767
 @32767
 D=A
 @SP
@@ -3164,6 +3328,7 @@ A=M
 M=D
 @SP
 M=M+1
+
 // neg
 @SP
 A=M
@@ -3177,7 +3342,8 @@ A=M
 M=D
 @SP
 M=M+1
-// Push from constant
+
+// push constant 32767
 @32767
 D=A
 @SP
@@ -3185,6 +3351,7 @@ A=M
 M=D
 @SP
 M=M+1
+
 // neg
 @SP
 A=M
@@ -3198,6 +3365,7 @@ A=M
 M=D
 @SP
 M=M+1
+
 // lt
 @SP
 A=M
@@ -3228,7 +3396,8 @@ A=M
 M=D
 @SP
 M=M+1
-// Pop to this
+
+// pop this 8
 @SP
 A=M
 A=A-1
@@ -3249,8 +3418,9 @@ D=M
 @R13
 A=M
 M=D
-// Call Sys.output
-@Sys.outputRETURN7
+
+// call Sys.output 0
+@Sys.output:7
 D=A
 @SP
 A=M
@@ -3373,8 +3543,9 @@ M=M-1
 M=D
 @Sys.output
 0;JMP
-(Sys.outputRETURN7)
-// Pop to local
+(Sys.output:7)
+
+// pop local 0
 @SP
 A=M
 A=A-1
@@ -3395,7 +3566,8 @@ D=M
 @R13
 A=M
 M=D
-// Push from static
+
+// push static 42
 @Test.42
 D=M
 @SP
@@ -3403,7 +3575,8 @@ A=M
 M=D
 @SP
 M=M+1
-// Push from local
+
+// push local 1
 @1
 D=A
 @LCL
@@ -3419,6 +3592,7 @@ A=M
 M=D
 @SP
 M=M+1
+
 // add
 @SP
 A=M
@@ -3441,7 +3615,8 @@ A=M
 M=D
 @SP
 M=M+1
-// Pop to local
+
+// pop local 1
 @SP
 A=M
 A=A-1
@@ -3462,7 +3637,8 @@ D=M
 @R13
 A=M
 M=D
-// Push from constant
+
+// push constant 0
 @0
 D=A
 @SP
@@ -3470,7 +3646,8 @@ A=M
 M=D
 @SP
 M=M+1
-// Push from constant
+
+// push constant 0
 @0
 D=A
 @SP
@@ -3483,7 +3660,8 @@ A=M
 M=D
 @SP
 M=M+1
-// Pop to this
+
+// pop this 1
 @SP
 A=M
 A=A-1
@@ -3504,7 +3682,8 @@ D=M
 @R13
 A=M
 M=D
-// Push from constant
+
+// push constant 0
 @0
 D=A
 @SP
@@ -3512,6 +3691,7 @@ A=M
 M=D
 @SP
 M=M+1
+
 // not
 @SP
 A=M
@@ -3525,7 +3705,8 @@ A=M
 M=D
 @SP
 M=M+1
-// Push from constant
+
+// push constant 0
 @0
 D=A
 @SP
@@ -3538,7 +3719,8 @@ A=M
 M=D
 @SP
 M=M+1
-// Pop to this
+
+// pop this 2
 @SP
 A=M
 A=A-1
@@ -3559,7 +3741,8 @@ D=M
 @R13
 A=M
 M=D
-// Push from constant
+
+// push constant 0
 @0
 D=A
 @SP
@@ -3567,7 +3750,8 @@ A=M
 M=D
 @SP
 M=M+1
-// Push from constant
+
+// push constant 0
 @0
 D=A
 @SP
@@ -3575,6 +3759,7 @@ A=M
 M=D
 @SP
 M=M+1
+
 // not
 @SP
 A=M
@@ -3593,7 +3778,8 @@ A=M
 M=D
 @SP
 M=M+1
-// Pop to this
+
+// pop this 3
 @SP
 A=M
 A=A-1
@@ -3614,7 +3800,8 @@ D=M
 @R13
 A=M
 M=D
-// Push from constant
+
+// push constant 0
 @0
 D=A
 @SP
@@ -3622,6 +3809,7 @@ A=M
 M=D
 @SP
 M=M+1
+
 // not
 @SP
 A=M
@@ -3635,7 +3823,8 @@ A=M
 M=D
 @SP
 M=M+1
-// Push from constant
+
+// push constant 0
 @0
 D=A
 @SP
@@ -3643,6 +3832,7 @@ A=M
 M=D
 @SP
 M=M+1
+
 // not
 @SP
 A=M
@@ -3661,7 +3851,8 @@ A=M
 M=D
 @SP
 M=M+1
-// Pop to this
+
+// pop this 4
 @SP
 A=M
 A=A-1
@@ -3682,7 +3873,8 @@ D=M
 @R13
 A=M
 M=D
-// Push from constant
+
+// push constant 32767
 @32767
 D=A
 @SP
@@ -3690,7 +3882,8 @@ A=M
 M=D
 @SP
 M=M+1
-// Push from constant
+
+// push constant 32767
 @32767
 D=A
 @SP
@@ -3703,7 +3896,8 @@ A=M
 M=D
 @SP
 M=M+1
-// Pop to this
+
+// pop this 5
 @SP
 A=M
 A=A-1
@@ -3724,7 +3918,8 @@ D=M
 @R13
 A=M
 M=D
-// Push from constant
+
+// push constant 32767
 @32767
 D=A
 @SP
@@ -3732,7 +3927,8 @@ A=M
 M=D
 @SP
 M=M+1
-// Push from constant
+
+// push constant 32767
 @32767
 D=A
 @SP
@@ -3740,6 +3936,7 @@ A=M
 M=D
 @SP
 M=M+1
+
 // neg
 @SP
 A=M
@@ -3758,7 +3955,8 @@ A=M
 M=D
 @SP
 M=M+1
-// Pop to this
+
+// pop this 6
 @SP
 A=M
 A=A-1
@@ -3779,7 +3977,8 @@ D=M
 @R13
 A=M
 M=D
-// Push from constant
+
+// push constant 32767
 @32767
 D=A
 @SP
@@ -3787,6 +3986,7 @@ A=M
 M=D
 @SP
 M=M+1
+
 // neg
 @SP
 A=M
@@ -3800,7 +4000,8 @@ A=M
 M=D
 @SP
 M=M+1
-// Push from constant
+
+// push constant 32767
 @32767
 D=A
 @SP
@@ -3813,7 +4014,8 @@ A=M
 M=D
 @SP
 M=M+1
-// Pop to this
+
+// pop this 7
 @SP
 A=M
 A=A-1
@@ -3834,7 +4036,8 @@ D=M
 @R13
 A=M
 M=D
-// Push from constant
+
+// push constant 32767
 @32767
 D=A
 @SP
@@ -3842,6 +4045,7 @@ A=M
 M=D
 @SP
 M=M+1
+
 // neg
 @SP
 A=M
@@ -3855,7 +4059,8 @@ A=M
 M=D
 @SP
 M=M+1
-// Push from constant
+
+// push constant 32767
 @32767
 D=A
 @SP
@@ -3863,6 +4068,7 @@ A=M
 M=D
 @SP
 M=M+1
+
 // neg
 @SP
 A=M
@@ -3881,7 +4087,8 @@ A=M
 M=D
 @SP
 M=M+1
-// Pop to this
+
+// pop this 8
 @SP
 A=M
 A=A-1
@@ -3902,8 +4109,9 @@ D=M
 @R13
 A=M
 M=D
-// Call Sys.output
-@Sys.outputRETURN8
+
+// call Sys.output 0
+@Sys.output:8
 D=A
 @SP
 A=M
@@ -4026,8 +4234,9 @@ M=M-1
 M=D
 @Sys.output
 0;JMP
-(Sys.outputRETURN8)
-// Pop to local
+(Sys.output:8)
+
+// pop local 0
 @SP
 A=M
 A=A-1
@@ -4048,7 +4257,8 @@ D=M
 @R13
 A=M
 M=D
-// Push from static
+
+// push static 42
 @Test.42
 D=M
 @SP
@@ -4056,7 +4266,8 @@ A=M
 M=D
 @SP
 M=M+1
-// Push from local
+
+// push local 1
 @1
 D=A
 @LCL
@@ -4072,6 +4283,7 @@ A=M
 M=D
 @SP
 M=M+1
+
 // add
 @SP
 A=M
@@ -4094,7 +4306,8 @@ A=M
 M=D
 @SP
 M=M+1
-// Pop to local
+
+// pop local 1
 @SP
 A=M
 A=A-1
@@ -4115,7 +4328,8 @@ D=M
 @R13
 A=M
 M=D
-// Push from constant
+
+// push constant 0
 @0
 D=A
 @SP
@@ -4123,7 +4337,8 @@ A=M
 M=D
 @SP
 M=M+1
-// Push from constant
+
+// push constant 0
 @0
 D=A
 @SP
@@ -4131,6 +4346,7 @@ A=M
 M=D
 @SP
 M=M+1
+
 // gt
 @SP
 A=M
@@ -4161,7 +4377,8 @@ A=M
 M=D
 @SP
 M=M+1
-// Pop to this
+
+// pop this 1
 @SP
 A=M
 A=A-1
@@ -4182,7 +4399,8 @@ D=M
 @R13
 A=M
 M=D
-// Push from constant
+
+// push constant 0
 @0
 D=A
 @SP
@@ -4190,6 +4408,7 @@ A=M
 M=D
 @SP
 M=M+1
+
 // not
 @SP
 A=M
@@ -4203,7 +4422,8 @@ A=M
 M=D
 @SP
 M=M+1
-// Push from constant
+
+// push constant 0
 @0
 D=A
 @SP
@@ -4211,6 +4431,7 @@ A=M
 M=D
 @SP
 M=M+1
+
 // gt
 @SP
 A=M
@@ -4241,7 +4462,8 @@ A=M
 M=D
 @SP
 M=M+1
-// Pop to this
+
+// pop this 2
 @SP
 A=M
 A=A-1
@@ -4262,7 +4484,8 @@ D=M
 @R13
 A=M
 M=D
-// Push from constant
+
+// push constant 0
 @0
 D=A
 @SP
@@ -4270,7 +4493,8 @@ A=M
 M=D
 @SP
 M=M+1
-// Push from constant
+
+// push constant 0
 @0
 D=A
 @SP
@@ -4278,6 +4502,7 @@ A=M
 M=D
 @SP
 M=M+1
+
 // not
 @SP
 A=M
@@ -4291,6 +4516,7 @@ A=M
 M=D
 @SP
 M=M+1
+
 // gt
 @SP
 A=M
@@ -4321,7 +4547,8 @@ A=M
 M=D
 @SP
 M=M+1
-// Pop to this
+
+// pop this 3
 @SP
 A=M
 A=A-1
@@ -4342,7 +4569,8 @@ D=M
 @R13
 A=M
 M=D
-// Push from constant
+
+// push constant 0
 @0
 D=A
 @SP
@@ -4350,6 +4578,7 @@ A=M
 M=D
 @SP
 M=M+1
+
 // not
 @SP
 A=M
@@ -4363,7 +4592,8 @@ A=M
 M=D
 @SP
 M=M+1
-// Push from constant
+
+// push constant 0
 @0
 D=A
 @SP
@@ -4371,6 +4601,7 @@ A=M
 M=D
 @SP
 M=M+1
+
 // not
 @SP
 A=M
@@ -4384,6 +4615,7 @@ A=M
 M=D
 @SP
 M=M+1
+
 // gt
 @SP
 A=M
@@ -4414,7 +4646,8 @@ A=M
 M=D
 @SP
 M=M+1
-// Pop to this
+
+// pop this 4
 @SP
 A=M
 A=A-1
@@ -4435,7 +4668,8 @@ D=M
 @R13
 A=M
 M=D
-// Push from constant
+
+// push constant 32767
 @32767
 D=A
 @SP
@@ -4443,7 +4677,8 @@ A=M
 M=D
 @SP
 M=M+1
-// Push from constant
+
+// push constant 32767
 @32767
 D=A
 @SP
@@ -4451,6 +4686,7 @@ A=M
 M=D
 @SP
 M=M+1
+
 // gt
 @SP
 A=M
@@ -4481,7 +4717,8 @@ A=M
 M=D
 @SP
 M=M+1
-// Pop to this
+
+// pop this 5
 @SP
 A=M
 A=A-1
@@ -4502,7 +4739,8 @@ D=M
 @R13
 A=M
 M=D
-// Push from constant
+
+// push constant 32767
 @32767
 D=A
 @SP
@@ -4510,7 +4748,8 @@ A=M
 M=D
 @SP
 M=M+1
-// Push from constant
+
+// push constant 32767
 @32767
 D=A
 @SP
@@ -4518,6 +4757,7 @@ A=M
 M=D
 @SP
 M=M+1
+
 // neg
 @SP
 A=M
@@ -4531,6 +4771,7 @@ A=M
 M=D
 @SP
 M=M+1
+
 // gt
 @SP
 A=M
@@ -4561,7 +4802,8 @@ A=M
 M=D
 @SP
 M=M+1
-// Pop to this
+
+// pop this 6
 @SP
 A=M
 A=A-1
@@ -4582,7 +4824,8 @@ D=M
 @R13
 A=M
 M=D
-// Push from constant
+
+// push constant 32767
 @32767
 D=A
 @SP
@@ -4590,6 +4833,7 @@ A=M
 M=D
 @SP
 M=M+1
+
 // neg
 @SP
 A=M
@@ -4603,7 +4847,8 @@ A=M
 M=D
 @SP
 M=M+1
-// Push from constant
+
+// push constant 32767
 @32767
 D=A
 @SP
@@ -4611,6 +4856,7 @@ A=M
 M=D
 @SP
 M=M+1
+
 // gt
 @SP
 A=M
@@ -4641,7 +4887,8 @@ A=M
 M=D
 @SP
 M=M+1
-// Pop to this
+
+// pop this 7
 @SP
 A=M
 A=A-1
@@ -4662,7 +4909,8 @@ D=M
 @R13
 A=M
 M=D
-// Push from constant
+
+// push constant 32767
 @32767
 D=A
 @SP
@@ -4670,6 +4918,7 @@ A=M
 M=D
 @SP
 M=M+1
+
 // neg
 @SP
 A=M
@@ -4683,7 +4932,8 @@ A=M
 M=D
 @SP
 M=M+1
-// Push from constant
+
+// push constant 32767
 @32767
 D=A
 @SP
@@ -4691,6 +4941,7 @@ A=M
 M=D
 @SP
 M=M+1
+
 // neg
 @SP
 A=M
@@ -4704,6 +4955,7 @@ A=M
 M=D
 @SP
 M=M+1
+
 // gt
 @SP
 A=M
@@ -4734,7 +4986,8 @@ A=M
 M=D
 @SP
 M=M+1
-// Pop to this
+
+// pop this 8
 @SP
 A=M
 A=A-1
@@ -4755,8 +5008,9 @@ D=M
 @R13
 A=M
 M=D
-// Call Sys.output
-@Sys.outputRETURN9
+
+// call Sys.output 0
+@Sys.output:9
 D=A
 @SP
 A=M
@@ -4879,8 +5133,9 @@ M=M-1
 M=D
 @Sys.output
 0;JMP
-(Sys.outputRETURN9)
-// Pop to local
+(Sys.output:9)
+
+// pop local 0
 @SP
 A=M
 A=A-1
@@ -4901,7 +5156,8 @@ D=M
 @R13
 A=M
 M=D
-// Push from static
+
+// push static 42
 @Test.42
 D=M
 @SP
@@ -4909,7 +5165,8 @@ A=M
 M=D
 @SP
 M=M+1
-// Push from local
+
+// push local 1
 @1
 D=A
 @LCL
@@ -4925,6 +5182,7 @@ A=M
 M=D
 @SP
 M=M+1
+
 // add
 @SP
 A=M
@@ -4947,7 +5205,8 @@ A=M
 M=D
 @SP
 M=M+1
-// Pop to local
+
+// pop local 1
 @SP
 A=M
 A=A-1
@@ -4968,7 +5227,8 @@ D=M
 @R13
 A=M
 M=D
-// Push from constant
+
+// push constant 0
 @0
 D=A
 @SP
@@ -4976,7 +5236,8 @@ A=M
 M=D
 @SP
 M=M+1
-// Push from constant
+
+// push constant 0
 @0
 D=A
 @SP
@@ -4989,7 +5250,8 @@ A=M
 M=D
 @SP
 M=M+1
-// Pop to this
+
+// pop this 1
 @SP
 A=M
 A=A-1
@@ -5010,7 +5272,8 @@ D=M
 @R13
 A=M
 M=D
-// Push from constant
+
+// push constant 0
 @0
 D=A
 @SP
@@ -5018,6 +5281,7 @@ A=M
 M=D
 @SP
 M=M+1
+
 // not
 @SP
 A=M
@@ -5031,7 +5295,8 @@ A=M
 M=D
 @SP
 M=M+1
-// Push from constant
+
+// push constant 0
 @0
 D=A
 @SP
@@ -5044,7 +5309,8 @@ A=M
 M=D
 @SP
 M=M+1
-// Pop to this
+
+// pop this 2
 @SP
 A=M
 A=A-1
@@ -5065,7 +5331,8 @@ D=M
 @R13
 A=M
 M=D
-// Push from constant
+
+// push constant 0
 @0
 D=A
 @SP
@@ -5073,7 +5340,8 @@ A=M
 M=D
 @SP
 M=M+1
-// Push from constant
+
+// push constant 0
 @0
 D=A
 @SP
@@ -5081,6 +5349,7 @@ A=M
 M=D
 @SP
 M=M+1
+
 // not
 @SP
 A=M
@@ -5099,7 +5368,8 @@ A=M
 M=D
 @SP
 M=M+1
-// Pop to this
+
+// pop this 3
 @SP
 A=M
 A=A-1
@@ -5120,7 +5390,8 @@ D=M
 @R13
 A=M
 M=D
-// Push from constant
+
+// push constant 0
 @0
 D=A
 @SP
@@ -5128,6 +5399,7 @@ A=M
 M=D
 @SP
 M=M+1
+
 // not
 @SP
 A=M
@@ -5141,7 +5413,8 @@ A=M
 M=D
 @SP
 M=M+1
-// Push from constant
+
+// push constant 0
 @0
 D=A
 @SP
@@ -5149,6 +5422,7 @@ A=M
 M=D
 @SP
 M=M+1
+
 // not
 @SP
 A=M
@@ -5167,7 +5441,8 @@ A=M
 M=D
 @SP
 M=M+1
-// Pop to this
+
+// pop this 4
 @SP
 A=M
 A=A-1
@@ -5188,7 +5463,8 @@ D=M
 @R13
 A=M
 M=D
-// Push from constant
+
+// push constant 32767
 @32767
 D=A
 @SP
@@ -5196,7 +5472,8 @@ A=M
 M=D
 @SP
 M=M+1
-// Push from constant
+
+// push constant 32767
 @32767
 D=A
 @SP
@@ -5209,7 +5486,8 @@ A=M
 M=D
 @SP
 M=M+1
-// Pop to this
+
+// pop this 5
 @SP
 A=M
 A=A-1
@@ -5230,7 +5508,8 @@ D=M
 @R13
 A=M
 M=D
-// Push from constant
+
+// push constant 32767
 @32767
 D=A
 @SP
@@ -5238,7 +5517,8 @@ A=M
 M=D
 @SP
 M=M+1
-// Push from constant
+
+// push constant 32767
 @32767
 D=A
 @SP
@@ -5246,6 +5526,7 @@ A=M
 M=D
 @SP
 M=M+1
+
 // neg
 @SP
 A=M
@@ -5264,7 +5545,8 @@ A=M
 M=D
 @SP
 M=M+1
-// Pop to this
+
+// pop this 6
 @SP
 A=M
 A=A-1
@@ -5285,7 +5567,8 @@ D=M
 @R13
 A=M
 M=D
-// Push from constant
+
+// push constant 32767
 @32767
 D=A
 @SP
@@ -5293,6 +5576,7 @@ A=M
 M=D
 @SP
 M=M+1
+
 // neg
 @SP
 A=M
@@ -5306,7 +5590,8 @@ A=M
 M=D
 @SP
 M=M+1
-// Push from constant
+
+// push constant 32767
 @32767
 D=A
 @SP
@@ -5319,7 +5604,8 @@ A=M
 M=D
 @SP
 M=M+1
-// Pop to this
+
+// pop this 7
 @SP
 A=M
 A=A-1
@@ -5340,7 +5626,8 @@ D=M
 @R13
 A=M
 M=D
-// Push from constant
+
+// push constant 32767
 @32767
 D=A
 @SP
@@ -5348,6 +5635,7 @@ A=M
 M=D
 @SP
 M=M+1
+
 // neg
 @SP
 A=M
@@ -5361,7 +5649,8 @@ A=M
 M=D
 @SP
 M=M+1
-// Push from constant
+
+// push constant 32767
 @32767
 D=A
 @SP
@@ -5369,6 +5658,7 @@ A=M
 M=D
 @SP
 M=M+1
+
 // neg
 @SP
 A=M
@@ -5387,7 +5677,8 @@ A=M
 M=D
 @SP
 M=M+1
-// Pop to this
+
+// pop this 8
 @SP
 A=M
 A=A-1
@@ -5408,8 +5699,9 @@ D=M
 @R13
 A=M
 M=D
-// Call Sys.output
-@Sys.outputRETURN10
+
+// call Sys.output 0
+@Sys.output:10
 D=A
 @SP
 A=M
@@ -5532,8 +5824,9 @@ M=M-1
 M=D
 @Sys.output
 0;JMP
-(Sys.outputRETURN10)
-// Pop to local
+(Sys.output:10)
+
+// pop local 0
 @SP
 A=M
 A=A-1
@@ -5554,7 +5847,8 @@ D=M
 @R13
 A=M
 M=D
-// Push from static
+
+// push static 42
 @Test.42
 D=M
 @SP
@@ -5562,7 +5856,8 @@ A=M
 M=D
 @SP
 M=M+1
-// Push from local
+
+// push local 1
 @1
 D=A
 @LCL
@@ -5578,6 +5873,7 @@ A=M
 M=D
 @SP
 M=M+1
+
 // add
 @SP
 A=M
@@ -5600,7 +5896,8 @@ A=M
 M=D
 @SP
 M=M+1
-// Pop to local
+
+// pop local 1
 @SP
 A=M
 A=A-1
@@ -5621,7 +5918,8 @@ D=M
 @R13
 A=M
 M=D
-// Push from local
+
+// push local 1
 @1
 D=A
 @LCL
@@ -5637,7 +5935,8 @@ A=M
 M=D
 @SP
 M=M+1
-// Returning...
+
+// return
 @LCL
 D=M
 @R14

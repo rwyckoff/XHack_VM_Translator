@@ -16,22 +16,11 @@
       <change afterPath="$PROJECT_DIR$/../../Project One/Robert_Wyckoff_PJ01_XHack/HAL_input/StaticsTest.asm" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../../Project One/Robert_Wyckoff_PJ01_XHack/HAL_input/VMTa.asm" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../../Project One/Robert_Wyckoff_PJ01_XHack/HAL_input/pop_push_ram_test.asm" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/vm_input/XVMTc/Sys.vm" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/vm_input/XVMTc/Test.vm" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/vm_input/XVMTc/test.tst" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/vm_input/XVMTd/Sys.vm" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/vm_input/XVMTd/Test.vm" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/vm_input/XVMTd/test.tst" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/vm_input/XVMTe/Sys.vm" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/vm_input/XVMTe/Test.vm" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/vm_input/XVMTe/test.tst" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../Project One/Robert_Wyckoff_PJ01_XHack/config.py" beforeDir="false" afterPath="$PROJECT_DIR$/../../Project One/Robert_Wyckoff_PJ01_XHack/config.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../Project One/Robert_Wyckoff_PJ01_XHack/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/../../Project One/Robert_Wyckoff_PJ01_XHack/main.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/asm_output/BasicLoop.asm" beforeDir="false" afterPath="$PROJECT_DIR$/asm_output/BasicLoop.asm" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/asm_output/BasicTest.asm" beforeDir="false" afterPath="$PROJECT_DIR$/asm_output/BasicTest.asm" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/asm_output/Basic_Error_Test.asm" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/asm_output/Basic_Logical_Test.asm" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/asm_output/FibonacciElement.asm" beforeDir="false" afterPath="$PROJECT_DIR$/asm_output/FibonacciElement.asm" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/asm_output/FibonacciSeries.asm" beforeDir="false" afterPath="$PROJECT_DIR$/asm_output/FibonacciSeries.asm" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/asm_output/NestedCall.asm" beforeDir="false" afterPath="$PROJECT_DIR$/asm_output/NestedCall.asm" afterDir="false" />
@@ -44,30 +33,12 @@
       <change beforePath="$PROJECT_DIR$/asm_output/VMTa.asm" beforeDir="false" afterPath="$PROJECT_DIR$/asm_output/VMTa.asm" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/asm_output/XVMTa.asm" beforeDir="false" afterPath="$PROJECT_DIR$/asm_output/XVMTa.asm" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/asm_output/XVMTb.asm" beforeDir="false" afterPath="$PROJECT_DIR$/asm_output/XVMTb.asm" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/asm_output/pop_push_ram_test.asm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/asm_output/XVMTc.asm" beforeDir="false" afterPath="$PROJECT_DIR$/asm_output/XVMTc.asm" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/asm_output/XVMTd.asm" beforeDir="false" afterPath="$PROJECT_DIR$/asm_output/XVMTd.asm" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/asm_output/XVMTe.asm" beforeDir="false" afterPath="$PROJECT_DIR$/asm_output/XVMTe.asm" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/code_writer_module.py" beforeDir="false" afterPath="$PROJECT_DIR$/code_writer_module.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/config.py" beforeDir="false" afterPath="$PROJECT_DIR$/config.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/error_checker.py" beforeDir="false" afterPath="$PROJECT_DIR$/error_checker.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/error_logs/error_log_BasicLoop_200415_220348.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/error_logs/error_log_BasicTest_200415_215342.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/error_logs/error_log_Basic_Logical_Test_200415_150800.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/error_logs/error_log_Basic_Logical_Test_200415_152218.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/error_logs/error_log_Basic_Logical_Test_200415_164213.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/error_logs/error_log_Basic_Logical_Test_200415_204449.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/error_logs/error_log_Basic_Logical_Test_200415_211036.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/error_logs/error_log_Basic_Logical_Test_200415_212100.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/error_logs/error_log_FibonacciElement_200415_215549.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/error_logs/error_log_FibonacciSeries_200415_220431.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/error_logs/error_log_NestedCall_200415_215912.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/error_logs/error_log_PointerTest_200415_215427.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/error_logs/error_log_SimpleAdd_200415_215028.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/error_logs/error_log_SimpleFunction_200415_220154.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/error_logs/error_log_StackTest_200415_215236.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/error_logs/error_log_StaticTest_200415_215506.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/error_logs/error_log_StaticsTest_200415_220232.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/error_logs/error_log_VMTa_200415_214357.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/error_logs/error_log_VMTa_200415_220713.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/error_logs/error_log_XVMTa_200415_221111.txt" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/parser_module.py" beforeDir="false" afterPath="$PROJECT_DIR$/parser_module.py" afterDir="false" />
     </list>
@@ -104,7 +75,7 @@
       <recent name="C:\Users\Robert Sirois\Dropbox\Shpob Storage\School\Compiler Design\Projects\Project Two\Robert_Wyckoff_PJ02_XHack\vm_input\FibonacciElement" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.SimpleFunction">
+  <component name="RunManager" selected="Python.VMTa">
     <configuration name="BasicLoop" type="PythonConfigurationType" factoryName="Python">
       <module name="Robert_Wyckoff_PJ02_XHack" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -593,10 +564,10 @@
     <option featureType="com.intellij.fileTypeFactory" implementationName="*.vm" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="251" y="149" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1587162680812">
+    <state x="251" y="149" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1587515877215">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state x="251" y="149" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1587162680812" />
+    <state x="251" y="149" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1587515877215" />
     <state x="271" y="342" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1586982086995">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
@@ -609,22 +580,22 @@
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="327" y="294" key="FileChooserDialogImpl/0.0.1920.1080@0.0.1920.1080" timestamp="1587182965708" />
-    <state width="1056" height="266" key="GridCell.Tab.0.bottom" timestamp="1587183918490">
+    <state width="1064" height="266" key="GridCell.Tab.0.bottom" timestamp="1587662316102">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1056" height="266" key="GridCell.Tab.0.bottom/0.0.1920.1080@0.0.1920.1080" timestamp="1587183918490" />
-    <state width="1056" height="266" key="GridCell.Tab.0.center" timestamp="1587183918490">
+    <state width="1064" height="266" key="GridCell.Tab.0.bottom/0.0.1920.1080@0.0.1920.1080" timestamp="1587662316102" />
+    <state width="1064" height="266" key="GridCell.Tab.0.center" timestamp="1587662316102">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1056" height="266" key="GridCell.Tab.0.center/0.0.1920.1080@0.0.1920.1080" timestamp="1587183918490" />
-    <state width="1056" height="266" key="GridCell.Tab.0.left" timestamp="1587183918490">
+    <state width="1064" height="266" key="GridCell.Tab.0.center/0.0.1920.1080@0.0.1920.1080" timestamp="1587662316102" />
+    <state width="1064" height="266" key="GridCell.Tab.0.left" timestamp="1587662316102">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1056" height="266" key="GridCell.Tab.0.left/0.0.1920.1080@0.0.1920.1080" timestamp="1587183918490" />
-    <state width="1056" height="266" key="GridCell.Tab.0.right" timestamp="1587183918490">
+    <state width="1064" height="266" key="GridCell.Tab.0.left/0.0.1920.1080@0.0.1920.1080" timestamp="1587662316102" />
+    <state width="1064" height="266" key="GridCell.Tab.0.right" timestamp="1587662316102">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1056" height="266" key="GridCell.Tab.0.right/0.0.1920.1080@0.0.1920.1080" timestamp="1587183918490" />
+    <state width="1064" height="266" key="GridCell.Tab.0.right/0.0.1920.1080@0.0.1920.1080" timestamp="1587662316102" />
     <state width="1065" height="352" key="GridCell.Tab.1.bottom" timestamp="1587016543443">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
@@ -649,5 +620,16 @@
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="164" y="362" key="com.intellij.ide.util.TipDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1587159668337" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/main.py</url>
+          <line>12</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

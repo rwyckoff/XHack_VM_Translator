@@ -1,17 +1,20 @@
-// Bootstrapping ASM file...
 @256
 D=A
 @SP
 M=D
-// Push from constant
+
+// push constant 10
 @10
 D=A
+	// push_d
 @SP
 A=M
 M=D
 @SP
 M=M+1
-// Pop to local
+
+// pop local 0
+	// pop_d
 @SP
 A=M
 A=A-1
@@ -32,23 +35,29 @@ D=M
 @R13
 A=M
 M=D
-// Push from constant
+
+// push constant 21
 @21
 D=A
+	// push_d
 @SP
 A=M
 M=D
 @SP
 M=M+1
-// Push from constant
+
+// push constant 22
 @22
 D=A
+	// push_d
 @SP
 A=M
 M=D
 @SP
 M=M+1
-// Pop to argument
+
+// pop argument 2
+	// pop_d
 @SP
 A=M
 A=A-1
@@ -69,7 +78,9 @@ D=M
 @R13
 A=M
 M=D
-// Pop to argument
+
+// pop argument 1
+	// pop_d
 @SP
 A=M
 A=A-1
@@ -90,15 +101,19 @@ D=M
 @R13
 A=M
 M=D
-// Push from constant
+
+// push constant 36
 @36
 D=A
+	// push_d
 @SP
 A=M
 M=D
 @SP
 M=M+1
-// Pop to this
+
+// pop this 6
+	// pop_d
 @SP
 A=M
 A=A-1
@@ -119,23 +134,29 @@ D=M
 @R13
 A=M
 M=D
-// Push from constant
+
+// push constant 42
 @42
 D=A
+	// push_d
 @SP
 A=M
 M=D
 @SP
 M=M+1
-// Push from constant
+
+// push constant 45
 @45
 D=A
+	// push_d
 @SP
 A=M
 M=D
 @SP
 M=M+1
-// Pop to that
+
+// pop that 5
+	// pop_d
 @SP
 A=M
 A=A-1
@@ -156,7 +177,9 @@ D=M
 @R13
 A=M
 M=D
-// Pop to that
+
+// pop that 2
+	// pop_d
 @SP
 A=M
 A=A-1
@@ -177,15 +200,19 @@ D=M
 @R13
 A=M
 M=D
-// Push from constant
+
+// push constant 510
 @510
 D=A
+	// push_d
 @SP
 A=M
 M=D
 @SP
 M=M+1
-// Pop to temp
+
+// pop temp 6
+	// pop_d
 @SP
 A=M
 A=A-1
@@ -194,7 +221,8 @@ D=M
 M=M-1
 @11
 M=D
-// Push from local
+
+// push local 0
 @0
 D=A
 @LCL
@@ -205,12 +233,14 @@ M=D
 @R13
 A=M
 D=M
+	// push_d
 @SP
 A=M
 M=D
 @SP
 M=M+1
-// Push from that
+
+// push that 5
 @5
 D=A
 @THAT
@@ -221,12 +251,15 @@ M=D
 @R13
 A=M
 D=M
+	// push_d
 @SP
 A=M
 M=D
 @SP
 M=M+1
+
 // add
+	// pop_d
 @SP
 A=M
 A=A-1
@@ -235,6 +268,7 @@ D=M
 M=M-1
 @R14
 M=D
+	// pop_d
 @SP
 A=M
 A=A-1
@@ -243,12 +277,14 @@ D=M
 M=M-1
 @R14
 D=D+M
+	// push_d
 @SP
 A=M
 M=D
 @SP
 M=M+1
-// Push from argument
+
+// push argument 1
 @1
 D=A
 @ARG
@@ -259,12 +295,15 @@ M=D
 @R13
 A=M
 D=M
+	// push_d
 @SP
 A=M
 M=D
 @SP
 M=M+1
+
 // sub
+	// pop_d
 @SP
 A=M
 A=A-1
@@ -273,6 +312,7 @@ D=M
 M=M-1
 @R14
 M=D
+	// pop_d
 @SP
 A=M
 A=A-1
@@ -281,12 +321,14 @@ D=M
 M=M-1
 @R14
 D=D-M
+	// push_d
 @SP
 A=M
 M=D
 @SP
 M=M+1
-// Push from this
+
+// push this 6
 @6
 D=A
 @THIS
@@ -297,12 +339,14 @@ M=D
 @R13
 A=M
 D=M
+	// push_d
 @SP
 A=M
 M=D
 @SP
 M=M+1
-// Push from this
+
+// push this 6
 @6
 D=A
 @THIS
@@ -313,12 +357,15 @@ M=D
 @R13
 A=M
 D=M
+	// push_d
 @SP
 A=M
 M=D
 @SP
 M=M+1
+
 // add
+	// pop_d
 @SP
 A=M
 A=A-1
@@ -327,6 +374,7 @@ D=M
 M=M-1
 @R14
 M=D
+	// pop_d
 @SP
 A=M
 A=A-1
@@ -335,12 +383,15 @@ D=M
 M=M-1
 @R14
 D=D+M
+	// push_d
 @SP
 A=M
 M=D
 @SP
 M=M+1
+
 // sub
+	// pop_d
 @SP
 A=M
 A=A-1
@@ -349,6 +400,7 @@ D=M
 M=M-1
 @R14
 M=D
+	// pop_d
 @SP
 A=M
 A=A-1
@@ -357,20 +409,25 @@ D=M
 M=M-1
 @R14
 D=D-M
+	// push_d
 @SP
 A=M
 M=D
 @SP
 M=M+1
-// Push from temp
+
+// Push temp 6
 @11
 D=M
+	// push_d
 @SP
 A=M
 M=D
 @SP
 M=M+1
+
 // add
+	// pop_d
 @SP
 A=M
 A=A-1
@@ -379,6 +436,7 @@ D=M
 M=M-1
 @R14
 M=D
+	// pop_d
 @SP
 A=M
 A=A-1
@@ -387,6 +445,7 @@ D=M
 M=M-1
 @R14
 D=D+M
+	// push_d
 @SP
 A=M
 M=D

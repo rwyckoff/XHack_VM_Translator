@@ -1,11 +1,12 @@
-// Bootstrapping ASM file...
 @256
 D=A
 @SP
 M=D
-// Call Sys.init
+
+// call Sys.init 0
 @Sys.initRETURN1
 D=A
+	// push_d
 @SP
 A=M
 M=D
@@ -13,6 +14,7 @@ M=D
 M=M+1
 @LCL
 D=M
+	// push_d
 @SP
 A=M
 M=D
@@ -20,6 +22,7 @@ M=D
 M=M+1
 @ARG
 D=M
+	// push_d
 @SP
 A=M
 M=D
@@ -27,6 +30,7 @@ M=D
 M=M+1
 @THIS
 D=M
+	// push_d
 @SP
 A=M
 M=D
@@ -34,6 +38,7 @@ M=D
 M=M+1
 @THAT
 D=M
+	// push_d
 @SP
 A=M
 M=D
@@ -41,6 +46,7 @@ M=D
 M=M+1
 @SP
 D=M
+	// push_d
 @SP
 A=M
 M=D
@@ -48,11 +54,13 @@ M=D
 M=M+1
 @0
 D=A
+	// push_d
 @SP
 A=M
 M=D
 @SP
 M=M+1
+	// pop_d
 @SP
 A=M
 A=A-1
@@ -61,6 +69,7 @@ D=M
 M=M-1
 @R14
 M=D
+	// pop_d
 @SP
 A=M
 A=A-1
@@ -69,6 +78,7 @@ D=M
 M=M-1
 @R14
 D=D-M
+	// push_d
 @SP
 A=M
 M=D
@@ -76,11 +86,13 @@ M=D
 M=M+1
 @5
 D=A
+	// push_d
 @SP
 A=M
 M=D
 @SP
 M=M+1
+	// pop_d
 @SP
 A=M
 A=A-1
@@ -89,6 +101,7 @@ D=M
 M=M-1
 @R14
 M=D
+	// pop_d
 @SP
 A=M
 A=A-1
@@ -97,11 +110,13 @@ D=M
 M=M-1
 @R14
 D=D-M
+	// push_d
 @SP
 A=M
 M=D
 @SP
 M=M+1
+	// pop_d
 @SP
 A=M
 A=A-1
@@ -112,11 +127,13 @@ M=M-1
 M=D
 @SP
 D=M
+	// push_d
 @SP
 A=M
 M=D
 @SP
 M=M+1
+	// pop_d
 @SP
 A=M
 A=A-1
@@ -128,18 +145,23 @@ M=D
 @Sys.init
 0;JMP
 (Sys.initRETURN1)
-// Defining function Sys.init...
+
+// function Sys.init 0
 (Sys.init)
 D=0
-// Push from constant
+
+// push constant 4000
 @4000
 D=A
+	// push_d
 @SP
 A=M
 M=D
 @SP
 M=M+1
-// Pop to pointer
+
+// pop pointer 0
+	// pop_d
 @SP
 A=M
 A=A-1
@@ -148,15 +170,19 @@ D=M
 M=M-1
 @3
 M=D
-// Push from constant
+
+// push constant 5000
 @5000
 D=A
+	// push_d
 @SP
 A=M
 M=D
 @SP
 M=M+1
-// Pop to pointer
+
+// pop pointer 1
+	// pop_d
 @SP
 A=M
 A=A-1
@@ -165,9 +191,11 @@ D=M
 M=M-1
 @4
 M=D
-// Call Sys.main
+
+// call Sys.main 0
 @Sys.mainRETURN2
 D=A
+	// push_d
 @SP
 A=M
 M=D
@@ -175,6 +203,7 @@ M=D
 M=M+1
 @LCL
 D=M
+	// push_d
 @SP
 A=M
 M=D
@@ -182,6 +211,7 @@ M=D
 M=M+1
 @ARG
 D=M
+	// push_d
 @SP
 A=M
 M=D
@@ -189,6 +219,7 @@ M=D
 M=M+1
 @THIS
 D=M
+	// push_d
 @SP
 A=M
 M=D
@@ -196,6 +227,7 @@ M=D
 M=M+1
 @THAT
 D=M
+	// push_d
 @SP
 A=M
 M=D
@@ -203,6 +235,7 @@ M=D
 M=M+1
 @SP
 D=M
+	// push_d
 @SP
 A=M
 M=D
@@ -210,11 +243,13 @@ M=D
 M=M+1
 @0
 D=A
+	// push_d
 @SP
 A=M
 M=D
 @SP
 M=M+1
+	// pop_d
 @SP
 A=M
 A=A-1
@@ -223,6 +258,7 @@ D=M
 M=M-1
 @R14
 M=D
+	// pop_d
 @SP
 A=M
 A=A-1
@@ -231,6 +267,7 @@ D=M
 M=M-1
 @R14
 D=D-M
+	// push_d
 @SP
 A=M
 M=D
@@ -238,11 +275,13 @@ M=D
 M=M+1
 @5
 D=A
+	// push_d
 @SP
 A=M
 M=D
 @SP
 M=M+1
+	// pop_d
 @SP
 A=M
 A=A-1
@@ -251,6 +290,7 @@ D=M
 M=M-1
 @R14
 M=D
+	// pop_d
 @SP
 A=M
 A=A-1
@@ -259,11 +299,13 @@ D=M
 M=M-1
 @R14
 D=D-M
+	// push_d
 @SP
 A=M
 M=D
 @SP
 M=M+1
+	// pop_d
 @SP
 A=M
 A=A-1
@@ -274,11 +316,13 @@ M=M-1
 M=D
 @SP
 D=M
+	// push_d
 @SP
 A=M
 M=D
 @SP
 M=M+1
+	// pop_d
 @SP
 A=M
 A=A-1
@@ -290,7 +334,9 @@ M=D
 @Sys.main
 0;JMP
 (Sys.mainRETURN2)
-// Pop to temp
+
+// pop temp 1
+	// pop_d
 @SP
 A=M
 A=A-1
@@ -299,47 +345,60 @@ D=M
 M=M-1
 @6
 M=D
+
+// label LOOP
 (Sys$LOOP)
-// goto
+
+// goto LOOP
 @Sys$LOOP
 0;JMP
-// Defining function Sys.main...
+
+// function Sys.main 5
 (Sys.main)
 D=0
+	// push_d
 @SP
 A=M
 M=D
 @SP
 M=M+1
+	// push_d
 @SP
 A=M
 M=D
 @SP
 M=M+1
+	// push_d
 @SP
 A=M
 M=D
 @SP
 M=M+1
+	// push_d
 @SP
 A=M
 M=D
 @SP
 M=M+1
+	// push_d
 @SP
 A=M
 M=D
 @SP
 M=M+1
-// Push from constant
+
+// push constant 4001
 @4001
 D=A
+	// push_d
 @SP
 A=M
 M=D
 @SP
 M=M+1
-// Pop to pointer
+
+// pop pointer 0
+	// pop_d
 @SP
 A=M
 A=A-1
@@ -348,15 +407,19 @@ D=M
 M=M-1
 @3
 M=D
-// Push from constant
+
+// push constant 5001
 @5001
 D=A
+	// push_d
 @SP
 A=M
 M=D
 @SP
 M=M+1
-// Pop to pointer
+
+// pop pointer 1
+	// pop_d
 @SP
 A=M
 A=A-1
@@ -365,15 +428,19 @@ D=M
 M=M-1
 @4
 M=D
-// Push from constant
+
+// push constant 200
 @200
 D=A
+	// push_d
 @SP
 A=M
 M=D
 @SP
 M=M+1
-// Pop to local
+
+// pop local 1
+	// pop_d
 @SP
 A=M
 A=A-1
@@ -394,15 +461,19 @@ D=M
 @R13
 A=M
 M=D
-// Push from constant
+
+// push constant 40
 @40
 D=A
+	// push_d
 @SP
 A=M
 M=D
 @SP
 M=M+1
-// Pop to local
+
+// pop local 2
+	// pop_d
 @SP
 A=M
 A=A-1
@@ -423,15 +494,19 @@ D=M
 @R13
 A=M
 M=D
-// Push from constant
+
+// push constant 6
 @6
 D=A
+	// push_d
 @SP
 A=M
 M=D
 @SP
 M=M+1
-// Pop to local
+
+// pop local 3
+	// pop_d
 @SP
 A=M
 A=A-1
@@ -452,17 +527,21 @@ D=M
 @R13
 A=M
 M=D
-// Push from constant
+
+// push constant 123
 @123
 D=A
+	// push_d
 @SP
 A=M
 M=D
 @SP
 M=M+1
-// Call Sys.add12
+
+// call Sys.add12 1
 @Sys.add12RETURN3
 D=A
+	// push_d
 @SP
 A=M
 M=D
@@ -470,6 +549,7 @@ M=D
 M=M+1
 @LCL
 D=M
+	// push_d
 @SP
 A=M
 M=D
@@ -477,6 +557,7 @@ M=D
 M=M+1
 @ARG
 D=M
+	// push_d
 @SP
 A=M
 M=D
@@ -484,6 +565,7 @@ M=D
 M=M+1
 @THIS
 D=M
+	// push_d
 @SP
 A=M
 M=D
@@ -491,6 +573,7 @@ M=D
 M=M+1
 @THAT
 D=M
+	// push_d
 @SP
 A=M
 M=D
@@ -498,6 +581,7 @@ M=D
 M=M+1
 @SP
 D=M
+	// push_d
 @SP
 A=M
 M=D
@@ -505,11 +589,13 @@ M=D
 M=M+1
 @1
 D=A
+	// push_d
 @SP
 A=M
 M=D
 @SP
 M=M+1
+	// pop_d
 @SP
 A=M
 A=A-1
@@ -518,6 +604,7 @@ D=M
 M=M-1
 @R14
 M=D
+	// pop_d
 @SP
 A=M
 A=A-1
@@ -526,6 +613,7 @@ D=M
 M=M-1
 @R14
 D=D-M
+	// push_d
 @SP
 A=M
 M=D
@@ -533,11 +621,13 @@ M=D
 M=M+1
 @5
 D=A
+	// push_d
 @SP
 A=M
 M=D
 @SP
 M=M+1
+	// pop_d
 @SP
 A=M
 A=A-1
@@ -546,6 +636,7 @@ D=M
 M=M-1
 @R14
 M=D
+	// pop_d
 @SP
 A=M
 A=A-1
@@ -554,11 +645,13 @@ D=M
 M=M-1
 @R14
 D=D-M
+	// push_d
 @SP
 A=M
 M=D
 @SP
 M=M+1
+	// pop_d
 @SP
 A=M
 A=A-1
@@ -569,11 +662,13 @@ M=M-1
 M=D
 @SP
 D=M
+	// push_d
 @SP
 A=M
 M=D
 @SP
 M=M+1
+	// pop_d
 @SP
 A=M
 A=A-1
@@ -585,7 +680,9 @@ M=D
 @Sys.add12
 0;JMP
 (Sys.add12RETURN3)
-// Pop to temp
+
+// pop temp 0
+	// pop_d
 @SP
 A=M
 A=A-1
@@ -594,7 +691,8 @@ D=M
 M=M-1
 @5
 M=D
-// Push from local
+
+// push local 0
 @0
 D=A
 @LCL
@@ -605,12 +703,14 @@ M=D
 @R13
 A=M
 D=M
+	// push_d
 @SP
 A=M
 M=D
 @SP
 M=M+1
-// Push from local
+
+// push local 1
 @1
 D=A
 @LCL
@@ -621,12 +721,14 @@ M=D
 @R13
 A=M
 D=M
+	// push_d
 @SP
 A=M
 M=D
 @SP
 M=M+1
-// Push from local
+
+// push local 2
 @2
 D=A
 @LCL
@@ -637,12 +739,14 @@ M=D
 @R13
 A=M
 D=M
+	// push_d
 @SP
 A=M
 M=D
 @SP
 M=M+1
-// Push from local
+
+// push local 3
 @3
 D=A
 @LCL
@@ -653,12 +757,14 @@ M=D
 @R13
 A=M
 D=M
+	// push_d
 @SP
 A=M
 M=D
 @SP
 M=M+1
-// Push from local
+
+// push local 4
 @4
 D=A
 @LCL
@@ -669,12 +775,15 @@ M=D
 @R13
 A=M
 D=M
+	// push_d
 @SP
 A=M
 M=D
 @SP
 M=M+1
+
 // add
+	// pop_d
 @SP
 A=M
 A=A-1
@@ -683,6 +792,7 @@ D=M
 M=M-1
 @R14
 M=D
+	// pop_d
 @SP
 A=M
 A=A-1
@@ -691,12 +801,15 @@ D=M
 M=M-1
 @R14
 D=D+M
+	// push_d
 @SP
 A=M
 M=D
 @SP
 M=M+1
+
 // add
+	// pop_d
 @SP
 A=M
 A=A-1
@@ -705,6 +818,7 @@ D=M
 M=M-1
 @R14
 M=D
+	// pop_d
 @SP
 A=M
 A=A-1
@@ -713,12 +827,15 @@ D=M
 M=M-1
 @R14
 D=D+M
+	// push_d
 @SP
 A=M
 M=D
 @SP
 M=M+1
+
 // add
+	// pop_d
 @SP
 A=M
 A=A-1
@@ -727,6 +844,7 @@ D=M
 M=M-1
 @R14
 M=D
+	// pop_d
 @SP
 A=M
 A=A-1
@@ -735,12 +853,15 @@ D=M
 M=M-1
 @R14
 D=D+M
+	// push_d
 @SP
 A=M
 M=D
 @SP
 M=M+1
+
 // add
+	// pop_d
 @SP
 A=M
 A=A-1
@@ -749,6 +870,7 @@ D=M
 M=M-1
 @R14
 M=D
+	// pop_d
 @SP
 A=M
 A=A-1
@@ -757,12 +879,14 @@ D=M
 M=M-1
 @R14
 D=D+M
+	// push_d
 @SP
 A=M
 M=D
 @SP
 M=M+1
-// Returning...
+
+// return
 @LCL
 D=M
 @R14
@@ -775,6 +899,7 @@ A=A-D
 D=M
 @R13
 M=D
+	// pop_d
 @SP
 A=M
 A=A-1
@@ -824,18 +949,23 @@ M=D
 @R13
 A=M
 0;JMP
-// Defining function Sys.add12...
+
+// function Sys.add12 0
 (Sys.add12)
 D=0
-// Push from constant
+
+// push constant 4002
 @4002
 D=A
+	// push_d
 @SP
 A=M
 M=D
 @SP
 M=M+1
-// Pop to pointer
+
+// pop pointer 0
+	// pop_d
 @SP
 A=M
 A=A-1
@@ -844,15 +974,19 @@ D=M
 M=M-1
 @3
 M=D
-// Push from constant
+
+// push constant 5002
 @5002
 D=A
+	// push_d
 @SP
 A=M
 M=D
 @SP
 M=M+1
-// Pop to pointer
+
+// pop pointer 1
+	// pop_d
 @SP
 A=M
 A=A-1
@@ -861,7 +995,8 @@ D=M
 M=M-1
 @4
 M=D
-// Push from argument
+
+// push argument 0
 @0
 D=A
 @ARG
@@ -872,20 +1007,25 @@ M=D
 @R13
 A=M
 D=M
+	// push_d
 @SP
 A=M
 M=D
 @SP
 M=M+1
-// Push from constant
+
+// push constant 12
 @12
 D=A
+	// push_d
 @SP
 A=M
 M=D
 @SP
 M=M+1
+
 // add
+	// pop_d
 @SP
 A=M
 A=A-1
@@ -894,6 +1034,7 @@ D=M
 M=M-1
 @R14
 M=D
+	// pop_d
 @SP
 A=M
 A=A-1
@@ -902,12 +1043,14 @@ D=M
 M=M-1
 @R14
 D=D+M
+	// push_d
 @SP
 A=M
 M=D
 @SP
 M=M+1
-// Returning...
+
+// return
 @LCL
 D=M
 @R14
@@ -920,6 +1063,7 @@ A=A-D
 D=M
 @R13
 M=D
+	// pop_d
 @SP
 A=M
 A=A-1

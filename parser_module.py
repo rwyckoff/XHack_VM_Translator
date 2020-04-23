@@ -140,8 +140,10 @@ class Parser:
             # and that its index doesn't go outside its memory segment.
             if command_type in ['C_PUSH', 'C_POP']:
                 if check_unknown_mem_segment(self.current_command, self.command_idx) or \
-                        check_illegal_index(self.current_command, self.command_idx) or \
-                        check_index_out_of_range(self.current_command, self.command_idx):
+                        check_illegal_index(self.current_command, self.translate_bin_hex(self.current_command[2]),
+                                            self.command_idx) or \
+                        check_index_out_of_range(self.current_command, self.translate_bin_hex(self.current_command[2]),
+                                                 self.command_idx):
                     return 'INVALID'
 
             # If it's a label, goto, or if-goto command, check to ensure its not referencing an illegal label.

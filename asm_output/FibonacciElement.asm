@@ -1,11 +1,12 @@
-// Bootstrapping ASM file...
 @256
 D=A
 @SP
 M=D
-// Call Sys.init
+
+// call Sys.init 0
 @Sys.initRETURN1
 D=A
+	// push_d
 @SP
 A=M
 M=D
@@ -13,6 +14,7 @@ M=D
 M=M+1
 @LCL
 D=M
+	// push_d
 @SP
 A=M
 M=D
@@ -20,6 +22,7 @@ M=D
 M=M+1
 @ARG
 D=M
+	// push_d
 @SP
 A=M
 M=D
@@ -27,6 +30,7 @@ M=D
 M=M+1
 @THIS
 D=M
+	// push_d
 @SP
 A=M
 M=D
@@ -34,6 +38,7 @@ M=D
 M=M+1
 @THAT
 D=M
+	// push_d
 @SP
 A=M
 M=D
@@ -41,6 +46,7 @@ M=D
 M=M+1
 @SP
 D=M
+	// push_d
 @SP
 A=M
 M=D
@@ -48,11 +54,13 @@ M=D
 M=M+1
 @0
 D=A
+	// push_d
 @SP
 A=M
 M=D
 @SP
 M=M+1
+	// pop_d
 @SP
 A=M
 A=A-1
@@ -61,6 +69,7 @@ D=M
 M=M-1
 @R14
 M=D
+	// pop_d
 @SP
 A=M
 A=A-1
@@ -69,6 +78,7 @@ D=M
 M=M-1
 @R14
 D=D-M
+	// push_d
 @SP
 A=M
 M=D
@@ -76,11 +86,13 @@ M=D
 M=M+1
 @5
 D=A
+	// push_d
 @SP
 A=M
 M=D
 @SP
 M=M+1
+	// pop_d
 @SP
 A=M
 A=A-1
@@ -89,6 +101,7 @@ D=M
 M=M-1
 @R14
 M=D
+	// pop_d
 @SP
 A=M
 A=A-1
@@ -97,11 +110,13 @@ D=M
 M=M-1
 @R14
 D=D-M
+	// push_d
 @SP
 A=M
 M=D
 @SP
 M=M+1
+	// pop_d
 @SP
 A=M
 A=A-1
@@ -112,11 +127,13 @@ M=M-1
 M=D
 @SP
 D=M
+	// push_d
 @SP
 A=M
 M=D
 @SP
 M=M+1
+	// pop_d
 @SP
 A=M
 A=A-1
@@ -128,10 +145,12 @@ M=D
 @Sys.init
 0;JMP
 (Sys.initRETURN1)
-// Defining function Main.fibonacci...
+
+// function Main.fibonacci 0
 (Main.fibonacci)
 D=0
-// Push from argument
+
+// push argument 0
 @0
 D=A
 @ARG
@@ -142,20 +161,25 @@ M=D
 @R13
 A=M
 D=M
+	// push_d
 @SP
 A=M
 M=D
 @SP
 M=M+1
-// Push from constant
+
+// push constant 2
 @2
 D=A
+	// push_d
 @SP
 A=M
 M=D
 @SP
 M=M+1
+
 // lt
+	// pop_d
 @SP
 A=M
 A=A-1
@@ -164,6 +188,7 @@ D=M
 M=M-1
 @R14
 M=D
+	// pop_d
 @SP
 A=M
 A=A-1
@@ -180,12 +205,15 @@ D=0
 (TRUE0)
 D=-1
 (END0)
+	// push_d
 @SP
 A=M
 M=D
 @SP
 M=M+1
-// if-goto
+
+// if-goto IF_TRUE
+	// pop_d
 @SP
 A=M
 A=A-1
@@ -194,11 +222,15 @@ D=M
 M=M-1
 @Main$IF_TRUE
 D;JNE
-// goto
+
+// goto IF_FALSE
 @Main$IF_FALSE
 0;JMP
+
+// label IF_TRUE
 (Main$IF_TRUE)
-// Push from argument
+
+// push argument 0
 @0
 D=A
 @ARG
@@ -209,12 +241,14 @@ M=D
 @R13
 A=M
 D=M
+	// push_d
 @SP
 A=M
 M=D
 @SP
 M=M+1
-// Returning...
+
+// return
 @LCL
 D=M
 @R14
@@ -227,6 +261,7 @@ A=A-D
 D=M
 @R13
 M=D
+	// pop_d
 @SP
 A=M
 A=A-1
@@ -276,8 +311,11 @@ M=D
 @R13
 A=M
 0;JMP
+
+// label IF_FALSE
 (Main$IF_FALSE)
-// Push from argument
+
+// push argument 0
 @0
 D=A
 @ARG
@@ -288,20 +326,25 @@ M=D
 @R13
 A=M
 D=M
+	// push_d
 @SP
 A=M
 M=D
 @SP
 M=M+1
-// Push from constant
+
+// push constant 2
 @2
 D=A
+	// push_d
 @SP
 A=M
 M=D
 @SP
 M=M+1
+
 // sub
+	// pop_d
 @SP
 A=M
 A=A-1
@@ -310,6 +353,7 @@ D=M
 M=M-1
 @R14
 M=D
+	// pop_d
 @SP
 A=M
 A=A-1
@@ -318,14 +362,17 @@ D=M
 M=M-1
 @R14
 D=D-M
+	// push_d
 @SP
 A=M
 M=D
 @SP
 M=M+1
-// Call Main.fibonacci
+
+// call Main.fibonacci 1
 @Main.fibonacciRETURN2
 D=A
+	// push_d
 @SP
 A=M
 M=D
@@ -333,6 +380,7 @@ M=D
 M=M+1
 @LCL
 D=M
+	// push_d
 @SP
 A=M
 M=D
@@ -340,6 +388,7 @@ M=D
 M=M+1
 @ARG
 D=M
+	// push_d
 @SP
 A=M
 M=D
@@ -347,6 +396,7 @@ M=D
 M=M+1
 @THIS
 D=M
+	// push_d
 @SP
 A=M
 M=D
@@ -354,6 +404,7 @@ M=D
 M=M+1
 @THAT
 D=M
+	// push_d
 @SP
 A=M
 M=D
@@ -361,6 +412,7 @@ M=D
 M=M+1
 @SP
 D=M
+	// push_d
 @SP
 A=M
 M=D
@@ -368,11 +420,13 @@ M=D
 M=M+1
 @1
 D=A
+	// push_d
 @SP
 A=M
 M=D
 @SP
 M=M+1
+	// pop_d
 @SP
 A=M
 A=A-1
@@ -381,6 +435,7 @@ D=M
 M=M-1
 @R14
 M=D
+	// pop_d
 @SP
 A=M
 A=A-1
@@ -389,6 +444,7 @@ D=M
 M=M-1
 @R14
 D=D-M
+	// push_d
 @SP
 A=M
 M=D
@@ -396,11 +452,13 @@ M=D
 M=M+1
 @5
 D=A
+	// push_d
 @SP
 A=M
 M=D
 @SP
 M=M+1
+	// pop_d
 @SP
 A=M
 A=A-1
@@ -409,6 +467,7 @@ D=M
 M=M-1
 @R14
 M=D
+	// pop_d
 @SP
 A=M
 A=A-1
@@ -417,11 +476,13 @@ D=M
 M=M-1
 @R14
 D=D-M
+	// push_d
 @SP
 A=M
 M=D
 @SP
 M=M+1
+	// pop_d
 @SP
 A=M
 A=A-1
@@ -432,11 +493,13 @@ M=M-1
 M=D
 @SP
 D=M
+	// push_d
 @SP
 A=M
 M=D
 @SP
 M=M+1
+	// pop_d
 @SP
 A=M
 A=A-1
@@ -448,7 +511,8 @@ M=D
 @Main.fibonacci
 0;JMP
 (Main.fibonacciRETURN2)
-// Push from argument
+
+// push argument 0
 @0
 D=A
 @ARG
@@ -459,20 +523,25 @@ M=D
 @R13
 A=M
 D=M
+	// push_d
 @SP
 A=M
 M=D
 @SP
 M=M+1
-// Push from constant
+
+// push constant 1
 @1
 D=A
+	// push_d
 @SP
 A=M
 M=D
 @SP
 M=M+1
+
 // sub
+	// pop_d
 @SP
 A=M
 A=A-1
@@ -481,6 +550,7 @@ D=M
 M=M-1
 @R14
 M=D
+	// pop_d
 @SP
 A=M
 A=A-1
@@ -489,14 +559,17 @@ D=M
 M=M-1
 @R14
 D=D-M
+	// push_d
 @SP
 A=M
 M=D
 @SP
 M=M+1
-// Call Main.fibonacci
+
+// call Main.fibonacci 1
 @Main.fibonacciRETURN3
 D=A
+	// push_d
 @SP
 A=M
 M=D
@@ -504,6 +577,7 @@ M=D
 M=M+1
 @LCL
 D=M
+	// push_d
 @SP
 A=M
 M=D
@@ -511,6 +585,7 @@ M=D
 M=M+1
 @ARG
 D=M
+	// push_d
 @SP
 A=M
 M=D
@@ -518,6 +593,7 @@ M=D
 M=M+1
 @THIS
 D=M
+	// push_d
 @SP
 A=M
 M=D
@@ -525,6 +601,7 @@ M=D
 M=M+1
 @THAT
 D=M
+	// push_d
 @SP
 A=M
 M=D
@@ -532,6 +609,7 @@ M=D
 M=M+1
 @SP
 D=M
+	// push_d
 @SP
 A=M
 M=D
@@ -539,11 +617,13 @@ M=D
 M=M+1
 @1
 D=A
+	// push_d
 @SP
 A=M
 M=D
 @SP
 M=M+1
+	// pop_d
 @SP
 A=M
 A=A-1
@@ -552,6 +632,7 @@ D=M
 M=M-1
 @R14
 M=D
+	// pop_d
 @SP
 A=M
 A=A-1
@@ -560,6 +641,7 @@ D=M
 M=M-1
 @R14
 D=D-M
+	// push_d
 @SP
 A=M
 M=D
@@ -567,11 +649,13 @@ M=D
 M=M+1
 @5
 D=A
+	// push_d
 @SP
 A=M
 M=D
 @SP
 M=M+1
+	// pop_d
 @SP
 A=M
 A=A-1
@@ -580,6 +664,7 @@ D=M
 M=M-1
 @R14
 M=D
+	// pop_d
 @SP
 A=M
 A=A-1
@@ -588,11 +673,13 @@ D=M
 M=M-1
 @R14
 D=D-M
+	// push_d
 @SP
 A=M
 M=D
 @SP
 M=M+1
+	// pop_d
 @SP
 A=M
 A=A-1
@@ -603,11 +690,13 @@ M=M-1
 M=D
 @SP
 D=M
+	// push_d
 @SP
 A=M
 M=D
 @SP
 M=M+1
+	// pop_d
 @SP
 A=M
 A=A-1
@@ -619,7 +708,9 @@ M=D
 @Main.fibonacci
 0;JMP
 (Main.fibonacciRETURN3)
+
 // add
+	// pop_d
 @SP
 A=M
 A=A-1
@@ -628,6 +719,7 @@ D=M
 M=M-1
 @R14
 M=D
+	// pop_d
 @SP
 A=M
 A=A-1
@@ -636,12 +728,14 @@ D=M
 M=M-1
 @R14
 D=D+M
+	// push_d
 @SP
 A=M
 M=D
 @SP
 M=M+1
-// Returning...
+
+// return
 @LCL
 D=M
 @R14
@@ -654,6 +748,7 @@ A=A-D
 D=M
 @R13
 M=D
+	// pop_d
 @SP
 A=M
 A=A-1
@@ -703,20 +798,25 @@ M=D
 @R13
 A=M
 0;JMP
-// Defining function Sys.init...
+
+// function Sys.init 0
 (Sys.init)
 D=0
-// Push from constant
+
+// push constant 4
 @4
 D=A
+	// push_d
 @SP
 A=M
 M=D
 @SP
 M=M+1
-// Call Main.fibonacci
+
+// call Main.fibonacci 1
 @Main.fibonacciRETURN4
 D=A
+	// push_d
 @SP
 A=M
 M=D
@@ -724,6 +824,7 @@ M=D
 M=M+1
 @LCL
 D=M
+	// push_d
 @SP
 A=M
 M=D
@@ -731,6 +832,7 @@ M=D
 M=M+1
 @ARG
 D=M
+	// push_d
 @SP
 A=M
 M=D
@@ -738,6 +840,7 @@ M=D
 M=M+1
 @THIS
 D=M
+	// push_d
 @SP
 A=M
 M=D
@@ -745,6 +848,7 @@ M=D
 M=M+1
 @THAT
 D=M
+	// push_d
 @SP
 A=M
 M=D
@@ -752,6 +856,7 @@ M=D
 M=M+1
 @SP
 D=M
+	// push_d
 @SP
 A=M
 M=D
@@ -759,11 +864,13 @@ M=D
 M=M+1
 @1
 D=A
+	// push_d
 @SP
 A=M
 M=D
 @SP
 M=M+1
+	// pop_d
 @SP
 A=M
 A=A-1
@@ -772,6 +879,7 @@ D=M
 M=M-1
 @R14
 M=D
+	// pop_d
 @SP
 A=M
 A=A-1
@@ -780,6 +888,7 @@ D=M
 M=M-1
 @R14
 D=D-M
+	// push_d
 @SP
 A=M
 M=D
@@ -787,11 +896,13 @@ M=D
 M=M+1
 @5
 D=A
+	// push_d
 @SP
 A=M
 M=D
 @SP
 M=M+1
+	// pop_d
 @SP
 A=M
 A=A-1
@@ -800,6 +911,7 @@ D=M
 M=M-1
 @R14
 M=D
+	// pop_d
 @SP
 A=M
 A=A-1
@@ -808,11 +920,13 @@ D=M
 M=M-1
 @R14
 D=D-M
+	// push_d
 @SP
 A=M
 M=D
 @SP
 M=M+1
+	// pop_d
 @SP
 A=M
 A=A-1
@@ -823,11 +937,13 @@ M=M-1
 M=D
 @SP
 D=M
+	// push_d
 @SP
 A=M
 M=D
 @SP
 M=M+1
+	// pop_d
 @SP
 A=M
 A=A-1
@@ -839,7 +955,10 @@ M=D
 @Main.fibonacci
 0;JMP
 (Main.fibonacciRETURN4)
+
+// label WHILE
 (Sys$WHILE)
-// goto
+
+// goto WHILE
 @Sys$WHILE
 0;JMP

@@ -6,6 +6,8 @@ Project Two -- Extended VM Translator
 
 The main VM Translator module drives the translation process from one or more XVM files into one XHAL assembly file
 compatible with the XHAL Assembler.
+
+Much of the un-optimized ASM code is based on Professor Bahn's basic VM translator.
 """
 
 import os
@@ -125,5 +127,3 @@ if config.WRITE_ERRORS_TO_LOG:
 
 input_files = get_vm_files(input_file_or_dir_path)
 process_vm_files(input_files, output_file_path, input_file_or_dir_path)
-
-print("\n\n\n%%%%%%%%%%%%%%%%     Done!     %%%%%%%%%%%%%%%%")

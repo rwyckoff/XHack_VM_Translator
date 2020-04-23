@@ -1,11 +1,12 @@
-// Bootstrapping ASM file...
 @256
 D=A
 @SP
 M=D
-// Call Sys.init
+
+// call Sys.init 0
 @Sys.initRETURN1
 D=A
+	// push_d
 @SP
 A=M
 M=D
@@ -13,6 +14,7 @@ M=D
 M=M+1
 @LCL
 D=M
+	// push_d
 @SP
 A=M
 M=D
@@ -20,6 +22,7 @@ M=D
 M=M+1
 @ARG
 D=M
+	// push_d
 @SP
 A=M
 M=D
@@ -27,6 +30,7 @@ M=D
 M=M+1
 @THIS
 D=M
+	// push_d
 @SP
 A=M
 M=D
@@ -34,6 +38,7 @@ M=D
 M=M+1
 @THAT
 D=M
+	// push_d
 @SP
 A=M
 M=D
@@ -41,6 +46,7 @@ M=D
 M=M+1
 @SP
 D=M
+	// push_d
 @SP
 A=M
 M=D
@@ -48,11 +54,13 @@ M=D
 M=M+1
 @0
 D=A
+	// push_d
 @SP
 A=M
 M=D
 @SP
 M=M+1
+	// pop_d
 @SP
 A=M
 A=A-1
@@ -61,6 +69,7 @@ D=M
 M=M-1
 @R14
 M=D
+	// pop_d
 @SP
 A=M
 A=A-1
@@ -69,6 +78,7 @@ D=M
 M=M-1
 @R14
 D=D-M
+	// push_d
 @SP
 A=M
 M=D
@@ -76,11 +86,13 @@ M=D
 M=M+1
 @5
 D=A
+	// push_d
 @SP
 A=M
 M=D
 @SP
 M=M+1
+	// pop_d
 @SP
 A=M
 A=A-1
@@ -89,6 +101,7 @@ D=M
 M=M-1
 @R14
 M=D
+	// pop_d
 @SP
 A=M
 A=A-1
@@ -97,11 +110,13 @@ D=M
 M=M-1
 @R14
 D=D-M
+	// push_d
 @SP
 A=M
 M=D
 @SP
 M=M+1
+	// pop_d
 @SP
 A=M
 A=A-1
@@ -112,11 +127,13 @@ M=M-1
 M=D
 @SP
 D=M
+	// push_d
 @SP
 A=M
 M=D
 @SP
 M=M+1
+	// pop_d
 @SP
 A=M
 A=A-1
@@ -128,10 +145,12 @@ M=D
 @Sys.init
 0;JMP
 (Sys.initRETURN1)
-// Defining function Class1.set...
+
+// function Class1.set 0
 (Class1.set)
 D=0
-// Push from argument
+
+// push argument 0
 @0
 D=A
 @ARG
@@ -142,12 +161,15 @@ M=D
 @R13
 A=M
 D=M
+	// push_d
 @SP
 A=M
 M=D
 @SP
 M=M+1
-// Pop to static
+
+// pop static 0
+	// pop_d
 @SP
 A=M
 A=A-1
@@ -156,7 +178,8 @@ D=M
 M=M-1
 @Class1.0
 M=D
-// Push from argument
+
+// push argument 1
 @1
 D=A
 @ARG
@@ -167,12 +190,15 @@ M=D
 @R13
 A=M
 D=M
+	// push_d
 @SP
 A=M
 M=D
 @SP
 M=M+1
-// Pop to static
+
+// pop static 1
+	// pop_d
 @SP
 A=M
 A=A-1
@@ -181,15 +207,18 @@ D=M
 M=M-1
 @Class1.1
 M=D
-// Push from constant
+
+// push constant 0
 @0
 D=A
+	// push_d
 @SP
 A=M
 M=D
 @SP
 M=M+1
-// Returning...
+
+// return
 @LCL
 D=M
 @R14
@@ -202,6 +231,7 @@ A=A-D
 D=M
 @R13
 M=D
+	// pop_d
 @SP
 A=M
 A=A-1
@@ -251,26 +281,33 @@ M=D
 @R13
 A=M
 0;JMP
-// Defining function Class1.get...
+
+// function Class1.get 0
 (Class1.get)
 D=0
-// Push from static
+
+// push static 0
 @Class1.0
 D=M
+	// push_d
 @SP
 A=M
 M=D
 @SP
 M=M+1
-// Push from static
+
+// push static 1
 @Class1.1
 D=M
+	// push_d
 @SP
 A=M
 M=D
 @SP
 M=M+1
+
 // sub
+	// pop_d
 @SP
 A=M
 A=A-1
@@ -279,6 +316,7 @@ D=M
 M=M-1
 @R14
 M=D
+	// pop_d
 @SP
 A=M
 A=A-1
@@ -287,12 +325,14 @@ D=M
 M=M-1
 @R14
 D=D-M
+	// push_d
 @SP
 A=M
 M=D
 @SP
 M=M+1
-// Returning...
+
+// return
 @LCL
 D=M
 @R14
@@ -305,6 +345,7 @@ A=A-D
 D=M
 @R13
 M=D
+	// pop_d
 @SP
 A=M
 A=A-1
@@ -354,10 +395,12 @@ M=D
 @R13
 A=M
 0;JMP
-// Defining function Class2.set...
+
+// function Class2.set 0
 (Class2.set)
 D=0
-// Push from argument
+
+// push argument 0
 @0
 D=A
 @ARG
@@ -368,12 +411,15 @@ M=D
 @R13
 A=M
 D=M
+	// push_d
 @SP
 A=M
 M=D
 @SP
 M=M+1
-// Pop to static
+
+// pop static 0
+	// pop_d
 @SP
 A=M
 A=A-1
@@ -382,7 +428,8 @@ D=M
 M=M-1
 @Class2.0
 M=D
-// Push from argument
+
+// push argument 1
 @1
 D=A
 @ARG
@@ -393,12 +440,15 @@ M=D
 @R13
 A=M
 D=M
+	// push_d
 @SP
 A=M
 M=D
 @SP
 M=M+1
-// Pop to static
+
+// pop static 1
+	// pop_d
 @SP
 A=M
 A=A-1
@@ -407,15 +457,18 @@ D=M
 M=M-1
 @Class2.1
 M=D
-// Push from constant
+
+// push constant 0
 @0
 D=A
+	// push_d
 @SP
 A=M
 M=D
 @SP
 M=M+1
-// Returning...
+
+// return
 @LCL
 D=M
 @R14
@@ -428,6 +481,7 @@ A=A-D
 D=M
 @R13
 M=D
+	// pop_d
 @SP
 A=M
 A=A-1
@@ -477,26 +531,33 @@ M=D
 @R13
 A=M
 0;JMP
-// Defining function Class2.get...
+
+// function Class2.get 0
 (Class2.get)
 D=0
-// Push from static
+
+// push static 0
 @Class2.0
 D=M
+	// push_d
 @SP
 A=M
 M=D
 @SP
 M=M+1
-// Push from static
+
+// push static 1
 @Class2.1
 D=M
+	// push_d
 @SP
 A=M
 M=D
 @SP
 M=M+1
+
 // sub
+	// pop_d
 @SP
 A=M
 A=A-1
@@ -505,6 +566,7 @@ D=M
 M=M-1
 @R14
 M=D
+	// pop_d
 @SP
 A=M
 A=A-1
@@ -513,12 +575,14 @@ D=M
 M=M-1
 @R14
 D=D-M
+	// push_d
 @SP
 A=M
 M=D
 @SP
 M=M+1
-// Returning...
+
+// return
 @LCL
 D=M
 @R14
@@ -531,6 +595,7 @@ A=A-D
 D=M
 @R13
 M=D
+	// pop_d
 @SP
 A=M
 A=A-1
@@ -580,28 +645,35 @@ M=D
 @R13
 A=M
 0;JMP
-// Defining function Sys.init...
+
+// function Sys.init 0
 (Sys.init)
 D=0
-// Push from constant
+
+// push constant 6
 @6
 D=A
+	// push_d
 @SP
 A=M
 M=D
 @SP
 M=M+1
-// Push from constant
+
+// push constant 8
 @8
 D=A
+	// push_d
 @SP
 A=M
 M=D
 @SP
 M=M+1
-// Call Class1.set
+
+// call Class1.set 2
 @Class1.setRETURN2
 D=A
+	// push_d
 @SP
 A=M
 M=D
@@ -609,6 +681,7 @@ M=D
 M=M+1
 @LCL
 D=M
+	// push_d
 @SP
 A=M
 M=D
@@ -616,6 +689,7 @@ M=D
 M=M+1
 @ARG
 D=M
+	// push_d
 @SP
 A=M
 M=D
@@ -623,6 +697,7 @@ M=D
 M=M+1
 @THIS
 D=M
+	// push_d
 @SP
 A=M
 M=D
@@ -630,6 +705,7 @@ M=D
 M=M+1
 @THAT
 D=M
+	// push_d
 @SP
 A=M
 M=D
@@ -637,6 +713,7 @@ M=D
 M=M+1
 @SP
 D=M
+	// push_d
 @SP
 A=M
 M=D
@@ -644,11 +721,13 @@ M=D
 M=M+1
 @2
 D=A
+	// push_d
 @SP
 A=M
 M=D
 @SP
 M=M+1
+	// pop_d
 @SP
 A=M
 A=A-1
@@ -657,6 +736,7 @@ D=M
 M=M-1
 @R14
 M=D
+	// pop_d
 @SP
 A=M
 A=A-1
@@ -665,6 +745,7 @@ D=M
 M=M-1
 @R14
 D=D-M
+	// push_d
 @SP
 A=M
 M=D
@@ -672,11 +753,13 @@ M=D
 M=M+1
 @5
 D=A
+	// push_d
 @SP
 A=M
 M=D
 @SP
 M=M+1
+	// pop_d
 @SP
 A=M
 A=A-1
@@ -685,6 +768,7 @@ D=M
 M=M-1
 @R14
 M=D
+	// pop_d
 @SP
 A=M
 A=A-1
@@ -693,11 +777,13 @@ D=M
 M=M-1
 @R14
 D=D-M
+	// push_d
 @SP
 A=M
 M=D
 @SP
 M=M+1
+	// pop_d
 @SP
 A=M
 A=A-1
@@ -708,11 +794,13 @@ M=M-1
 M=D
 @SP
 D=M
+	// push_d
 @SP
 A=M
 M=D
 @SP
 M=M+1
+	// pop_d
 @SP
 A=M
 A=A-1
@@ -724,7 +812,9 @@ M=D
 @Class1.set
 0;JMP
 (Class1.setRETURN2)
-// Pop to temp
+
+// pop temp 0
+	// pop_d
 @SP
 A=M
 A=A-1
@@ -733,25 +823,31 @@ D=M
 M=M-1
 @5
 M=D
-// Push from constant
+
+// push constant 23
 @23
 D=A
+	// push_d
 @SP
 A=M
 M=D
 @SP
 M=M+1
-// Push from constant
+
+// push constant 15
 @15
 D=A
+	// push_d
 @SP
 A=M
 M=D
 @SP
 M=M+1
-// Call Class2.set
+
+// call Class2.set 2
 @Class2.setRETURN3
 D=A
+	// push_d
 @SP
 A=M
 M=D
@@ -759,6 +855,7 @@ M=D
 M=M+1
 @LCL
 D=M
+	// push_d
 @SP
 A=M
 M=D
@@ -766,6 +863,7 @@ M=D
 M=M+1
 @ARG
 D=M
+	// push_d
 @SP
 A=M
 M=D
@@ -773,6 +871,7 @@ M=D
 M=M+1
 @THIS
 D=M
+	// push_d
 @SP
 A=M
 M=D
@@ -780,6 +879,7 @@ M=D
 M=M+1
 @THAT
 D=M
+	// push_d
 @SP
 A=M
 M=D
@@ -787,6 +887,7 @@ M=D
 M=M+1
 @SP
 D=M
+	// push_d
 @SP
 A=M
 M=D
@@ -794,11 +895,13 @@ M=D
 M=M+1
 @2
 D=A
+	// push_d
 @SP
 A=M
 M=D
 @SP
 M=M+1
+	// pop_d
 @SP
 A=M
 A=A-1
@@ -807,6 +910,7 @@ D=M
 M=M-1
 @R14
 M=D
+	// pop_d
 @SP
 A=M
 A=A-1
@@ -815,6 +919,7 @@ D=M
 M=M-1
 @R14
 D=D-M
+	// push_d
 @SP
 A=M
 M=D
@@ -822,11 +927,13 @@ M=D
 M=M+1
 @5
 D=A
+	// push_d
 @SP
 A=M
 M=D
 @SP
 M=M+1
+	// pop_d
 @SP
 A=M
 A=A-1
@@ -835,6 +942,7 @@ D=M
 M=M-1
 @R14
 M=D
+	// pop_d
 @SP
 A=M
 A=A-1
@@ -843,11 +951,13 @@ D=M
 M=M-1
 @R14
 D=D-M
+	// push_d
 @SP
 A=M
 M=D
 @SP
 M=M+1
+	// pop_d
 @SP
 A=M
 A=A-1
@@ -858,11 +968,13 @@ M=M-1
 M=D
 @SP
 D=M
+	// push_d
 @SP
 A=M
 M=D
 @SP
 M=M+1
+	// pop_d
 @SP
 A=M
 A=A-1
@@ -874,7 +986,9 @@ M=D
 @Class2.set
 0;JMP
 (Class2.setRETURN3)
-// Pop to temp
+
+// pop temp 0
+	// pop_d
 @SP
 A=M
 A=A-1
@@ -883,9 +997,11 @@ D=M
 M=M-1
 @5
 M=D
-// Call Class1.get
+
+// call Class1.get 0
 @Class1.getRETURN4
 D=A
+	// push_d
 @SP
 A=M
 M=D
@@ -893,6 +1009,7 @@ M=D
 M=M+1
 @LCL
 D=M
+	// push_d
 @SP
 A=M
 M=D
@@ -900,6 +1017,7 @@ M=D
 M=M+1
 @ARG
 D=M
+	// push_d
 @SP
 A=M
 M=D
@@ -907,6 +1025,7 @@ M=D
 M=M+1
 @THIS
 D=M
+	// push_d
 @SP
 A=M
 M=D
@@ -914,6 +1033,7 @@ M=D
 M=M+1
 @THAT
 D=M
+	// push_d
 @SP
 A=M
 M=D
@@ -921,6 +1041,7 @@ M=D
 M=M+1
 @SP
 D=M
+	// push_d
 @SP
 A=M
 M=D
@@ -928,11 +1049,13 @@ M=D
 M=M+1
 @0
 D=A
+	// push_d
 @SP
 A=M
 M=D
 @SP
 M=M+1
+	// pop_d
 @SP
 A=M
 A=A-1
@@ -941,6 +1064,7 @@ D=M
 M=M-1
 @R14
 M=D
+	// pop_d
 @SP
 A=M
 A=A-1
@@ -949,6 +1073,7 @@ D=M
 M=M-1
 @R14
 D=D-M
+	// push_d
 @SP
 A=M
 M=D
@@ -956,11 +1081,13 @@ M=D
 M=M+1
 @5
 D=A
+	// push_d
 @SP
 A=M
 M=D
 @SP
 M=M+1
+	// pop_d
 @SP
 A=M
 A=A-1
@@ -969,6 +1096,7 @@ D=M
 M=M-1
 @R14
 M=D
+	// pop_d
 @SP
 A=M
 A=A-1
@@ -977,11 +1105,13 @@ D=M
 M=M-1
 @R14
 D=D-M
+	// push_d
 @SP
 A=M
 M=D
 @SP
 M=M+1
+	// pop_d
 @SP
 A=M
 A=A-1
@@ -992,11 +1122,13 @@ M=M-1
 M=D
 @SP
 D=M
+	// push_d
 @SP
 A=M
 M=D
 @SP
 M=M+1
+	// pop_d
 @SP
 A=M
 A=A-1
@@ -1008,9 +1140,11 @@ M=D
 @Class1.get
 0;JMP
 (Class1.getRETURN4)
-// Call Class2.get
+
+// call Class2.get 0
 @Class2.getRETURN5
 D=A
+	// push_d
 @SP
 A=M
 M=D
@@ -1018,6 +1152,7 @@ M=D
 M=M+1
 @LCL
 D=M
+	// push_d
 @SP
 A=M
 M=D
@@ -1025,6 +1160,7 @@ M=D
 M=M+1
 @ARG
 D=M
+	// push_d
 @SP
 A=M
 M=D
@@ -1032,6 +1168,7 @@ M=D
 M=M+1
 @THIS
 D=M
+	// push_d
 @SP
 A=M
 M=D
@@ -1039,6 +1176,7 @@ M=D
 M=M+1
 @THAT
 D=M
+	// push_d
 @SP
 A=M
 M=D
@@ -1046,6 +1184,7 @@ M=D
 M=M+1
 @SP
 D=M
+	// push_d
 @SP
 A=M
 M=D
@@ -1053,11 +1192,13 @@ M=D
 M=M+1
 @0
 D=A
+	// push_d
 @SP
 A=M
 M=D
 @SP
 M=M+1
+	// pop_d
 @SP
 A=M
 A=A-1
@@ -1066,6 +1207,7 @@ D=M
 M=M-1
 @R14
 M=D
+	// pop_d
 @SP
 A=M
 A=A-1
@@ -1074,6 +1216,7 @@ D=M
 M=M-1
 @R14
 D=D-M
+	// push_d
 @SP
 A=M
 M=D
@@ -1081,11 +1224,13 @@ M=D
 M=M+1
 @5
 D=A
+	// push_d
 @SP
 A=M
 M=D
 @SP
 M=M+1
+	// pop_d
 @SP
 A=M
 A=A-1
@@ -1094,6 +1239,7 @@ D=M
 M=M-1
 @R14
 M=D
+	// pop_d
 @SP
 A=M
 A=A-1
@@ -1102,11 +1248,13 @@ D=M
 M=M-1
 @R14
 D=D-M
+	// push_d
 @SP
 A=M
 M=D
 @SP
 M=M+1
+	// pop_d
 @SP
 A=M
 A=A-1
@@ -1117,11 +1265,13 @@ M=M-1
 M=D
 @SP
 D=M
+	// push_d
 @SP
 A=M
 M=D
 @SP
 M=M+1
+	// pop_d
 @SP
 A=M
 A=A-1
@@ -1133,7 +1283,10 @@ M=D
 @Class2.get
 0;JMP
 (Class2.getRETURN5)
+
+// label WHILE
 (Sys$WHILE)
-// goto
+
+// goto WHILE
 @Sys$WHILE
 0;JMP

@@ -1,9 +1,9 @@
-// Bootstrapping ASM file...
 @256
 D=A
 @SP
 M=D
-// Push from argument
+
+// push argument 1
 @1
 D=A
 @ARG
@@ -14,12 +14,15 @@ M=D
 @R13
 A=M
 D=M
+	// push_d
 @SP
 A=M
 M=D
 @SP
 M=M+1
-// Pop to pointer
+
+// pop pointer 1
+	// pop_d
 @SP
 A=M
 A=A-1
@@ -28,15 +31,19 @@ D=M
 M=M-1
 @4
 M=D
-// Push from constant
+
+// push constant 0
 @0
 D=A
+	// push_d
 @SP
 A=M
 M=D
 @SP
 M=M+1
-// Pop to that
+
+// pop that 0
+	// pop_d
 @SP
 A=M
 A=A-1
@@ -57,15 +64,19 @@ D=M
 @R13
 A=M
 M=D
-// Push from constant
+
+// push constant 1
 @1
 D=A
+	// push_d
 @SP
 A=M
 M=D
 @SP
 M=M+1
-// Pop to that
+
+// pop that 1
+	// pop_d
 @SP
 A=M
 A=A-1
@@ -86,7 +97,8 @@ D=M
 @R13
 A=M
 M=D
-// Push from argument
+
+// push argument 0
 @0
 D=A
 @ARG
@@ -97,20 +109,25 @@ M=D
 @R13
 A=M
 D=M
+	// push_d
 @SP
 A=M
 M=D
 @SP
 M=M+1
-// Push from constant
+
+// push constant 2
 @2
 D=A
+	// push_d
 @SP
 A=M
 M=D
 @SP
 M=M+1
+
 // sub
+	// pop_d
 @SP
 A=M
 A=A-1
@@ -119,6 +136,7 @@ D=M
 M=M-1
 @R14
 M=D
+	// pop_d
 @SP
 A=M
 A=A-1
@@ -127,12 +145,15 @@ D=M
 M=M-1
 @R14
 D=D-M
+	// push_d
 @SP
 A=M
 M=D
 @SP
 M=M+1
-// Pop to argument
+
+// pop argument 0
+	// pop_d
 @SP
 A=M
 A=A-1
@@ -153,8 +174,11 @@ D=M
 @R13
 A=M
 M=D
+
+// label MAIN_LOOP_START
 (FibonacciSeries$MAIN_LOOP_START)
-// Push from argument
+
+// push argument 0
 @0
 D=A
 @ARG
@@ -165,12 +189,15 @@ M=D
 @R13
 A=M
 D=M
+	// push_d
 @SP
 A=M
 M=D
 @SP
 M=M+1
-// if-goto
+
+// if-goto COMPUTE_ELEMENT
+	// pop_d
 @SP
 A=M
 A=A-1
@@ -179,11 +206,15 @@ D=M
 M=M-1
 @FibonacciSeries$COMPUTE_ELEMENT
 D;JNE
-// goto
+
+// goto END_PROGRAM
 @FibonacciSeries$END_PROGRAM
 0;JMP
+
+// label COMPUTE_ELEMENT
 (FibonacciSeries$COMPUTE_ELEMENT)
-// Push from that
+
+// push that 0
 @0
 D=A
 @THAT
@@ -194,12 +225,14 @@ M=D
 @R13
 A=M
 D=M
+	// push_d
 @SP
 A=M
 M=D
 @SP
 M=M+1
-// Push from that
+
+// push that 1
 @1
 D=A
 @THAT
@@ -210,12 +243,15 @@ M=D
 @R13
 A=M
 D=M
+	// push_d
 @SP
 A=M
 M=D
 @SP
 M=M+1
+
 // add
+	// pop_d
 @SP
 A=M
 A=A-1
@@ -224,6 +260,7 @@ D=M
 M=M-1
 @R14
 M=D
+	// pop_d
 @SP
 A=M
 A=A-1
@@ -232,12 +269,15 @@ D=M
 M=M-1
 @R14
 D=D+M
+	// push_d
 @SP
 A=M
 M=D
 @SP
 M=M+1
-// Pop to that
+
+// pop that 2
+	// pop_d
 @SP
 A=M
 A=A-1
@@ -258,23 +298,29 @@ D=M
 @R13
 A=M
 M=D
-// Push from pointer
+
+// push pointer 1
 @4
 D=M
+	// push_d
 @SP
 A=M
 M=D
 @SP
 M=M+1
-// Push from constant
+
+// push constant 1
 @1
 D=A
+	// push_d
 @SP
 A=M
 M=D
 @SP
 M=M+1
+
 // add
+	// pop_d
 @SP
 A=M
 A=A-1
@@ -283,6 +329,7 @@ D=M
 M=M-1
 @R14
 M=D
+	// pop_d
 @SP
 A=M
 A=A-1
@@ -291,12 +338,15 @@ D=M
 M=M-1
 @R14
 D=D+M
+	// push_d
 @SP
 A=M
 M=D
 @SP
 M=M+1
-// Pop to pointer
+
+// pop pointer 1
+	// pop_d
 @SP
 A=M
 A=A-1
@@ -305,7 +355,8 @@ D=M
 M=M-1
 @4
 M=D
-// Push from argument
+
+// push argument 0
 @0
 D=A
 @ARG
@@ -316,20 +367,25 @@ M=D
 @R13
 A=M
 D=M
+	// push_d
 @SP
 A=M
 M=D
 @SP
 M=M+1
-// Push from constant
+
+// push constant 1
 @1
 D=A
+	// push_d
 @SP
 A=M
 M=D
 @SP
 M=M+1
+
 // sub
+	// pop_d
 @SP
 A=M
 A=A-1
@@ -338,6 +394,7 @@ D=M
 M=M-1
 @R14
 M=D
+	// pop_d
 @SP
 A=M
 A=A-1
@@ -346,12 +403,15 @@ D=M
 M=M-1
 @R14
 D=D-M
+	// push_d
 @SP
 A=M
 M=D
 @SP
 M=M+1
-// Pop to argument
+
+// pop argument 0
+	// pop_d
 @SP
 A=M
 A=A-1
@@ -372,7 +432,10 @@ D=M
 @R13
 A=M
 M=D
-// goto
+
+// goto MAIN_LOOP_START
 @FibonacciSeries$MAIN_LOOP_START
 0;JMP
+
+// label END_PROGRAM
 (FibonacciSeries$END_PROGRAM)

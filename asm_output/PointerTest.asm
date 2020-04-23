@@ -1,17 +1,20 @@
-// Bootstrapping ASM file...
 @256
 D=A
 @SP
 M=D
-// Push from constant
+
+// push constant 3030
 @3030
 D=A
+	// push_d
 @SP
 A=M
 M=D
 @SP
 M=M+1
-// Pop to pointer
+
+// pop pointer 0
+	// pop_d
 @SP
 A=M
 A=A-1
@@ -20,15 +23,19 @@ D=M
 M=M-1
 @3
 M=D
-// Push from constant
+
+// push constant 3040
 @3040
 D=A
+	// push_d
 @SP
 A=M
 M=D
 @SP
 M=M+1
-// Pop to pointer
+
+// pop pointer 1
+	// pop_d
 @SP
 A=M
 A=A-1
@@ -37,15 +44,19 @@ D=M
 M=M-1
 @4
 M=D
-// Push from constant
+
+// push constant 32
 @32
 D=A
+	// push_d
 @SP
 A=M
 M=D
 @SP
 M=M+1
-// Pop to this
+
+// pop this 2
+	// pop_d
 @SP
 A=M
 A=A-1
@@ -66,15 +77,19 @@ D=M
 @R13
 A=M
 M=D
-// Push from constant
+
+// push constant 46
 @46
 D=A
+	// push_d
 @SP
 A=M
 M=D
 @SP
 M=M+1
-// Pop to that
+
+// pop that 6
+	// pop_d
 @SP
 A=M
 A=A-1
@@ -95,23 +110,29 @@ D=M
 @R13
 A=M
 M=D
-// Push from pointer
+
+// push pointer 0
 @3
 D=M
+	// push_d
 @SP
 A=M
 M=D
 @SP
 M=M+1
-// Push from pointer
+
+// push pointer 1
 @4
 D=M
+	// push_d
 @SP
 A=M
 M=D
 @SP
 M=M+1
+
 // add
+	// pop_d
 @SP
 A=M
 A=A-1
@@ -120,6 +141,7 @@ D=M
 M=M-1
 @R14
 M=D
+	// pop_d
 @SP
 A=M
 A=A-1
@@ -128,12 +150,14 @@ D=M
 M=M-1
 @R14
 D=D+M
+	// push_d
 @SP
 A=M
 M=D
 @SP
 M=M+1
-// Push from this
+
+// push this 2
 @2
 D=A
 @THIS
@@ -144,12 +168,15 @@ M=D
 @R13
 A=M
 D=M
+	// push_d
 @SP
 A=M
 M=D
 @SP
 M=M+1
+
 // sub
+	// pop_d
 @SP
 A=M
 A=A-1
@@ -158,6 +185,7 @@ D=M
 M=M-1
 @R14
 M=D
+	// pop_d
 @SP
 A=M
 A=A-1
@@ -166,12 +194,14 @@ D=M
 M=M-1
 @R14
 D=D-M
+	// push_d
 @SP
 A=M
 M=D
 @SP
 M=M+1
-// Push from that
+
+// push that 6
 @6
 D=A
 @THAT
@@ -182,12 +212,15 @@ M=D
 @R13
 A=M
 D=M
+	// push_d
 @SP
 A=M
 M=D
 @SP
 M=M+1
+
 // add
+	// pop_d
 @SP
 A=M
 A=A-1
@@ -196,6 +229,7 @@ D=M
 M=M-1
 @R14
 M=D
+	// pop_d
 @SP
 A=M
 A=A-1
@@ -204,6 +238,7 @@ D=M
 M=M-1
 @R14
 D=D+M
+	// push_d
 @SP
 A=M
 M=D
